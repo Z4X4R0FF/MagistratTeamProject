@@ -1,36 +1,74 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class Planet : MonoBehaviour
 {
     #region Planet Parameters
 
-    [Header("Basic Params")] [Range(10, 200)] [SerializeField]
-    public float radius = 1;
+    public enum FaceRenderMask
+    {
+        All,
+        Top,
+        Bottom,
+        Left,
+        Right,
+        Front,
+        Back
+    }
 
-    [SerializeField] public Color color;
-    [Range(2, 256)] [SerializeField] public int planetResolution = 10;
+    [SerializeField] private FaceRenderMask faceRenderMask;
 
-    [Header("NoiseSettings")] [SerializeField] [Range(1, 10)]
-    private int noiseLayersCount = 1;
-
-    [SerializeField] private float strength = 1;
-    [SerializeField] private float baseRoughness = 1;
-    [SerializeField] private float roughness = 2;
-    [SerializeField] private float persistance = .5f;
-    [SerializeField] private Vector3 centre;
-    [SerializeField] private float minValue;
+    [SerializeField] private PlanetGenerationSettingsAsset planetGenerationSettingsAsset;
 
     #endregion
 
+    public PlanetSettings PlanetSettings { get; private set; }
+
+    public FaceRenderMask FaceRenderMaskValue => faceRenderMask;
     [SerializeField] private PlanetMesh planetMesh;
-    [HideInInspector] public NoiseFilter noiseFilter;
+    public INoiseFilter[] NoiseFilters { get; private set; }
 
     private void OnValidate()
     {
-        noiseFilter = new NoiseFilter(strength, roughness, baseRoughness, centre, persistance, noiseLayersCount,minValue);
+        if (planetGenerationSettingsAsset == null) return;
+        planetGenerationSettingsAsset.Validated -= OnValidateManual;
+        planetGenerationSettingsAsset.Validated += OnValidateManual;
+        foreach (var noiseLayer in planetGenerationSettingsAsset.noiseLayers)
+        {
+            noiseLayer.Validated -= OnValidateManual;
+            noiseLayer.Validated += OnValidateManual;
+        }
+
+        PlanetSettings = new PlanetSettings(planetGenerationSettingsAsset);
+        NoiseFilters = new INoiseFilter[PlanetSettings.noiseLayers.Count];
+        for (var i = 0; i < NoiseFilters.Length; i++)
+        {
+            NoiseFilters[i] = NoiseFilterFactory.CreateNoiseFilter(PlanetSettings.noiseLayers[i].noiseSettings);
+        }
+
         planetMesh.CreatePlanet(this);
+    }
+
+    private void OnValidateManual() => OnValidate();
+}
+
+public class PlanetSettings
+{
+    public readonly float radius;
+    public readonly int resolution;
+    public Color color;
+    public readonly List<NoiseLayerSettingsAsset> noiseLayers = new();
+
+    public PlanetSettings(PlanetGenerationSettingsAsset planetGenerationSettingsAsset)
+    {
+        radius = Random.Range(planetGenerationSettingsAsset.minRadius, planetGenerationSettingsAsset.maxRadius);
+        color = planetGenerationSettingsAsset.color;
+        resolution = planetGenerationSettingsAsset.planetResolution;
+        for (var i = 0; i < planetGenerationSettingsAsset.noiseLayers.Count; i++)
+        {
+            noiseLayers.Add(planetGenerationSettingsAsset.noiseLayers[i]);
+        }
     }
 }

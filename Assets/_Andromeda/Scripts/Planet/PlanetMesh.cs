@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlanetMesh : MonoBehaviour
@@ -47,14 +44,20 @@ public class PlanetMesh : MonoBehaviour
             }
 
             _terrainFaces[i] = new TerrainFace(_planet, meshFilters[i].sharedMesh, directions[i]);
+            var renderFace = _planet.FaceRenderMaskValue == Planet.FaceRenderMask.All ||
+                             (int)_planet.FaceRenderMaskValue - 1 == i;
+            meshFilters[i].gameObject.SetActive(renderFace);
         }
     }
 
     private void GenerateMesh()
     {
-        foreach (var face in _terrainFaces)
+        for (var i = 0; i < 6; i++)
         {
-            face.ConstructMesh();
+            if (meshFilters[i].gameObject.activeSelf)
+            {
+                _terrainFaces[i].ConstructMesh();
+            }
         }
     }
 
@@ -62,7 +65,7 @@ public class PlanetMesh : MonoBehaviour
     {
         foreach (var meshFilter in meshFilters)
         {
-            meshFilter.GetComponent<MeshRenderer>().sharedMaterial.color = _planet.color;
+            meshFilter.GetComponent<MeshRenderer>().sharedMaterial.color = _planet.PlanetSettings.color;
         }
     }
 }

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class TerrainFace
@@ -15,7 +16,7 @@ public class TerrainFace
     {
         _planet = planet;
         _mesh = mesh;
-        _resolution = planet.planetResolution;
+        _resolution = planet.PlanetSettings.resolution;
         _localUp = localUp;
 
         _axisA = new Vector3(localUp.y, localUp.z, localUp.x);
@@ -35,8 +36,7 @@ public class TerrainFace
                 var percent = new Vector2(x, y) / (_resolution - 1);
                 var pointOnUnitCube = _localUp + (percent.x - .5f) * 2 * _axisA + (percent.y - .5f) * 2 * _axisB;
                 var pointOnUnitSphere = pointOnUnitCube.normalized;
-                vertices[i] = pointOnUnitSphere * _planet.radius *
-                              (1 + _planet.noiseFilter.Evaluate(pointOnUnitSphere));
+                vertices[i] = CalculatePointOnPlanet(pointOnUnitSphere);
 
                 if (x != _resolution - 1 && y != _resolution - 1)
                 {
@@ -56,5 +56,31 @@ public class TerrainFace
         _mesh.vertices = vertices;
         _mesh.triangles = triangles;
         _mesh.RecalculateNormals();
+    }
+
+    private Vector3 CalculatePointOnPlanet(Vector3 pointOnUnitSphere)
+    {
+        var elevation = 0f;
+        var firstLayerValue = 0f;
+
+        if (_planet.NoiseFilters.Length > 0)
+        {
+            firstLayerValue = _planet.NoiseFilters[0].Evaluate(pointOnUnitSphere);
+            if (_planet.PlanetSettings.noiseLayers[0].isEnabled)
+            {
+                elevation = firstLayerValue;
+            }
+        }
+
+        for (var i = 0; i < _planet.NoiseFilters.Length; i++)
+        {
+            if (_planet.PlanetSettings.noiseLayers[i].isEnabled)
+            {
+                var mask = (_planet.PlanetSettings.noiseLayers[i].useFirstLayerAsMask) ? firstLayerValue : 1;
+                elevation += _planet.NoiseFilters[i].Evaluate(pointOnUnitSphere) * mask;
+            }
+        }
+
+        return pointOnUnitSphere * _planet.PlanetSettings.radius * (1 + elevation);
     }
 }
