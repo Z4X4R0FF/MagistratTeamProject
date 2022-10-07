@@ -1,20 +1,22 @@
 using UnityEngine;
 
-public class PlanetMesh : MonoBehaviour
+public class PlanetMeshGenerator : MonoBehaviour
 {
     [SerializeField, HideInInspector] private MeshFilter[] meshFilters;
     private TerrainFace[] _terrainFaces;
     private Planet _planet;
+    private ColorGenerator _colorGenerator;
 
-    public void CreatePlanet(Planet planet)
+    public void CreatePlanet(Planet planet, ColorGenerator colorGenerator)
     {
         _planet = planet;
-        Init();
+        _colorGenerator = colorGenerator;
+        UpdateSettings();
         GenerateMesh();
         GenerateColors();
     }
 
-    private void Init()
+    private void UpdateSettings()
     {
         if (meshFilters == null || meshFilters.Length == 0)
         {
@@ -37,11 +39,12 @@ public class PlanetMesh : MonoBehaviour
                         localPosition = Vector3.zero
                     }
                 };
-                meshObj.AddComponent<MeshRenderer>().sharedMaterial =
-                    new Material(Shader.Find("Universal Render Pipeline/Lit"));
+                meshObj.AddComponent<MeshRenderer>();
                 meshFilters[i] = meshObj.AddComponent<MeshFilter>();
                 meshFilters[i].sharedMesh = new Mesh();
             }
+
+            meshFilters[i].GetComponent<MeshRenderer>().sharedMaterial = _planet.ColorSettings.planetMaterial;
 
             _terrainFaces[i] = new TerrainFace(_planet, meshFilters[i].sharedMesh, directions[i]);
             var renderFace = _planet.FaceRenderMaskValue == Planet.FaceRenderMask.All ||
@@ -59,13 +62,12 @@ public class PlanetMesh : MonoBehaviour
                 _terrainFaces[i].ConstructMesh();
             }
         }
+
+        _colorGenerator.UpdateElevation(_planet.elevationMinMax);
     }
 
     private void GenerateColors()
     {
-        foreach (var meshFilter in meshFilters)
-        {
-            meshFilter.GetComponent<MeshRenderer>().sharedMaterial.color = _planet.PlanetSettings.color;
-        }
+        _colorGenerator.UpdateColors();
     }
 }

@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ffc8dba83f9afb47ba8240eb004cdd0, type: 3}
   m_Name: planet
   m_EditorClassIdentifier: 
-  minRadius: 80
+  minRadius: 100
   maxRadius: 120
-  color: {r: 0.060875725, g: 0.5660378, b: 0.088026516, a: 1}
   planetResolution: 80
   noiseLayers:
   - {fileID: 11400000, guid: f556af9b6da5fa84388894c6022b6d1a, type: 2}
   - {fileID: 11400000, guid: 9210530eb4795be419cebabfb1fca4a5, type: 2}
+  colorSettings: {fileID: 11400000, guid: 38ebe07e40f9c994e84d5eedbb38e8ba, type: 2}

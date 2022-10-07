@@ -81,6 +81,8 @@ public class TerrainFace
             }
         }
 
-        return pointOnUnitSphere * _planet.PlanetSettings.radius * (1 + elevation);
+        elevation = _planet.PlanetSettings.radius * (1 + elevation);
+        _planet.elevationMinMax.AddValue(elevation);
+        return pointOnUnitSphere * elevation;
     }
 }

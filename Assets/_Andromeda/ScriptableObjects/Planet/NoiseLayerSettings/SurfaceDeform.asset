@@ -22,7 +22,7 @@ MonoBehaviour:
       baseRoughness: 1
       roughness: 2.5
       persistence: 0.5
-      centre: {x: 0, y: 0, z: 0}
+      centre: {x: 3.38, y: 0, z: 0}
       minValue: 1
     rigidNoiseSettings:
       strength: 0
