@@ -6,10 +6,10 @@ using UnityEngine;
 [CreateAssetMenu()]
 public class PlanetGenerationSettingsAsset : ScriptableObject
 {
-    [Header("Basic")] [Range(10, 200)] public int minRadius = 10;
-    [Range(10, 200)] public int maxRadius = 200;
+    [Header("Basic")] [Range(50, 500)] public int minRadius = 100;
+    [Range(100, 500)] public int maxRadius = 100;
 
-    [Range(20, 256)] public int planetResolution = 20;
+    [Range(0.5f, 10)] public float planetResolutionScaleFactor = 1f;
 
     [Header("NoiseSettings")] [SerializeField]
     public List<NoiseLayerSettingsAsset> noiseLayers;

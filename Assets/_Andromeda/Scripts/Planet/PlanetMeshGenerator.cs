@@ -44,7 +44,7 @@ public class PlanetMeshGenerator : MonoBehaviour
                 meshFilters[i].sharedMesh = new Mesh();
             }
 
-            meshFilters[i].GetComponent<MeshRenderer>().sharedMaterial = _planet.ColorSettings.planetMaterial;
+            var mat = meshFilters[i].GetComponent<MeshRenderer>().sharedMaterial =_planet.ColorSettings.planetMaterial;
 
             _terrainFaces[i] = new TerrainFace(_planet, meshFilters[i].sharedMesh, directions[i]);
             var renderFace = _planet.FaceRenderMaskValue == Planet.FaceRenderMask.All ||

@@ -10,28 +10,28 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c199be02aa5399442bce5fc46313be42, type: 3}
-  m_Name: Hills
+  m_Name: SurfaceDeform2
   m_EditorClassIdentifier: 
   isEnabled: 1
-  useFirstLayerAsMask: 1
+  useFirstLayerAsMask: 0
   noiseSettings:
-    filterType: 1
+    filterType: 0
     simpleNoiseSettings:
       useRandomCentre: 1
+      strength: 0.01
+      numLayers: 5
+      baseRoughness: 2
+      roughness: 2
+      persistence: 0.5
+      centre: {x: 568.0347, y: -480.64807, z: -381.0643}
+      minValue: 0
+    rigidNoiseSettings:
+      useRandomCentre: 0
       strength: 0
       numLayers: 1
       baseRoughness: 1
       roughness: 1
       persistence: 0.5
-      centre: {x: 17.524643, y: 896.11566, z: 365.64136}
-      minValue: 0
-    rigidNoiseSettings:
-      useRandomCentre: 0
-      strength: 8
-      numLayers: 5
-      baseRoughness: 1.5
-      roughness: 1
-      persistence: 0.5
       centre: {x: 0, y: 0, z: 0}
       minValue: 0
-      weightMultiplier: 0
+      weightMultiplier: 0.8

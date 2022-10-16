@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c199be02aa5399442bce5fc46313be42, type: 3}
-  m_Name: Hills
+  m_Name: Sands
   m_EditorClassIdentifier: 
   isEnabled: 1
-  useFirstLayerAsMask: 1
+  useFirstLayerAsMask: 0
   noiseSettings:
     filterType: 1
     simpleNoiseSettings:
@@ -23,15 +23,15 @@ MonoBehaviour:
       baseRoughness: 1
       roughness: 1
       persistence: 0.5
-      centre: {x: 17.524643, y: 896.11566, z: 365.64136}
+      centre: {x: 205.19757, y: 534.7764, z: 171.79091}
       minValue: 0
     rigidNoiseSettings:
       useRandomCentre: 0
-      strength: 8
+      strength: 0.01
       numLayers: 5
-      baseRoughness: 1.5
-      roughness: 1
-      persistence: 0.5
+      baseRoughness: 3
+      roughness: 0
+      persistence: 0.8
       centre: {x: 0, y: 0, z: 0}
       minValue: 0
-      weightMultiplier: 0
+      weightMultiplier: 50

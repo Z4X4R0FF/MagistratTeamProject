@@ -36,6 +36,7 @@ public class NoiseSettings
     [System.Serializable]
     public class SimpleNoiseSettings
     {
+        public bool useRandomCentre;
         [Range(0, 10)] public float strength = 0;
         [Range(1, 10)] public int numLayers = 1;
         [Range(0, 10)] public float baseRoughness = 1;

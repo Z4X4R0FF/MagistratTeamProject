@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9ffc8dba83f9afb47ba8240eb004cdd0, type: 3}
-  m_Name: planet
+  m_Name: LavaHillsPreset
   m_EditorClassIdentifier: 
-  minRadius: 100
-  maxRadius: 120
-  planetResolution: 80
+  minRadius: 50
+  maxRadius: 200
+  planetResolutionScaleFactor: 1.25
   noiseLayers:
   - {fileID: 11400000, guid: f556af9b6da5fa84388894c6022b6d1a, type: 2}
   - {fileID: 11400000, guid: 9210530eb4795be419cebabfb1fca4a5, type: 2}

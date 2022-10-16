@@ -17,14 +17,16 @@ MonoBehaviour:
   noiseSettings:
     filterType: 0
     simpleNoiseSettings:
-      strength: 0.1
-      numLayers: 4
+      useRandomCentre: 1
+      strength: 0.05
+      numLayers: 10
       baseRoughness: 1
-      roughness: 2.5
+      roughness: 2
       persistence: 0.5
-      centre: {x: 3.38, y: 0, z: 0}
-      minValue: 1
+      centre: {x: 181.196, y: -415.10117, z: 531.09607}
+      minValue: 0.8
     rigidNoiseSettings:
+      useRandomCentre: 0
       strength: 0
       numLayers: 1
       baseRoughness: 1
