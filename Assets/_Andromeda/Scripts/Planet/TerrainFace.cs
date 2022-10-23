@@ -7,17 +7,19 @@ public class TerrainFace
 {
     private readonly Planet _planet;
     private readonly Mesh _mesh;
+    private readonly float _radius;
     private readonly int _resolution;
     private readonly Vector3 _localUp;
     private readonly Vector3 _axisA;
     private readonly Vector3 _axisB;
 
-    public TerrainFace(Planet planet, Mesh mesh, Vector3 localUp)
+    public TerrainFace(Planet planet, Mesh mesh, Vector3 localUp, float radius)
     {
         _planet = planet;
         _mesh = mesh;
-        _resolution = planet.PlanetSettings.resolution;
+        _resolution = planet.Settings.resolution;
         _localUp = localUp;
+        _radius = radius;
 
         _axisA = new Vector3(localUp.y, localUp.z, localUp.x);
         _axisB = Vector3.Cross(localUp, _axisA);
@@ -66,7 +68,7 @@ public class TerrainFace
         if (_planet.NoiseFilters.Length > 0)
         {
             firstLayerValue = _planet.NoiseFilters[0].Evaluate(pointOnUnitSphere);
-            if (_planet.PlanetSettings.noiseLayers[0].isEnabled)
+            if (_planet.Settings.noiseLayers[0].isEnabled)
             {
                 elevation = firstLayerValue;
             }
@@ -74,14 +76,14 @@ public class TerrainFace
 
         for (var i = 0; i < _planet.NoiseFilters.Length; i++)
         {
-            if (_planet.PlanetSettings.noiseLayers[i].isEnabled)
+            if (_planet.Settings.noiseLayers[i].isEnabled)
             {
-                var mask = (_planet.PlanetSettings.noiseLayers[i].useFirstLayerAsMask) ? firstLayerValue : 1;
+                var mask = (_planet.Settings.noiseLayers[i].useFirstLayerAsMask) ? firstLayerValue : 1;
                 elevation += _planet.NoiseFilters[i].Evaluate(pointOnUnitSphere) * mask;
             }
         }
 
-        elevation = _planet.PlanetSettings.radius * (1 + elevation);
+        elevation = _planet.Settings.radius * (1 + elevation);
         _planet.elevationMinMax.AddValue(elevation);
         return pointOnUnitSphere * elevation;
     }

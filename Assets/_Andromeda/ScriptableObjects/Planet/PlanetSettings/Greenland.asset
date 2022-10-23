@@ -15,7 +15,11 @@ MonoBehaviour:
   minRadius: 100
   maxRadius: 500
   planetResolutionScaleFactor: 0.5
+  spawnHeightPercentage: 0.1
   noiseLayers:
   - {fileID: 11400000, guid: 2b5f03b82956e1f4ba674ed6aa620101, type: 2}
   - {fileID: 11400000, guid: 1b5a4abb0f08ea149b95c556a7146b02, type: 2}
   colorSettings: {fileID: 11400000, guid: bc73e525badf8024a98a732ae525a30f, type: 2}
+  resourceSettings: {fileID: 11400000, guid: 2f12140ab0b7ffd40afc0b48832233e8, type: 2}
+  propSettings: {fileID: 11400000, guid: 4745d0b96b6455e49aa25dc7a7a9ff5f, type: 2}
+  mobAsset: {fileID: 11400000, guid: 7efb1e176a594dc41bebe4a53c11573e, type: 2}

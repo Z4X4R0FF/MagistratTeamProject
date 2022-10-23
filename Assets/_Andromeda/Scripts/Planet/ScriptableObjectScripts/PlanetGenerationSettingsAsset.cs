@@ -11,11 +11,16 @@ public class PlanetGenerationSettingsAsset : ScriptableObject
 
     [Range(0.5f, 10)] public float planetResolutionScaleFactor = 1f;
 
+    [Tooltip("will count as elevationMinMax.Max - Min Lerp")] [Range(0, 1)]
+    public float spawnHeightPercentage;
+
     [Header("NoiseSettings")] [SerializeField]
     public List<NoiseLayerSettingsAsset> noiseLayers;
 
     [SerializeField] public PlanetColorSettingsAsset colorSettings;
-
+    [SerializeField] public PlanetResourceSettingsAsset resourceSettings;
+    [SerializeField] public PlanetPropsSettingsAsset propSettings;
+    [SerializeField] public MobRaceAsset mobAsset;
     private void OnValidate()
     {
         Validated?.Invoke();
