@@ -21,5 +21,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 1b5a4abb0f08ea149b95c556a7146b02, type: 2}
   colorSettings: {fileID: 11400000, guid: bc73e525badf8024a98a732ae525a30f, type: 2}
   resourceSettings: {fileID: 11400000, guid: 2f12140ab0b7ffd40afc0b48832233e8, type: 2}
-  propSettings: {fileID: 11400000, guid: 4745d0b96b6455e49aa25dc7a7a9ff5f, type: 2}
+  propSettings: {fileID: 11400000, guid: 603913b68dceaf348a8b708ac1b5970c, type: 2}
   mobAsset: {fileID: 11400000, guid: 7efb1e176a594dc41bebe4a53c11573e, type: 2}

@@ -16,4 +16,4 @@ MonoBehaviour:
   shownName: Meals
   id: 01
   icon: {fileID: 0}
-  prefab: {fileID: 5280217521207646512, guid: 52bd692c530ffbd4e9415b832b1951f6, type: 3}
+  prefab: {fileID: 644672933750468032, guid: be30d22c240ee994fbfe188fd50236c2, type: 3}
