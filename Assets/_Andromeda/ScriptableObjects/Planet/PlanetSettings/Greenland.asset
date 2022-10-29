@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ffc8dba83f9afb47ba8240eb004cdd0, type: 3}
   m_Name: Greenland
   m_EditorClassIdentifier: 
-  minRadius: 100
-  maxRadius: 500
-  planetResolutionScaleFactor: 0.5
+  minRadius: 80
+  maxRadius: 350
+  planetResolutionScaleFactor: 0.7
   spawnHeightPercentage: 0.1
   noiseLayers:
   - {fileID: 11400000, guid: 2b5f03b82956e1f4ba674ed6aa620101, type: 2}

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: testRace
   m_EditorClassIdentifier: 
   RaceName: test
-  SpawnerPrefab: {fileID: 5280217521207646512, guid: 6e881dcf5a675904f9412e85921c936a,
+  SpawnerPrefab: {fileID: 6903263362393039883, guid: aed44574523d58449917fe3220380c0a,
     type: 3}
-  minSpawnerCount: 2
-  maxSpawnerCount: 10
+  minSpawnerCount: 1
+  maxSpawnerCount: 4

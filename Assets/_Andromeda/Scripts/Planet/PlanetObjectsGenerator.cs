@@ -93,6 +93,7 @@ public class PlanetObjectsGenerator : MonoBehaviour
                     {
                         spawnedObject.transform.localPosition = spawnPoint;
                         spawnedObject.transform.up = -(Vector3.zero - spawnedObject.transform.position).normalized;
+                        spawnedObject.transform.rotation = Quaternion.Euler(new Vector3(0, Random.Range(0, 360), 0));
                         _resourceObjects.Add(spawnedObject);
                         return;
                     }
@@ -104,6 +105,7 @@ public class PlanetObjectsGenerator : MonoBehaviour
                     {
                         spawnedObject.transform.localPosition = spawnPoint;
                         spawnedObject.transform.up = -(Vector3.zero - spawnedObject.transform.position).normalized;
+                        spawnedObject.transform.rotation = Quaternion.Euler(new Vector3(0, Random.Range(0, 360), 0));
                         _propObjects.Add(spawnedObject);
                         return;
                     }
@@ -115,6 +117,7 @@ public class PlanetObjectsGenerator : MonoBehaviour
                     {
                         spawnedObject.transform.localPosition = spawnPoint;
                         spawnedObject.transform.up = -(Vector3.zero - spawnedObject.transform.position).normalized;
+                        spawnedObject.transform.rotation = Quaternion.Euler(new Vector3(0, Random.Range(0, 360), 0));
                         _spawnerObjects.Add(spawnedObject);
                         return;
                     }

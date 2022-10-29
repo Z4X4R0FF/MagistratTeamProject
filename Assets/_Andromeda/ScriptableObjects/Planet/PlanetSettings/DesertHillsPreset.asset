@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: DesertHillsPreset
   m_EditorClassIdentifier: 
   minRadius: 100
-  maxRadius: 300
+  maxRadius: 250
   planetResolutionScaleFactor: 0.8
   spawnHeightPercentage: 0.9
   noiseLayers:
