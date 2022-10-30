@@ -6,7 +6,7 @@ public class ColorGenerator : MonoBehaviour
 {
     private Planet _planet;
     private Texture2D texture;
-    private const int TextureResolution = 16384;
+    private const int TextureResolution = 2048;
     private static readonly int ElevationMinMax = Shader.PropertyToID("_elevationMinMax");
     private static readonly int TexturePropName = Shader.PropertyToID("_texture");
 

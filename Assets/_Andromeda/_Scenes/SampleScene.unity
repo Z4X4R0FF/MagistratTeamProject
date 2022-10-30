@@ -372,14 +372,14 @@ MonoBehaviour:
   planetCount: 5
   planetPrefab: {fileID: 8175696934428737668, guid: 4cf0489cb707ce6468c6d43772c1af54,
     type: 3}
-  maxOffsetX: 11000
+  maxOffsetX: 9000
   minOffsetX: 4000
-  minDistanceBetweenPlanetOrbits: 500
+  minDistanceBetweenPlanetOrbits: 400
   planetPresets:
-  - {fileID: 11400000, guid: 4d92c960323397b4ab15942ad164147b, type: 2}
+  - {fileID: 11400000, guid: d3a122ddf78f3584caadc04f9861d751, type: 2}
   - {fileID: 11400000, guid: 0cfb3c30419b8e44895a7a14e7fc8ae1, type: 2}
   - {fileID: 11400000, guid: a85df6263dc44244aab03853fb8dcb0b, type: 2}
-  - {fileID: 11400000, guid: d3a122ddf78f3584caadc04f9861d751, type: 2}
+  - {fileID: 11400000, guid: 4d92c960323397b4ab15942ad164147b, type: 2}
 --- !u!4 &691168995
 Transform:
   m_ObjectHideFlags: 0
@@ -746,7 +746,7 @@ Light:
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 20000000
-  m_Range: 50000
+  m_Range: 15000
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10

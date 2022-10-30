@@ -58,6 +58,7 @@ public class TerrainFace
         _mesh.vertices = vertices;
         _mesh.triangles = triangles;
         _mesh.RecalculateNormals();
+        _mesh.Optimize();
     }
 
     private Vector3 CalculatePointOnPlanet(Vector3 pointOnUnitSphere)

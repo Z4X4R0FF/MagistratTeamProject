@@ -95,14 +95,12 @@ public class Planet : MonoBehaviour
 
     public void GeneratePlanet(int offsetX, PlanetGenerationSettingsAsset planetSettings)
     {
-        if (planetGenerationSettingsAsset == null) return;
-
         Settings = new PlanetSettings(planetSettings);
         ColorSettings = new PlanetColorSettings(planetSettings.colorSettings);
         ResourceSettings =
-            new PlanetResourceSettings(planetGenerationSettingsAsset.resourceSettings, Settings.radius);
-        PropSettings = new PlanetPropSettings(planetGenerationSettingsAsset.propSettings, Settings.radius);
-        RaceSettings = new PlanetRaceSettings(planetGenerationSettingsAsset.mobAsset, Settings.radius);
+            new PlanetResourceSettings(planetSettings.resourceSettings, Settings.radius);
+        PropSettings = new PlanetPropSettings(planetSettings.propSettings, Settings.radius);
+        RaceSettings = new PlanetRaceSettings(planetSettings.mobAsset, Settings.radius);
 
         NoiseFilters = new INoiseFilter[Settings.noiseLayers.Count];
         for (var i = 0; i < NoiseFilters.Length; i++)
