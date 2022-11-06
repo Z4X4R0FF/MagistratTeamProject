@@ -21,8 +21,8 @@ public class TerrainFace
         _localUp = localUp;
         _radius = radius;
 
-        _axisA = new Vector3(localUp.y, localUp.z, localUp.x);
-        _axisB = Vector3.Cross(localUp, _axisA);
+        _axisA = new Vector3(_localUp.y, _localUp.z, _localUp.x);
+        _axisB = Vector3.Cross(_localUp, _axisA);
     }
 
     public void ConstructMesh()

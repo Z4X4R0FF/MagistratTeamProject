@@ -106,6 +106,7 @@ GameObject:
   - component: {fileID: 631668396098681708}
   - component: {fileID: 4563267893037453045}
   - component: {fileID: 7168434082592219268}
+  - component: {fileID: 5629444514099309935}
   m_Layer: 0
   m_Name: Planet
   m_TagString: Untagged
@@ -170,6 +171,13 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  planetMeshes:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!114 &4563267893037453045
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -201,6 +209,36 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 2b9e03c4bf986584d9d53cee0e56a4fe, type: 2}
   - {fileID: 11400000, guid: 558a33092e4595746a3246b965b03e7d, type: 2}
   - {fileID: 11400000, guid: f5b7e04dc070f114da7a5b141c0cbbf8, type: 2}
+--- !u!114 &5629444514099309935
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4581335069747813214}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AgentTypeID: 0
+  m_CollectObjects: 2
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 2, z: 0}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_UseGeometry: 0
+  m_DefaultArea: 0
+  m_IgnoreNavMeshAgent: 1
+  m_IgnoreNavMeshObstacle: 1
+  m_OverrideTileSize: 0
+  m_TileSize: 256
+  m_OverrideVoxelSize: 0
+  m_VoxelSize: 0.6666667
+  m_MinRegionArea: 2
+  m_NavMeshData: {fileID: 0}
+  m_BuildHeightMesh: 0
 --- !u!1 &8175696934428737668
 GameObject:
   m_ObjectHideFlags: 0

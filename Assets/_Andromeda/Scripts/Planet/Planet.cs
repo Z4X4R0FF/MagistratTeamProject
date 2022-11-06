@@ -53,31 +53,7 @@ public class Planet : MonoBehaviour
             noiseLayer.Validated += OnValidateManual;
         }
 
-        SetPlanetPosition(tempOffsetX);
-
-        Settings = new PlanetSettings(planetGenerationSettingsAsset);
-        ColorSettings = new PlanetColorSettings(planetGenerationSettingsAsset.colorSettings);
-        ResourceSettings =
-            new PlanetResourceSettings(planetGenerationSettingsAsset.resourceSettings, Settings.radius);
-        PropSettings = new PlanetPropSettings(planetGenerationSettingsAsset.propSettings, Settings.radius);
-        RaceSettings = new PlanetRaceSettings(planetGenerationSettingsAsset.mobAsset, Settings.radius);
-
-        NoiseFilters = new INoiseFilter[Settings.noiseLayers.Count];
-        for (var i = 0; i < NoiseFilters.Length; i++)
-        {
-            if (Settings.noiseLayers[i].noiseSettings.simpleNoiseSettings.useRandomCentre)
-            {
-                Settings.noiseLayers[i].noiseSettings.simpleNoiseSettings.centre =
-                    Random.onUnitSphere * Random.Range(1, 1000);
-                Debug.Log(Settings.noiseLayers[i].noiseSettings.simpleNoiseSettings.centre);
-            }
-
-            NoiseFilters[i] = NoiseFilterFactory.CreateNoiseFilter(Settings.noiseLayers[i].noiseSettings);
-        }
-
-        elevationMinMax = new MinMax();
-        colorGenerator.UpdateSettings(this);
-        planetMeshGenerator.CreatePlanet(this, colorGenerator);
+        GeneratePlanet(tempOffsetX,planetGenerationSettingsAsset);
     }
 
     private void OnValidateManual() => OnValidate();
@@ -85,12 +61,6 @@ public class Planet : MonoBehaviour
     private void SetPlanetPosition(int offsetX)
     {
         transform.localPosition = new Vector3(offsetX, 0, 0);
-    }
-
-    public void EditorGeneratePlanet(int offsetX)
-    {
-        tempOffsetX = offsetX;
-        OnValidateManual();
     }
 
     public void GeneratePlanet(int offsetX, PlanetGenerationSettingsAsset planetSettings)
@@ -211,7 +181,7 @@ public class Planet : MonoBehaviour
         {
             spawner = asset.SpawnerPrefab;
             raceSpawnerCount = Random.Range(asset.minSpawnerCount, asset.maxSpawnerCount) *
-                                    (planetRadius / 10);
+                               (planetRadius / 10);
         }
     }
 

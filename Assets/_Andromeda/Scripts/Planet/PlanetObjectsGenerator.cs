@@ -28,6 +28,12 @@ public class PlanetObjectsGenerator : MonoBehaviour
 
     public void Init(List<Vector3> pointsForSpawn, Planet planet)
     {
+        _resourceObjects.ForEach(Destroy);
+        _spawnerObjects.ForEach(Destroy);
+        _propObjects.ForEach(Destroy);
+        _resourceObjects.Clear();
+        _spawnerObjects.Clear();
+        _propObjects.Clear();
         _pointsForSpawn = pointsForSpawn;
         _planet = planet;
     }
@@ -92,7 +98,8 @@ public class PlanetObjectsGenerator : MonoBehaviour
                             Vector3.Distance(go.transform.localPosition, spawnPoint) > MinDistanceBetweenEqualObjects))
                     {
                         spawnedObject.transform.localPosition = spawnPoint;
-                        spawnedObject.transform.localRotation = Quaternion.Euler(new Vector3(0, Random.Range(0, 360), 0));
+                        spawnedObject.transform.localRotation =
+                            Quaternion.Euler(new Vector3(0, Random.Range(0, 360), 0));
                         spawnedObject.transform.up = -(Vector3.zero - spawnedObject.transform.position).normalized;
                         _resourceObjects.Add(spawnedObject);
                         return;
@@ -104,7 +111,8 @@ public class PlanetObjectsGenerator : MonoBehaviour
                             Vector3.Distance(go.transform.localPosition, spawnPoint) > MinDistanceBetweenEqualObjects))
                     {
                         spawnedObject.transform.localPosition = spawnPoint;
-                        spawnedObject.transform.localRotation = Quaternion.Euler(new Vector3(0, Random.Range(0, 360), 0));
+                        spawnedObject.transform.localRotation =
+                            Quaternion.Euler(new Vector3(0, Random.Range(0, 360), 0));
                         spawnedObject.transform.up = -(Vector3.zero - spawnedObject.transform.position).normalized;
                         _propObjects.Add(spawnedObject);
                         return;
@@ -116,7 +124,8 @@ public class PlanetObjectsGenerator : MonoBehaviour
                             Vector3.Distance(go.transform.localPosition, spawnPoint) > MinDistanceBetweenEqualObjects))
                     {
                         spawnedObject.transform.localPosition = spawnPoint;
-                        spawnedObject.transform.localRotation = Quaternion.Euler(new Vector3(0, Random.Range(0, 360), 0));
+                        spawnedObject.transform.localRotation =
+                            Quaternion.Euler(new Vector3(0, Random.Range(0, 360), 0));
                         spawnedObject.transform.up = -(Vector3.zero - spawnedObject.transform.position).normalized;
                         _spawnerObjects.Add(spawnedObject);
                         return;
