@@ -11,40 +11,60 @@ public class Laser : MonoBehaviour
     [SerializeField] private float fireDelay = 0.5f;
     private LineRenderer lr;
     private bool canFire;
+    private Transform myTransform;
 
     public float Distance => maxDistance;
 
     private void Awake()
     {
         lr = GetComponent<LineRenderer>();
+        myTransform = transform;
     }
 
     private void Start()
     {
         lr.enabled = false;
+        CanFire();
     }
 
-    Vector3 CastRay()
+    private Vector3 CastRay()
     {
-        var fwd = transform.TransformDirection(Vector3.forward) * maxDistance;
+        var fwd = myTransform.TransformDirection(Vector3.forward) * maxDistance;
 
-        if (Physics.Raycast(transform.position, fwd, out var hit))
+        if (Physics.Raycast(myTransform.position, fwd, out var hit))
         {
             Debug.Log($"Laser hit {hit.transform.name}");
+            if (hit.transform.CompareTag("AIAttackable"))
+            {
+                SpawnLaserExplosion(hit.point, hit.transform);
+            }
+
             return hit.point;
         }
         else
         {
-            return transform.position + transform.forward * maxDistance;
+            return myTransform.position + myTransform.forward * maxDistance;
         }
     }
 
-    public void FireLaser(Vector3 targetPosition)
+    private void SpawnLaserExplosion(Vector3 hitPosition, Transform target)
+    {
+        target.GetComponent<Building>()?.OnBuildingHit(hitPosition);
+    }
+
+    public void FireLaser()
+    {
+        FireLaser(CastRay());
+    }
+
+    public void FireLaser(Vector3 targetPosition, Transform target = null)
     {
         if (canFire)
         {
-            lr.SetPosition(0, transform.position);
-            lr.SetPosition(1, CastRay());
+            if (target != null)
+                SpawnLaserExplosion(targetPosition, target);
+            lr.SetPosition(0, myTransform.position);
+            lr.SetPosition(1, targetPosition);
             lr.enabled = true;
             canFire = false;
             Invoke(nameof(TurnOffLaser), laserOffTime);

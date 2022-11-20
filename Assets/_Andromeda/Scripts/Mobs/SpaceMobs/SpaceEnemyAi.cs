@@ -10,7 +10,7 @@ public class SpaceEnemyAi : MonoBehaviour
 
     public Transform CurrentTarget { get; private set; }
     private bool hasTarget;
-    private const float MinDistance = 10f;
+    private const float MinDistance = 50f;
 
     private void Start()
     {
@@ -24,6 +24,10 @@ public class SpaceEnemyAi : MonoBehaviour
             movement.SetState(Vector3.Distance(transform.position, CurrentTarget.position) <= MinDistance
                 ? SpaceEnemyMovement.MovementState.Staying
                 : SpaceEnemyMovement.MovementState.Moving);
+        }
+        else
+        {
+            FindTarget();
         }
     }
 
@@ -39,7 +43,7 @@ public class SpaceEnemyAi : MonoBehaviour
         if (CurrentTarget == null)
         {
             var target =
-                WorldInfo.Instance.AiTargets.OrderBy(go => Vector3.Distance(transform.position, go.transform.position))
+                WorldInfo.Instance.aiDamageableEntities.OrderBy(go => Vector3.Distance(transform.position, go.transform.position))
                     .First();
             SetTarget(target.transform);
         }

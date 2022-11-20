@@ -18,15 +18,15 @@ public class SpaceEnemyMovement : MonoBehaviour
     [SerializeField] private int raysCount = 8;
 
     private MovementState _movementState;
-    private Transform thisTransform;
+    private Transform myTransform;
 
-    private void Start()
+    private void Awake()
     {
-        thisTransform = transform;
+        myTransform = transform;
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         if (_movementState == MovementState.Moving)
         {
@@ -37,47 +37,47 @@ public class SpaceEnemyMovement : MonoBehaviour
 
     private void Turn()
     {
-        var pos = ai.CurrentTarget.position - thisTransform.position;
+        var pos = ai.CurrentTarget.position - myTransform.position;
         var rot = Quaternion.LookRotation(pos);
-        thisTransform.rotation = Quaternion.Slerp(thisTransform.rotation, rot, rotationalDump * Time.deltaTime);
+        myTransform.rotation = Quaternion.Slerp(myTransform.rotation, rot, rotationalDump * Time.deltaTime);
     }
 
     private void Move()
     {
-        thisTransform.position += thisTransform.forward * movementSpeed * Time.deltaTime;
+        myTransform.position += myTransform.forward * movementSpeed * Time.deltaTime;
     }
 
     private void Pathfinding()
     {
         var raycastOffset = Vector3.zero;
-        var trForward = thisTransform.forward;
+        var trForward = myTransform.forward;
 
         var quaternion = Quaternion.AngleAxis(360f / raysCount, trForward);
         var oppositeQuat = Quaternion.AngleAxis(360 / 2, trForward);
-        var vec3 = thisTransform.up * rayCastOffset;
+        var vec3 = myTransform.up * rayCastOffset;
         for (var i = 0; i < raysCount / 2; i++)
         {
-            var pos = thisTransform.position + vec3;
-            var oppositePos = thisTransform.position + (oppositeQuat * vec3);
+            var pos = myTransform.position + vec3;
+            var oppositePos = myTransform.position + (oppositeQuat * vec3);
             vec3 = quaternion * vec3;
 
             Debug.DrawRay(pos,
                 trForward * detectionDistance, Color.cyan);
             Debug.DrawRay(oppositePos,
                 trForward * detectionDistance, Color.cyan);
-            if (Physics.Raycast(pos, thisTransform.forward, out _, detectionDistance))
+            if (Physics.Raycast(pos, myTransform.forward, out _, detectionDistance))
             {
-                raycastOffset += thisTransform.InverseTransformPoint(oppositePos);
+                raycastOffset += myTransform.InverseTransformPoint(oppositePos);
             }
-            else if (Physics.Raycast(oppositePos, thisTransform.forward, out _, detectionDistance))
+            else if (Physics.Raycast(oppositePos, myTransform.forward, out _, detectionDistance))
             {
-                raycastOffset += thisTransform.InverseTransformPoint(pos);
+                raycastOffset += myTransform.InverseTransformPoint(pos);
             }
         }
 
         if (raycastOffset != Vector3.zero)
         {
-            thisTransform.Rotate(raycastOffset * (evasionSpeed * Time.deltaTime));
+            myTransform.Rotate(raycastOffset * (evasionSpeed * Time.deltaTime));
         }
         else Turn();
     }
