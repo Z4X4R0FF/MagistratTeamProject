@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee4ac7f3ff394e84c827f99a53cdfa51, type: 3}
+  m_Name: Harvester_Metal
+  m_EditorClassIdentifier: 
+  type: 0
+  metalCost: 25
+  uraniumPerSecondCost: 0.25
+  healthAttributes:
+    health: 50
+    protection: 10
+    regenerationPS: 2
+    entityTag: 0
+  weaponAttributes:
+    damage: 0
+    ignoresProtection: 0
+    weaponType: 0
+    shotDelay: 0
+  harvestAttributes:
+    harvestResourceType: 0
+    harvestAmount: 10
+    harvestDelay: 5
+  housingAttributes:
+    capacity: 0

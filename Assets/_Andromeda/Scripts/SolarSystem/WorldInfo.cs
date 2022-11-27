@@ -6,6 +6,28 @@ using UnityEngine;
 [DisallowMultipleComponent]
 public class WorldInfo : MonoBehaviourSingleton<WorldInfo>
 {
-    [SerializeField]
-    public List<HealthComponent> aiDamageableEntities = new();
+    public Dictionary<EntityTag, List<HealthComponent>> entitiesByTag =
+        new()
+        {
+            { EntityTag.AIDamageable, new List<HealthComponent>() },
+            { EntityTag.PlayerDamageable, new List<HealthComponent>() }
+        };
+
+
+    public void RegisterEntity(HealthComponent healthComponent)
+    {
+        if (!entitiesByTag[healthComponent.EntityTag].Contains(healthComponent))
+        {
+            entitiesByTag[healthComponent.EntityTag].Add(healthComponent);
+            healthComponent.onEntityDestroyed.AddListener(UnregisterEntity);
+        }
+    }
+
+    private void UnregisterEntity(HealthComponent healthComponent)
+    {
+        if (entitiesByTag[healthComponent.EntityTag].Contains(healthComponent))
+        {
+            entitiesByTag[healthComponent.EntityTag].Remove(healthComponent);
+        }
+    }
 }

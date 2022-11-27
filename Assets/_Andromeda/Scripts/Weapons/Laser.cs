@@ -12,6 +12,8 @@ public class Laser : MonoBehaviour
     private LineRenderer lr;
     private bool canFire;
     private Transform myTransform;
+    private WeaponAttributes _weaponAttributes;
+    private EntityTag _enemyTag;
 
     public float Distance => maxDistance;
 
@@ -19,6 +21,11 @@ public class Laser : MonoBehaviour
     {
         lr = GetComponent<LineRenderer>();
         myTransform = transform;
+    }
+
+    public void Init(WeaponAttributes weaponAttributes, EntityTag enemyTag)
+    {
+        _weaponAttributes = weaponAttributes;
     }
 
     private void Start()
@@ -34,22 +41,20 @@ public class Laser : MonoBehaviour
         if (Physics.Raycast(myTransform.position, fwd, out var hit))
         {
             Debug.Log($"Laser hit {hit.transform.name}");
-            if (hit.transform.CompareTag("AIAttackable"))
+            if (hit.transform.CompareTag(_enemyTag.ToString()))
             {
-                SpawnLaserExplosion(hit.point, hit.transform);
+                ProcessHit(hit.point, hit.transform);
             }
 
             return hit.point;
         }
-        else
-        {
-            return myTransform.position + myTransform.forward * maxDistance;
-        }
+
+        return myTransform.position + myTransform.forward * maxDistance;
     }
 
-    private void SpawnLaserExplosion(Vector3 hitPosition, Transform target)
+    private void ProcessHit(Vector3 hitPosition, Transform target)
     {
-        target.GetComponent<Building>()?.OnBuildingHit(hitPosition);
+        target.GetComponentInParent<HealthComponent>()?.OnEntityHit(hitPosition, _weaponAttributes);
     }
 
     public void FireLaser()
@@ -62,7 +67,7 @@ public class Laser : MonoBehaviour
         if (canFire)
         {
             if (target != null)
-                SpawnLaserExplosion(targetPosition, target);
+                ProcessHit(targetPosition, target);
             lr.SetPosition(0, myTransform.position);
             lr.SetPosition(1, targetPosition);
             lr.enabled = true;

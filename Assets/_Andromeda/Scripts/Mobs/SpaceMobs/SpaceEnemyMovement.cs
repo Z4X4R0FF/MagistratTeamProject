@@ -10,8 +10,8 @@ public class SpaceEnemyMovement : MonoBehaviour
     [SerializeField] private SpaceEnemyAi ai;
 
     [SerializeField] private float rotationalDump = .5f;
-    [SerializeField] private float movementSpeed = 10f;
-    [SerializeField] private float evasionSpeed = 25f;
+    private float movementSpeed = 10f;
+    private float evasionSpeed = 25f;
 
     [SerializeField] private float detectionDistance = 50f;
     [SerializeField] private float rayCastOffset = 2.5f;
@@ -23,6 +23,12 @@ public class SpaceEnemyMovement : MonoBehaviour
     private void Awake()
     {
         myTransform = transform;
+    }
+
+    public void Init(MovementAttributes movementAttributes)
+    {
+        movementSpeed = movementAttributes.movementSpeed;
+        evasionSpeed = movementAttributes.rotationSpeed;
     }
 
     // Update is called once per frame
