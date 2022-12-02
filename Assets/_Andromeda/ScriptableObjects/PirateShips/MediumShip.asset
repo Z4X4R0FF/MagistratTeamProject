@@ -15,14 +15,18 @@ MonoBehaviour:
   healthAttributes:
     health: 300
     protection: 20
-    regenerationPS: 5
+    regenerationPS: 0.5
+    shield: 100
+    shieldRegenerationPS: 10
+    shieldRechargeDelay: 15
     entityTag: 0
   movementAttributes:
     movementSpeed: 35
     rotationSpeed: 20
   weaponAttributes:
-    damage: 10
+    damage: 20
     ignoresProtection: 0
     weaponType: 0
     shotDelay: 2
+    weaponColor: {r: 0, g: 1, b: 0.009579897, a: 1}
   enemyTag: 1

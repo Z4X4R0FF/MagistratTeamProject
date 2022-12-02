@@ -21,21 +21,19 @@ public class SpaceEnemyAi : MonoBehaviour
         _enemyTag = enemyTag;
     }
 
-    private void Start()
-    {
-        FindTarget();
-    }
-
     private void Update()
     {
+        FindTarget();
+        if (CurrentTarget == null) hasTarget = false;
         if (hasTarget)
         {
             movement.SetState(Vector3.Distance(transform.position, CurrentTarget.position) <= MinDistanceToTarget
-                ? SpaceEnemyMovement.MovementState.Staying
+                ? SpaceEnemyMovement.MovementState.Seeking
                 : SpaceEnemyMovement.MovementState.Moving);
         }
         else
         {
+            movement.SetState(SpaceEnemyMovement.MovementState.Staying);
             FindTarget();
         }
     }
@@ -44,7 +42,6 @@ public class SpaceEnemyAi : MonoBehaviour
     {
         CurrentTarget = target;
         hasTarget = true;
-        movement.SetState(SpaceEnemyMovement.MovementState.Moving);
         onTargetUpdated.Invoke(target);
     }
 
@@ -52,11 +49,14 @@ public class SpaceEnemyAi : MonoBehaviour
     {
         if (CurrentTarget == null)
         {
-            var target =
-                WorldInfo.Instance.entitiesByTag[_enemyTag]
-                    .OrderBy(go => Vector3.Distance(transform.position, go.transform.position))
-                    .First();
-            SetTarget(target.transform);
+            if (WorldInfo.Instance.entitiesByTag[_enemyTag].Count != 0)
+            {
+                var target =
+                    WorldInfo.Instance.entitiesByTag[_enemyTag]
+                        .OrderBy(go => Vector3.Distance(transform.position, go.transform.position))
+                        .First();
+                SetTarget(target.Hull);
+            }
         }
     }
 }

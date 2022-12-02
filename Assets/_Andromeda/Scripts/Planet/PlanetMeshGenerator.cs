@@ -19,11 +19,10 @@ public class PlanetMeshGenerator : MonoBehaviour
         GenerateMesh();
         GetPossibleSpawnPoints();
         GenerateColors();
-        // objectsGenerator.Init(objectSpawnPoints, _planet);
-        // objectsGenerator.GenerateResources();
+        objectsGenerator.Init(objectSpawnPoints, _planet);
+        objectsGenerator.GenerateResources();
         // objectsGenerator.GenerateSpawners();
-        // objectsGenerator.GeneratePropObjects();
-        // objectsGenerator.GenerateSpawners();
+        objectsGenerator.GeneratePropObjects();
     }
 
     private void UpdateSettings()

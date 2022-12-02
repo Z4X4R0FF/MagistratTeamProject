@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class EnemyAttack : MonoBehaviour
 {
+    public bool enableDrawRay = true;
     private List<Laser> lasers;
     private Transform myTransform;
     private Vector3 hitPosition;
@@ -30,9 +31,12 @@ public class EnemyAttack : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        if (InFront() && HaveLineOfSightRayCast())
+        if (_attackTarget != null)
         {
-            Fire();
+            if (InFront() && HaveLineOfSightRayCast())
+            {
+                Fire();
+            }
         }
     }
 
@@ -43,11 +47,11 @@ public class EnemyAttack : MonoBehaviour
 
         if (Mathf.Abs(angle) > 90 && Mathf.Abs(angle) < 270)
         {
-            Debug.DrawLine(transform.position, _attackTarget.position, Color.green);
+            if (enableDrawRay) Debug.DrawLine(transform.position, _attackTarget.position, Color.green);
             return true;
         }
 
-        Debug.DrawLine(transform.position, _attackTarget.position, Color.yellow);
+        if (enableDrawRay) Debug.DrawLine(transform.position, _attackTarget.position, Color.yellow);
         return false;
     }
 
@@ -55,13 +59,13 @@ public class EnemyAttack : MonoBehaviour
     {
         foreach (var laser in lasers)
         {
-            var dir = _attackTarget.position - myTransform.position;
-            Debug.DrawRay(laser.transform.position, dir, Color.magenta);
+            var dir = _attackTarget.position - laser.transform.position;
+            if (enableDrawRay) Debug.DrawRay(laser.transform.position, dir, Color.magenta);
             if (Physics.Raycast(laser.transform.position, dir, out var hit, laser.Distance))
             {
-                if (hit.transform == _attackTarget.transform)
+                if (hit.transform == _attackTarget)
                 {
-                    Debug.DrawRay(laser.transform.position, dir, Color.red);
+                    if (enableDrawRay) Debug.DrawRay(laser.transform.position, dir, Color.red);
                     hitPosition = hit.transform.position;
                     return true;
                 }
@@ -75,7 +79,7 @@ public class EnemyAttack : MonoBehaviour
     {
         foreach (var laser in lasers)
         {
-            Debug.Log("Fire");
+            Debug.Log($"{gameObject.name}: Fire");
             laser.FireLaser(hitPosition, _attackTarget);
         }
     }

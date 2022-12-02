@@ -10,6 +10,7 @@ public class WeaponAttributes
     public bool ignoresProtection;
     public WeaponType weaponType;
     public float shotDelay;
+    public Color weaponColor;
 }
 
 public enum WeaponType

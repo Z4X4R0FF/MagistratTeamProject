@@ -19,10 +19,12 @@ public class SpaceEnemyMovement : MonoBehaviour
 
     private MovementState _movementState;
     private Transform myTransform;
+    private float _horde;
 
     private void Awake()
     {
         myTransform = transform;
+        _horde = rayCastOffset * Mathf.Sin(180f / raysCount * Mathf.Deg2Rad);
     }
 
     public void Init(MovementAttributes movementAttributes)
@@ -34,10 +36,24 @@ public class SpaceEnemyMovement : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        if (_movementState == MovementState.Moving)
+        if (ai.CurrentTarget == null)
         {
-            Pathfinding();
-            Move();
+            _movementState = MovementState.Staying;
+        }
+
+        switch (_movementState)
+        {
+            case MovementState.Moving:
+                Pathfinding();
+                Move();
+                break;
+            case MovementState.Staying:
+                break;
+            case MovementState.Seeking:
+                Turn();
+                break;
+            default:
+                throw new ArgumentOutOfRangeException();
         }
     }
 
@@ -59,7 +75,7 @@ public class SpaceEnemyMovement : MonoBehaviour
         var trForward = myTransform.forward;
 
         var quaternion = Quaternion.AngleAxis(360f / raysCount, trForward);
-        var oppositeQuat = Quaternion.AngleAxis(360 / 2, trForward);
+        var oppositeQuat = Quaternion.AngleAxis(360f / 2, trForward);
         var vec3 = myTransform.up * rayCastOffset;
         for (var i = 0; i < raysCount / 2; i++)
         {
@@ -67,16 +83,17 @@ public class SpaceEnemyMovement : MonoBehaviour
             var oppositePos = myTransform.position + (oppositeQuat * vec3);
             vec3 = quaternion * vec3;
 
-            Debug.DrawRay(pos,
-                trForward * detectionDistance, Color.cyan);
-            Debug.DrawRay(oppositePos,
-                trForward * detectionDistance, Color.cyan);
-            if (Physics.Raycast(pos, myTransform.forward, out _, detectionDistance))
+            //Debug.DrawRay(pos, trForward * detectionDistance, Color.cyan);
+            //Debug.DrawRay(oppositePos, trForward * detectionDistance, Color.cyan);
+            if (Physics.SphereCast(pos, _horde, myTransform.forward, out var hit1, detectionDistance))
             {
+                Debug.Log($"{name}: Evading {hit1.transform.name}");
                 raycastOffset += myTransform.InverseTransformPoint(oppositePos);
             }
-            else if (Physics.Raycast(oppositePos, myTransform.forward, out _, detectionDistance))
+            else if (Physics.SphereCast(oppositePos, _horde, myTransform.forward, out var hit2,
+                         detectionDistance))
             {
+                Debug.Log($"{name}: Evading {hit2.transform.name}");
                 raycastOffset += myTransform.InverseTransformPoint(pos);
             }
         }
@@ -94,5 +111,6 @@ public class SpaceEnemyMovement : MonoBehaviour
     {
         Moving,
         Staying,
+        Seeking
     }
 }

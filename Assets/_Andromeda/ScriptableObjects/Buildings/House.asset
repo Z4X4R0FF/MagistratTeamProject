@@ -19,6 +19,9 @@ MonoBehaviour:
     health: 100
     protection: 5
     regenerationPS: 2
+    shield: 50
+    shieldRegenerationPS: 10
+    shieldRechargeDelay: 5
     entityTag: 0
   weaponAttributes:
     damage: 0

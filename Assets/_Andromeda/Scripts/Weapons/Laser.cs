@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 
 [RequireComponent(typeof(LineRenderer))]
@@ -8,7 +9,6 @@ public class Laser : MonoBehaviour
 {
     [SerializeField] private float laserOffTime = .25f;
     [SerializeField] private float maxDistance = 300f;
-    [SerializeField] private float fireDelay = 0.5f;
     private LineRenderer lr;
     private bool canFire;
     private Transform myTransform;
@@ -25,7 +25,10 @@ public class Laser : MonoBehaviour
 
     public void Init(WeaponAttributes weaponAttributes, EntityTag enemyTag)
     {
+        if (lr == null) lr = GetComponent<LineRenderer>();
         _weaponAttributes = weaponAttributes;
+        lr.startColor = _weaponAttributes.weaponColor;
+        lr.endColor = _weaponAttributes.weaponColor;
     }
 
     private void Start()
@@ -57,6 +60,7 @@ public class Laser : MonoBehaviour
         target.GetComponentInParent<HealthComponent>()?.OnEntityHit(hitPosition, _weaponAttributes);
     }
 
+    //for player
     public void FireLaser()
     {
         FireLaser(CastRay());
@@ -73,7 +77,7 @@ public class Laser : MonoBehaviour
             lr.enabled = true;
             canFire = false;
             Invoke(nameof(TurnOffLaser), laserOffTime);
-            Invoke(nameof(CanFire), fireDelay);
+            Invoke(nameof(CanFire), _weaponAttributes.shotDelay);
         }
     }
 

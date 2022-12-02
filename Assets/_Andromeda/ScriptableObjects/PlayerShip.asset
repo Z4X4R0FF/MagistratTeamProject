@@ -16,6 +16,9 @@ MonoBehaviour:
     health: 250
     protection: 10
     regenerationPS: 2
+    shield: 100
+    shieldRegenerationPS: 10
+    shieldRechargeDelay: 5
     entityTag: 0
   movementAttributes:
     movementSpeed: 50
@@ -25,3 +28,4 @@ MonoBehaviour:
     ignoresProtection: 0
     weaponType: 0
     shotDelay: 2
+  enemyTag: 0

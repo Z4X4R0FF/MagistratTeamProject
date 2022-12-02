@@ -9,6 +9,9 @@ public class HealthAttributes
     public int health;
     public int protection;
     public float regenerationPS;
+    public int shield;
+    public float shieldRegenerationPS;
+    public int shieldRechargeDelay;
     public EntityTag entityTag;
 }
 
