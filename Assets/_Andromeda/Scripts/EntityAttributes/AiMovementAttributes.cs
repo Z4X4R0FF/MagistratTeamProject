@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [Serializable]
-public class MovementAttributes
+public class AiMovementAttributes
 {
     public float movementSpeed;
     public float rotationSpeed;

@@ -27,10 +27,10 @@ public class SpaceEnemyMovement : MonoBehaviour
         _horde = rayCastOffset * Mathf.Sin(180f / raysCount * Mathf.Deg2Rad);
     }
 
-    public void Init(MovementAttributes movementAttributes)
+    public void Init(AiMovementAttributes aiMovementAttributes)
     {
-        movementSpeed = movementAttributes.movementSpeed;
-        evasionSpeed = movementAttributes.rotationSpeed;
+        movementSpeed = aiMovementAttributes.movementSpeed;
+        evasionSpeed = aiMovementAttributes.rotationSpeed;
     }
 
     // Update is called once per frame

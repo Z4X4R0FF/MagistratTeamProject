@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88f043f70b350ee47af6145981c89b84, type: 3}
   m_Name: PlayerShip
   m_EditorClassIdentifier: 
+  shipType: 0
   healthAttributes:
     health: 250
     protection: 10
@@ -20,7 +21,8 @@ MonoBehaviour:
     shieldRegenerationPS: 10
     shieldRechargeDelay: 5
     entityTag: 0
-  movementAttributes:
+  starshipData: {fileID: 11400000, guid: b4d803922d3abdb4b9ef42035c6e5c17, type: 2}
+  aiMovementAttributes:
     movementSpeed: 50
     rotationSpeed: 10
   weaponAttributes:
@@ -28,4 +30,5 @@ MonoBehaviour:
     ignoresProtection: 0
     weaponType: 0
     shotDelay: 2
+    weaponColor: {r: 1, g: 0, b: 0.7957611, a: 0}
   enemyTag: 0

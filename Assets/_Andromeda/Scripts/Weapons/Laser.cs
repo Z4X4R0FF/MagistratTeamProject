@@ -39,6 +39,7 @@ public class Laser : MonoBehaviour
 
     private Vector3 CastRay()
     {
+        //TODO передалать для игрока
         var fwd = myTransform.TransformDirection(Vector3.forward) * maxDistance;
 
         if (Physics.Raycast(myTransform.position, fwd, out var hit))

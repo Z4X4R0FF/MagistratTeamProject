@@ -53,7 +53,7 @@ public class SolarSystem : MonoBehaviour
             if (_planets[i] == null) _planets[i] = Instantiate(planetPrefab, transform, true);
             _planets[i].GetComponentInChildren<Planet>()
                 .GeneratePlanet(planetOffsetX, planetPresets[Random.Range(0, planetPresets.Count)]);
-            SetPlanetOrbitAndRotation(i);
+            //SetPlanetOrbitAndRotation(i);
         }
     }
 

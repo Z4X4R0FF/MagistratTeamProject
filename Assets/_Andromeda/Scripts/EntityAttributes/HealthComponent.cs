@@ -27,8 +27,12 @@ public class HealthComponent : MonoBehaviour
 
     private void Update()
     {
-        UpdateBar(healthSlider, CurrentHealth);
-        UpdateBar(shieldSlider, CurrentShield);
+        if (healthSlider != null && shieldSlider != null)
+        {
+            UpdateBar(healthSlider, CurrentHealth);
+            UpdateBar(shieldSlider, CurrentShield);
+        }
+
         shieldRechargeCooldown = Mathf.Max(shieldRechargeCooldown - Time.deltaTime, 0f);
         if (shieldRechargeCooldown == 0f && !_isRecharging)
         {

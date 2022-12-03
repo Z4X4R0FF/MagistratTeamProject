@@ -129,7 +129,7 @@ MonoBehaviour:
   - {fileID: 15}
   - {fileID: 14}
   m_Selected: 0
-  m_LastSelected: 4
+  m_LastSelected: 1
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -1949,22 +1949,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/_Andromeda/_Scenes
+    - Assets/_Andromeda
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 96
   m_LastFolders:
-  - Assets/_Andromeda/_Scenes
+  - Assets/_Andromeda
   m_LastFoldersGridSize: 96
   m_LastProjectPath: F:\UnityProjects\MagistratTeamProject
   m_LockTracker:
     m_IsLocked: 1
   m_FolderTreeState:
     scrollPos: {x: 0, y: 79}
-    m_SelectedIDs: 3a920000
-    m_LastClickedID: 37434
-    m_ExpandedIDs: 00000000b4900000b6900000b8900000ba900000bc900000be9000003892000000ca9a3bffffff7f
+    m_SelectedIDs: da710000
+    m_LastClickedID: 29146
+    m_ExpandedIDs: 00000000d8710000da710000dc710000de710000e0710000e27100006a7300006c7300006e73000090730000f4730000fc73000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1992,7 +1992,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000b4900000b6900000b8900000ba900000bc900000be900000
+    m_ExpandedIDs: 00000000d8710000da710000dc710000de710000e0710000e2710000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -2119,22 +2119,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/_Andromeda/_Prefabs/ResourceVeins
+    - Assets/_Andromeda/_Prefabs/SpaceEnemies
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 16
   m_LastFolders:
-  - Assets/_Andromeda/_Prefabs/ResourceVeins
+  - Assets/_Andromeda/_Prefabs/SpaceEnemies
   m_LastFoldersGridSize: 16
   m_LastProjectPath: F:\UnityProjects\MagistratTeamProject
   m_LockTracker:
     m_IsLocked: 1
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 79}
-    m_SelectedIDs: 4c760000
-    m_LastClickedID: 30284
-    m_ExpandedIDs: 00000000b4900000b6900000b8900000ba900000bc900000be900000
+    scrollPos: {x: 0, y: 95}
+    m_SelectedIDs: d07d0000
+    m_LastClickedID: 32208
+    m_ExpandedIDs: 00000000d8710000da710000dc710000de710000e0710000e27100006a7300007473000090730000fc73000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -2162,7 +2162,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000b4900000b6900000b8900000ba900000bc900000be900000
+    m_ExpandedIDs: 00000000d8710000da710000dc710000de710000e0710000e2710000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -2187,24 +2187,24 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 86b00000
-    m_LastClickedInstanceID: 45190
-    m_HadKeyboardFocusLastEvent: 0
+    m_SelectedInstanceIDs: 
+    m_LastClickedInstanceID: 0
+    m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: c6230000000000001c750000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: 
-      m_OriginalName: 
+      m_Name: PlayerShip
+      m_OriginalName: PlayerShip
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 0
+      m_UserData: 32412
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 11
+      m_OriginalEventType: 0
       m_IsRenamingFilename: 1
       m_ClientGUIView: {fileID: 7}
     m_CreateAssetUtility:
@@ -2294,7 +2294,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 72eaffff2cedffff3aefffff
+      m_ExpandedIDs: 1a11feff2611feffd84dfefff8d5ffff0edcffff76f4ffffc4f9ffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -2310,7 +2310,7 @@ MonoBehaviour:
         m_IsRenaming: 0
         m_OriginalEventType: 11
         m_IsRenamingFilename: 0
-        m_ClientGUIView: {fileID: 6}
+        m_ClientGUIView: {fileID: 13}
       m_SearchString: 
     m_ExpandedScenes: []
     m_CurrenRootInstanceID: 0
@@ -2374,7 +2374,7 @@ MonoBehaviour:
       floating: 0
       collapsed: 0
       displayed: 1
-      snapOffset: {x: 0, y: 0}
+      snapOffset: {x: 0, y: 25}
       snapOffsetDelta: {x: 0, y: 0}
       snapCorner: 0
       id: unity-scene-view-toolbar
@@ -2396,7 +2396,7 @@ MonoBehaviour:
       floating: 0
       collapsed: 0
       displayed: 1
-      snapOffset: {x: 0, y: 0}
+      snapOffset: {x: 0, y: 25}
       snapOffsetDelta: {x: 0, y: 0}
       snapCorner: 0
       id: unity-transform-toolbar
@@ -2429,7 +2429,7 @@ MonoBehaviour:
       floating: 0
       collapsed: 0
       displayed: 0
-      snapOffset: {x: 0, y: 0}
+      snapOffset: {x: 0, y: 24.8}
       snapOffsetDelta: {x: 0, y: 0}
       snapCorner: 0
       id: Scene View/Camera
@@ -2577,9 +2577,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 1701.2642, y: 23.844458, z: 231.95943}
+    m_Target: {x: 1695.619, y: 2.9473312, z: 62.439117}
     speed: 2
-    m_Value: {x: 1701.2642, y: 23.844458, z: 231.95943}
+    m_Value: {x: 1695.619, y: 2.9473312, z: 62.439117}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -2626,13 +2626,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: 0.0602827, y: -0.19457012, z: -0.0119792465, w: -0.97896713}
+    m_Target: {x: 0.23974168, y: -0.36958855, z: 0.099316955, w: 0.8922375}
     speed: 2
-    m_Value: {x: 0.060300246, y: -0.19310032, z: -0.01188874, w: -0.97925216}
+    m_Value: {x: 0.23973888, y: -0.36958423, z: 0.09931579, w: 0.89222705}
   m_Size:
-    m_Target: 106.29273
+    m_Target: 0.8660254
     speed: 2
-    m_Value: 331.5362
+    m_Value: 0.8660254
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -2719,7 +2719,7 @@ MonoBehaviour:
     m_HSlider: 0
     m_VSlider: 0
     m_IgnoreScrollWheelUntilClicked: 0
-    m_EnableMouseInput: 0
+    m_EnableMouseInput: 1
     m_EnableSliderZoomHorizontal: 0
     m_EnableSliderZoomVertical: 0
     m_UniformScale: 1
@@ -2730,7 +2730,7 @@ MonoBehaviour:
       y: 21
       width: 1656.3999
       height: 691.6
-    m_Scale: {x: 0.8004629, y: 0.80046296}
+    m_Scale: {x: 0.80046296, y: 0.80046296}
     m_Translation: {x: 828.19995, y: 345.8}
     m_MarginLeft: 0
     m_MarginRight: 0

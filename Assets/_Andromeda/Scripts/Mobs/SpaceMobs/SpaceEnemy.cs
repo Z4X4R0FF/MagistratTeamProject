@@ -19,7 +19,7 @@ public class SpaceEnemy : MonoBehaviour
     private void Awake()
     {
         _spaceEnemyMovement = GetComponent<SpaceEnemyMovement>();
-        _spaceEnemyMovement.Init(shipAttributes.movementAttributes);
+        _spaceEnemyMovement.Init(shipAttributes.aiMovementAttributes);
 
         _healthComponent = GetComponent<HealthComponent>();
         _healthComponent.Init(shipAttributes.healthAttributes);

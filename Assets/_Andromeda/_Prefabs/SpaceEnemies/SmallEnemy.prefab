@@ -47,6 +47,7 @@ GameObject:
   - component: {fileID: 7375986950386377998}
   - component: {fileID: 4255726356919985549}
   - component: {fileID: 1188797819913575845}
+  - component: {fileID: 3181473221134745342}
   m_Layer: 0
   m_Name: SmallEnemy
   m_TagString: Untagged
@@ -149,6 +150,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shipAttributes: {fileID: 11400000, guid: e52fb0f6fd8d2d04fbf02803f62786bc, type: 2}
+--- !u!54 &3181473221134745342
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1453194502752808257}
+  serializedVersion: 2
+  m_Mass: 100
+  m_Drag: 0.5
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 2
 --- !u!1 &6662606979232117587
 GameObject:
   m_ObjectHideFlags: 0
