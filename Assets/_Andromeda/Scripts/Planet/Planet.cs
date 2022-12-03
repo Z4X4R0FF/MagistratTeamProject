@@ -70,7 +70,7 @@ public class Planet : MonoBehaviour
         ResourceSettings =
             new PlanetResourceSettings(planetSettings.resourceSettings, Settings.radius);
         PropSettings = new PlanetPropSettings(planetSettings.propSettings, Settings.radius);
-        RaceSettings = new PlanetRaceSettings(planetSettings.mobAsset, Settings.radius);
+        //RaceSettings = new PlanetRaceSettings(planetSettings.mobAsset, Settings.radius);
 
         NoiseFilters = new INoiseFilter[Settings.noiseLayers.Count];
         for (var i = 0; i < NoiseFilters.Length; i++)
