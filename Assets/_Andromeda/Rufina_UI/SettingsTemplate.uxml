@@ -1,0 +1,7 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Menu/Style.uss?fileID=7433441132597879392&amp;guid=e028f51a0c63c7743911da1a47cd1ed7&amp;type=3#Style" />
+    <ui:VisualElement name="Wrapper" style="height: 448px;">
+        <ui:Button text="Mute" display-tooltip-when-elided="true" name="muteButton" class="button-style" style="width: 425px; height: 140px; white-space: nowrap; -unity-text-align: middle-center; position: relative;" />
+        <ui:Button text="Back" display-tooltip-when-elided="true" name="backButton" class="button-style" style="bottom: -100px;" />
+    </ui:VisualElement>
+</ui:UXML>
