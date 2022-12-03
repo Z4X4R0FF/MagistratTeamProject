@@ -23,7 +23,7 @@ public class SolarSystem : MonoBehaviour
         GenerateSystem();
     }
 
-    public void GenerateSystem()
+    private void GenerateSystem()
     {
         _planets = null;
 

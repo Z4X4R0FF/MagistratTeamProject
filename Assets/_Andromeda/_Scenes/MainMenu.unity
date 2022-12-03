@@ -302,8 +302,6 @@ MonoBehaviour:
   _unmutedSprite: {fileID: 0}
   _settingsButtonsTemplate: {fileID: 9197481963319205126, guid: d5df949f6713b0841826621d588149d8,
     type: 3}
-  Menu: {fileID: 0}
-  Settings: {fileID: 0}
 --- !u!1 &810094462
 GameObject:
   m_ObjectHideFlags: 0
@@ -579,7 +577,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1724872516}
   - component: {fileID: 1724872517}
-  - component: {fileID: 1724872518}
   m_Layer: 5
   m_Name: SettingsScreen
   m_TagString: Untagged
@@ -619,15 +616,3 @@ MonoBehaviour:
   sourceAsset: {fileID: 9197481963319205126, guid: 0f18568ea4f24094a87e4f9eb5ccd9b3,
     type: 3}
   m_SortingOrder: 0
---- !u!114 &1724872518
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1724872515}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1d238d46083229245be404296a9c6ed8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
