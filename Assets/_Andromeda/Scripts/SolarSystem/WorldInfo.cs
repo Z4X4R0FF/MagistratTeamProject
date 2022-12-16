@@ -6,7 +6,7 @@ using UnityEngine;
 [DisallowMultipleComponent]
 public class WorldInfo : MonoBehaviourSingleton<WorldInfo>
 {
-    public Dictionary<EntityTag, List<HealthComponent>> entitiesByTag =
+    public readonly Dictionary<EntityTag, List<HealthComponent>> entitiesByTag =
         new()
         {
             { EntityTag.AIDamageable, new List<HealthComponent>() },

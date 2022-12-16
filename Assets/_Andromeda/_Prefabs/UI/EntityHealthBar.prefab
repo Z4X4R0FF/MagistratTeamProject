@@ -305,6 +305,7 @@ GameObject:
   - component: {fileID: 7203948161676255883}
   - component: {fileID: 3857271710954367726}
   - component: {fileID: 5946820023884830525}
+  - component: {fileID: 4124437859855615795}
   m_Layer: 5
   m_Name: EntityHealthBar
   m_TagString: Untagged
@@ -384,6 +385,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d3e5258e27f8c54c8544db1853be942, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &4124437859855615795
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3676990695389588272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f9e71909d8db7a468483903e0435700, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthSlider: {fileID: 9184290154926830811}
+  shieldSlider: {fileID: 8633801738172112163}
+  canvas: {fileID: 7203948161676255883}
 --- !u!1 &4824356510510055461
 GameObject:
   m_ObjectHideFlags: 0

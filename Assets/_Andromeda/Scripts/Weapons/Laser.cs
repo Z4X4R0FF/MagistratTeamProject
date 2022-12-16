@@ -29,6 +29,7 @@ public class Laser : MonoBehaviour
         _weaponAttributes = weaponAttributes;
         lr.startColor = _weaponAttributes.weaponColor;
         lr.endColor = _weaponAttributes.weaponColor;
+        _enemyTag = enemyTag;
     }
 
     private void Start()

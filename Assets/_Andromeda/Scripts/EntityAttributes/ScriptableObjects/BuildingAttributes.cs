@@ -11,6 +11,7 @@ public class BuildingAttributes : ScriptableObject
     public float uraniumPerSecondCost;
     public HealthAttributes healthAttributes;
     [ConditionalHide("type", 1)] public WeaponAttributes weaponAttributes;
+    [ConditionalHide("type", 1)] public EntityTag enemyTag;
     [ConditionalHide("type", 0)] public HarvestAttributes harvestAttributes;
     [ConditionalHide("type", 3)] public HousingAttributes housingAttributes;
 }

@@ -4,17 +4,19 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class EnemyAttack : MonoBehaviour
+public class AttackComponent : MonoBehaviour
 {
     public bool enableDrawRay = true;
     private List<Laser> lasers;
-    private Transform myTransform;
+    [SerializeField] private Transform forwardTransform;
     private Vector3 hitPosition;
     private Transform _attackTarget;
+    [SerializeField] private int sightAngle = 90;
 
     private void Awake()
     {
-        myTransform = transform;
+        if (forwardTransform == null)
+            forwardTransform = transform;
     }
 
     public void Init(WeaponAttributes weaponAttributes, EntityTag enemyTag)
@@ -42,16 +44,16 @@ public class EnemyAttack : MonoBehaviour
 
     private bool InFront()
     {
-        var directionToTarget = myTransform.position - _attackTarget.position;
-        var angle = Vector3.Angle(myTransform.forward, directionToTarget);
-
-        if (Mathf.Abs(angle) > 90 && Mathf.Abs(angle) < 270)
+        var directionToTarget = forwardTransform.position - _attackTarget.position;
+        var angle = Vector3.Angle(forwardTransform.forward, directionToTarget);
+        //Debug.Log(angle);
+        if (Mathf.Abs(angle) > 180 - sightAngle && Mathf.Abs(angle) < 180 + sightAngle)
         {
-            if (enableDrawRay) Debug.DrawLine(transform.position, _attackTarget.position, Color.green);
+            if (enableDrawRay) Debug.DrawLine(forwardTransform.position, _attackTarget.position, Color.green);
             return true;
         }
 
-        if (enableDrawRay) Debug.DrawLine(transform.position, _attackTarget.position, Color.yellow);
+        if (enableDrawRay) Debug.DrawLine(forwardTransform.position, _attackTarget.position, Color.yellow);
         return false;
     }
 

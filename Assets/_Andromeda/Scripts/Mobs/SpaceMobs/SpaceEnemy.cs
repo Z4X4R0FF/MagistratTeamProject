@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(EnemyAttack))]
+[RequireComponent(typeof(AttackComponent))]
 [RequireComponent(typeof(SpaceEnemyAi))]
 [RequireComponent(typeof(SpaceEnemyMovement))]
 [RequireComponent(typeof(HealthComponent))]
@@ -14,7 +14,7 @@ public class SpaceEnemy : MonoBehaviour
     private SpaceEnemyMovement _spaceEnemyMovement;
     private HealthComponent _healthComponent;
     private SpaceEnemyAi _aiComponent;
-    private EnemyAttack _attackComponent;
+    private AttackComponent _attackComponent;
 
     private void Awake()
     {
@@ -24,7 +24,7 @@ public class SpaceEnemy : MonoBehaviour
         _healthComponent = GetComponent<HealthComponent>();
         _healthComponent.Init(shipAttributes.healthAttributes);
 
-        _attackComponent = GetComponent<EnemyAttack>();
+        _attackComponent = GetComponent<AttackComponent>();
         _attackComponent.Init(shipAttributes.weaponAttributes, shipAttributes.enemyTag);
 
         _aiComponent = GetComponent<SpaceEnemyAi>();

@@ -39,10 +39,12 @@ public class HealthComponent : MonoBehaviour
             _isRecharging = true;
         }
     }
-
+ 
     public void Init(HealthAttributes healthAttributes)
     {
         _healthAttributes = healthAttributes;
+        _healthAttributes.health = Mathf.FloorToInt(_healthAttributes.health * DifficultyManager.Instance.HealthScale);
+        _healthAttributes.shield = Mathf.FloorToInt(_healthAttributes.health * DifficultyManager.Instance.ShieldScale);
         CurrentHealth = _healthAttributes.health;
         CurrentShield = _healthAttributes.shield;
         healthSlider.maxValue = CurrentHealth;
@@ -57,6 +59,7 @@ public class HealthComponent : MonoBehaviour
     public void OnEntityHit(Vector3 pos, WeaponAttributes weaponAttributes)
     {
         var hitExp = Instantiate(hitExplosion, pos, Quaternion.identity, myTransform);
+        hitExp.transform.localScale = new Vector3(0.25f, 0.25f, 0.25f);
         Destroy(hitExp, 2);
         if (CurrentShield == 0)
         {
