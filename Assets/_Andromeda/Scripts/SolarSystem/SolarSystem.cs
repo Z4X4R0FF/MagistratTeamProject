@@ -6,7 +6,7 @@ using DG.Tweening;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class SolarSystem : MonoBehaviour
+public class SolarSystem : MonoBehaviourSingleton<SolarSystem>
 {
     [SerializeField] private int planetCount;
     [SerializeField] private GameObject planetPrefab;
@@ -18,12 +18,7 @@ public class SolarSystem : MonoBehaviour
     private readonly List<int> _planetOrbitsOffsets = new();
     private GameObject[] _planets;
 
-    private void Start()
-    {
-        GenerateSystem();
-    }
-
-    private void GenerateSystem()
+    public void GenerateSystem()
     {
         _planets = null;
 

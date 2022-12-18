@@ -8,7 +8,6 @@ using Random = UnityEngine.Random;
 public class BuildingPlacement : MonoBehaviourSingleton<BuildingPlacement>
 {
     private const float DistanceToPlace = 10f;
-    private const float MinDistanceBetweenBuildings = 5f;
 
     public void PlaceBuilding(BuildingAttributes attributes)
     {
@@ -25,7 +24,7 @@ public class BuildingPlacement : MonoBehaviourSingleton<BuildingPlacement>
                     .Where(r =>
                         WorldInfo.Instance.placedBuildings.All(b =>
                             Vector3.Distance(b.Value.transform.localPosition, r.Value.transform.localPosition) >
-                            MinDistanceBetweenBuildings))
+                            WorldInfo.MinDistanceBetweenBuildings))
                     .OrderBy(r => Vector3.Distance(transform.position, r.Value.transform.position)).ToList();
                 if (nearestOres.Count != 0)
                 {
@@ -51,7 +50,7 @@ public class BuildingPlacement : MonoBehaviourSingleton<BuildingPlacement>
                     .Where(r =>
                         WorldInfo.Instance.placedBuildings.All(b =>
                             Vector3.Distance(b.Value.transform.localPosition, r.transform.localPosition) >
-                            MinDistanceBetweenBuildings))
+                            WorldInfo.MinDistanceBetweenBuildings))
                     .OrderBy(r => Vector3.Distance(transform.position, r.transform.position)).ToList();
                 if (nearestPlacePoints.Count != 0)
                 {

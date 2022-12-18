@@ -397,8 +397,48 @@ PrefabInstance:
       propertyPath: m_Name
       value: Managers
       objectReference: {fileID: 0}
+    - target: {fileID: 4938700169567897201, guid: 2fb62a0afe154e749a9046a08e81a488,
+        type: 3}
+      propertyPath: landingMode
+      value: 
+      objectReference: {fileID: 569245336}
+    - target: {fileID: 4938700169567897201, guid: 2fb62a0afe154e749a9046a08e81a488,
+        type: 3}
+      propertyPath: takeOffMode
+      value: 
+      objectReference: {fileID: 569245335}
+    - target: {fileID: 4938700169888467029, guid: 2fb62a0afe154e749a9046a08e81a488,
+        type: 3}
+      propertyPath: playerStarship
+      value: 
+      objectReference: {fileID: 11400000, guid: 200e9757798de2440a7b9c1613868349,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2fb62a0afe154e749a9046a08e81a488, type: 3}
+--- !u!114 &569245335 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2786082057744247929, guid: 2fb62a0afe154e749a9046a08e81a488,
+    type: 3}
+  m_PrefabInstance: {fileID: 569245334}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4970a6dc8e4bb9240bd24178bd36afe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &569245336 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 374944205080199263, guid: 2fb62a0afe154e749a9046a08e81a488,
+    type: 3}
+  m_PrefabInstance: {fileID: 569245334}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0115d841cf3c9de4e9a9ac353c2f0251, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0

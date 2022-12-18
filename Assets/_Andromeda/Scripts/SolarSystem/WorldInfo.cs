@@ -6,6 +6,8 @@ using UnityEngine;
 [DisallowMultipleComponent]
 public class WorldInfo : MonoBehaviourSingleton<WorldInfo>
 {
+    public const float MinDistanceBetweenBuildings = 5f;
+    
     public readonly Dictionary<EntityTag, List<HealthComponent>> entitiesByTag =
         new()
         {
@@ -34,9 +36,9 @@ public class WorldInfo : MonoBehaviourSingleton<WorldInfo>
         }
     }
 
-    public void RegisterPlanet(PlanetObjectsGenerator generator)
+    public void RegisterPlanet(PlanetObjectsGenerator generator, Planet planet)
     {
-        planetObjectsInfos.Add(new PlanetObjectsInfo(generator));
+        planetObjectsInfos.Add(new PlanetObjectsInfo(generator, planet));
     }
 
     public void RegisterBuilding(Building building, GameObject placePoint)
@@ -52,12 +54,14 @@ public class WorldInfo : MonoBehaviourSingleton<WorldInfo>
     public class PlanetObjectsInfo
     {
         public readonly PlanetObjectsGenerator Generator;
+        public readonly Planet Planet;
 
         public Vector3 PlanetPosition => Generator.transform.position;
 
-        public PlanetObjectsInfo(PlanetObjectsGenerator generator)
+        public PlanetObjectsInfo(PlanetObjectsGenerator generator, Planet planet)
         {
             Generator = generator;
+            Planet = planet;
         }
     }
 }

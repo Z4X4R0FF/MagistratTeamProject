@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using Assets.Scripts.Vehicles.Starship;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -8,8 +6,9 @@ using UnityEngine.Serialization;
 public class ShipAttributes : ScriptableObject
 {
     public ShipType shipType;
+    public Starship prefab;
     public HealthAttributes healthAttributes;
-    [ConditionalHide("shipType", 0)] public StarshipData starshipData;
+    [ConditionalHide("shipType", 0)] public PlayerStarshipMovementAttributes playerStarshipMovementAttributes;
     [FormerlySerializedAs("movementAttributes")] [ConditionalHide("shipType", 1)] public AiMovementAttributes aiMovementAttributes;
     public WeaponAttributes weaponAttributes;
     public EntityTag enemyTag;
