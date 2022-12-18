@@ -6,7 +6,6 @@ using DG.Tweening;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class SolarSystem : MonoBehaviour
 public class SolarSystem : MonoBehaviourSingleton<SolarSystem>
 {
     [SerializeField] private int planetCount;
