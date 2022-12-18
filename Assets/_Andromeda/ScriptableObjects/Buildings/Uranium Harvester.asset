@@ -10,11 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ee4ac7f3ff394e84c827f99a53cdfa51, type: 3}
-  m_Name: Harvester_Uranium
+  m_Name: Uranium Harvester
   m_EditorClassIdentifier: 
   type: 0
+  icon: {fileID: -1615501182, guid: e5d4e2cf22905384b9a10e8e2fe704be, type: 3}
   metalCost: 25
-  uraniumPerSecondCost: 0.25
+  uraniumPerTickCost: 1
   healthAttributes:
     health: 50
     protection: 10
@@ -23,14 +24,17 @@ MonoBehaviour:
     shieldRegenerationPS: 5
     shieldRechargeDelay: 5
     entityTag: 0
+  prefab: {fileID: 5636776677993048010, guid: cdf905da367a82547b7f979fd447eb27, type: 3}
   weaponAttributes:
     damage: 0
     ignoresProtection: 0
     weaponType: 0
     shotDelay: 0
+    weaponColor: {r: 0, g: 0, b: 0, a: 0}
+  enemyTag: 0
   harvestAttributes:
     harvestResourceType: 1
     harvestAmount: 25
-    harvestDelay: 10
   housingAttributes:
     capacity: 0
+    mealsPerTickCost: 0

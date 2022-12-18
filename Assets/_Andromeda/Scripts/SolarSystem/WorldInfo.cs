@@ -13,6 +13,9 @@ public class WorldInfo : MonoBehaviourSingleton<WorldInfo>
             { EntityTag.PlayerDamageable, new List<HealthComponent>() }
         };
 
+    public List<PlanetObjectsInfo> planetObjectsInfos = new();
+
+    public Dictionary<Building, GameObject> placedBuildings = new();
 
     public void RegisterEntity(HealthComponent healthComponent)
     {
@@ -28,6 +31,33 @@ public class WorldInfo : MonoBehaviourSingleton<WorldInfo>
         if (entitiesByTag[healthComponent.EntityTag].Contains(healthComponent))
         {
             entitiesByTag[healthComponent.EntityTag].Remove(healthComponent);
+        }
+    }
+
+    public void RegisterPlanet(PlanetObjectsGenerator generator)
+    {
+        planetObjectsInfos.Add(new PlanetObjectsInfo(generator));
+    }
+
+    public void RegisterBuilding(Building building, GameObject placePoint)
+    {
+        placedBuildings.Add(building, placePoint);
+    }
+
+    public void UnregisterBuilding(Building building)
+    {
+        placedBuildings.Remove(building);
+    }
+
+    public class PlanetObjectsInfo
+    {
+        public readonly PlanetObjectsGenerator Generator;
+
+        public Vector3 PlanetPosition => Generator.transform.position;
+
+        public PlanetObjectsInfo(PlanetObjectsGenerator generator)
+        {
+            Generator = generator;
         }
     }
 }

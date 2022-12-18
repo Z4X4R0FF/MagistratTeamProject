@@ -7,17 +7,24 @@ using Random = UnityEngine.Random;
 
 public class PlanetObjectsGenerator : MonoBehaviour
 {
-    private readonly List<GameObject> _resourceObjects = new();
-    private readonly List<GameObject> _spawnerObjects = new();
-    private readonly List<GameObject> _propObjects = new();
-    private List<Vector3> _pointsForSpawn = new();
+    public readonly Dictionary<ResourceVein,GameObject> resourceObjects = new();
+    public readonly List<GameObject> spawnerObjects = new();
+    public readonly List<GameObject> propObjects = new();
+    public readonly List<GameObject> takenPoints = new();
+    public readonly List<GameObject> spawnPoints = new();
+    public List<Vector3> pointsForSpawn = new();
     private const float MinDistanceBetweenEqualObjects = 25f;
     private Planet _planet;
 
     [SerializeField] private Transform resourceParent;
     [SerializeField] private Transform propParent;
     [SerializeField] private Transform spawnerParent;
+    [SerializeField] private Transform buildingsParent;
+    [SerializeField] private Transform pointsParent;
     [SerializeField] private List<GameResourceAsset> resourceAssets;
+    [SerializeField] private GameObject placePoint;
+
+    public Transform GetBuildingsParent() => buildingsParent;
 
     private enum PlanetObjectsTypes
     {
@@ -28,14 +35,22 @@ public class PlanetObjectsGenerator : MonoBehaviour
 
     public void Init(List<Vector3> pointsForSpawn, Planet planet)
     {
-        _resourceObjects.ForEach(Destroy);
-        _spawnerObjects.ForEach(Destroy);
-        _propObjects.ForEach(Destroy);
-        _resourceObjects.Clear();
-        _spawnerObjects.Clear();
-        _propObjects.Clear();
-        _pointsForSpawn = pointsForSpawn;
+        //resourceObjects.ForEach(Destroy);
+        spawnerObjects.ForEach(Destroy);
+        propObjects.ForEach(Destroy);
+        resourceObjects.Clear();
+        spawnerObjects.Clear();
+        propObjects.Clear();
+        this.pointsForSpawn = pointsForSpawn;
         _planet = planet;
+
+        foreach (var point in pointsForSpawn)
+        {
+            var go = Instantiate(placePoint, pointsParent);
+            go.transform.localPosition = point;
+            go.transform.up = -(Vector3.zero - go.transform.position).normalized;
+            spawnPoints.Add(go);
+        }
     }
 
     public void GenerateResources()
@@ -89,47 +104,72 @@ public class PlanetObjectsGenerator : MonoBehaviour
         var iterator = 0;
         while (true)
         {
-            var spawnPoint = _pointsForSpawn[Random.Range(0, _pointsForSpawn.Count)];
+            var spawnPoint = spawnPoints[Random.Range(0, pointsForSpawn.Count)];
 
             switch (type)
             {
                 case PlanetObjectsTypes.Resource:
-                    if (iterator > 1000 || _resourceObjects.All(go =>
-                            Vector3.Distance(go.transform.localPosition, spawnPoint) > MinDistanceBetweenEqualObjects))
+                    if (iterator >= 1000)
                     {
-                        spawnedObject.transform.localPosition = spawnPoint;
+                        Debug.Log($"Can't place {type}. Iterations exceeded");
+                        return;
+                    }
+
+                    if (resourceObjects.All(go =>
+                            Vector3.Distance(go.Value.transform.localPosition, spawnPoint.transform.localPosition) >
+                            MinDistanceBetweenEqualObjects) && !takenPoints.Contains(spawnPoint))
+                    {
+                        spawnedObject.transform.localPosition = spawnPoint.transform.localPosition;
                         spawnedObject.transform.localRotation =
                             Quaternion.Euler(new Vector3(0, Random.Range(0, 360), 0));
                         spawnedObject.transform.up = -(Vector3.zero - spawnedObject.transform.position).normalized;
-                        _resourceObjects.Add(spawnedObject);
+                        resourceObjects.Add(spawnedObject.GetComponent<ResourceVein>(),spawnPoint);
+                        takenPoints.Add(spawnPoint);
+
                         return;
                     }
 
                     break;
                 case PlanetObjectsTypes.Environment:
-                    if (iterator > 1000 || _propObjects.All(go =>
-                            Vector3.Distance(go.transform.localPosition, spawnPoint) > MinDistanceBetweenEqualObjects))
+                    if (iterator >= 1000)
                     {
-                        spawnedObject.transform.localPosition = spawnPoint;
+                        Debug.Log($"Can't place {type}. Iterations exceeded");
+                        return;
+                    }
+
+                    if (propObjects.All(go =>
+                            Vector3.Distance(go.transform.localPosition, spawnPoint.transform.localPosition) >
+                            MinDistanceBetweenEqualObjects) && !takenPoints.Contains(spawnPoint))
+                    {
+                        spawnedObject.transform.localPosition = spawnPoint.transform.localPosition;
                         spawnedObject.transform.localRotation =
                             Quaternion.Euler(new Vector3(0, Random.Range(0, 360), 0));
                         spawnedObject.transform.up = -(Vector3.zero - spawnedObject.transform.position).normalized;
-                        _propObjects.Add(spawnedObject);
+                        propObjects.Add(spawnedObject);
+                        takenPoints.Add(spawnPoint);
                         return;
                     }
 
                     break;
                 case PlanetObjectsTypes.Spawner:
-                    if (iterator > 1000 || _spawnerObjects.All(go =>
-                            Vector3.Distance(go.transform.localPosition, spawnPoint) > MinDistanceBetweenEqualObjects))
-                    {
-                        spawnedObject.transform.localPosition = spawnPoint;
-                        spawnedObject.transform.localRotation =
-                            Quaternion.Euler(new Vector3(0, Random.Range(0, 360), 0));
-                        spawnedObject.transform.up = -(Vector3.zero - spawnedObject.transform.position).normalized;
-                        _spawnerObjects.Add(spawnedObject);
-                        return;
-                    }
+                    // if (iterator >= 1000)
+                    // {
+                    //     Debug.Log($"Can't place {type}. Iterations exceeded");
+                    //     return;
+                    // }
+                    //
+                    // if (spawnerObjects.All(go =>
+                    //         Vector3.Distance(go.transform.localPosition, spawnPoint) >
+                    //         MinDistanceBetweenEqualObjects) && !takenPoints.Contains(spawnPoint))
+                    // {
+                    //     spawnedObject.transform.localPosition = spawnPoint;
+                    //     spawnedObject.transform.localRotation =
+                    //         Quaternion.Euler(new Vector3(0, Random.Range(0, 360), 0));
+                    //     spawnedObject.transform.up = -(Vector3.zero - spawnedObject.transform.position).normalized;
+                    //     spawnerObjects.Add(spawnedObject);
+                    //     takenPoints.Add(spawnPoint);
+                    //     return;
+                    // }
 
                     break;
                 default:

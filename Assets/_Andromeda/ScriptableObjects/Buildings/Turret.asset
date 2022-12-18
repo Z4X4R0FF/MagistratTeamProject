@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: Turret
   m_EditorClassIdentifier: 
   type: 1
+  icon: {fileID: 1657566400, guid: 21e869db5fd04f044b9b3223e93a87f9, type: 3}
   metalCost: 75
-  uraniumPerSecondCost: 2
+  uraniumPerTickCost: 3
   healthAttributes:
     health: 200
     protection: 25
@@ -23,6 +24,7 @@ MonoBehaviour:
     shieldRegenerationPS: 20
     shieldRechargeDelay: 5
     entityTag: 0
+  prefab: {fileID: 5636776677993048010, guid: 4d2afd86e0fcf72469767ca5ecebab1d, type: 3}
   weaponAttributes:
     damage: 10
     ignoresProtection: 0
@@ -33,6 +35,6 @@ MonoBehaviour:
   harvestAttributes:
     harvestResourceType: 0
     harvestAmount: 0
-    harvestDelay: 0
   housingAttributes:
     capacity: 0
+    mealsPerTickCost: 0

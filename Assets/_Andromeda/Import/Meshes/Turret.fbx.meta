@@ -18,7 +18,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: TypeColor
-    second: {fileID: 2100000, guid: 1a6b25290ac61b64ea7dbd3df1f47d7b, type: 2}
+    second: {fileID: 2100000, guid: 2ec7dde010a1d8843b698b52089fd647, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

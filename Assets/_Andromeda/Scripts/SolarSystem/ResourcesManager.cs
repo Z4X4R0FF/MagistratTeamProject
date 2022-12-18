@@ -17,6 +17,13 @@ public class ResourcesManager : MonoBehaviourSingleton<ResourcesManager>
     private int _uraniumPerYield;
     private int _mealsPerYield;
 
+    private void Awake()
+    {
+        CurrentMetal = 50000;
+        CurrentUranium = 25000;
+        CurrentMeals = 10000;
+    }
+
     // Start is called before the first frame update
     private void Start()
     {

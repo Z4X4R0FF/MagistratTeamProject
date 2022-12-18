@@ -35,10 +35,15 @@ public class Building : MonoBehaviour
                 break;
             case BuildingType.Housing:
                 ResourcesManager.Instance.UpdatePeople(buildingAttributes.housingAttributes.capacity, false);
+                ResourcesManager.Instance.UpdateResourceYield(ResourceType.Meals,
+                    buildingAttributes.housingAttributes.mealsPerTickCost, true);
                 break;
             default:
                 throw new ArgumentOutOfRangeException();
         }
+
+        ResourcesManager.Instance.UpdateResourceYield(ResourceType.Uranium, buildingAttributes.uraniumPerTickCost,
+            true);
     }
 
     private void OnDestroy()
@@ -55,10 +60,16 @@ public class Building : MonoBehaviour
                 break;
             case BuildingType.Housing:
                 ResourcesManager.Instance.UpdatePeople(buildingAttributes.housingAttributes.capacity, true);
+                ResourcesManager.Instance.UpdateResourceYield(ResourceType.Meals,
+                    buildingAttributes.housingAttributes.mealsPerTickCost, false);
                 break;
             default:
                 throw new ArgumentOutOfRangeException();
         }
+
+        ResourcesManager.Instance.UpdateResourceYield(ResourceType.Uranium, buildingAttributes.uraniumPerTickCost,
+            false);
+        WorldInfo.Instance.UnregisterBuilding(this);
     }
 
     private void UpdateAttackTarget(Transform newTarget)

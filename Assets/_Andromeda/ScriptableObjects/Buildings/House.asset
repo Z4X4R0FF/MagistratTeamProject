@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: House
   m_EditorClassIdentifier: 
   type: 3
+  icon: {fileID: -1623210531, guid: e9ffefea94665a346a16315980b2d6a0, type: 3}
   metalCost: 50
-  uraniumPerSecondCost: 1
+  uraniumPerTickCost: 2
   healthAttributes:
     health: 100
     protection: 5
@@ -23,14 +24,17 @@ MonoBehaviour:
     shieldRegenerationPS: 10
     shieldRechargeDelay: 5
     entityTag: 0
+  prefab: {fileID: 5636776677993048010, guid: 072a2e546580f3843ac4117fbd0976fd, type: 3}
   weaponAttributes:
     damage: 0
     ignoresProtection: 0
     weaponType: 0
     shotDelay: 0
+    weaponColor: {r: 0, g: 0, b: 0, a: 0}
+  enemyTag: 0
   harvestAttributes:
     harvestResourceType: 0
     harvestAmount: 0
-    harvestDelay: 0
   housingAttributes:
     capacity: 50
+    mealsPerTickCost: 5

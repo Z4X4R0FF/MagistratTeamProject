@@ -23,6 +23,7 @@ public class PlanetMeshGenerator : MonoBehaviour
         objectsGenerator.GenerateResources();
         // objectsGenerator.GenerateSpawners();
         objectsGenerator.GeneratePropObjects();
+        WorldInfo.Instance.RegisterPlanet(objectsGenerator);
     }
 
     private void UpdateSettings()

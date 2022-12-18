@@ -49,7 +49,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitExplosion: {fileID: 100014, guid: 5332791ebce075d4a9e56f4581e7fb47, type: 3}
   destroyExplosion: {fileID: 100012, guid: 3364c97de68d3a147af572d1c71c6455, type: 3}
-  hull: {fileID: 0}
+  hull: {fileID: 3760197786371982235}
   healthSlider: {fileID: 8924110045554943112}
   shieldSlider: {fileID: 8321672576840355184}
   onEntityDestroyed:
