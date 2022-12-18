@@ -12,15 +12,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88f043f70b350ee47af6145981c89b84, type: 3}
   m_Name: MediumShip
   m_EditorClassIdentifier: 
+  shipType: 0
+  prefab: {fileID: 0}
   healthAttributes:
-    health: 300
+    health: 3282
     protection: 20
     regenerationPS: 0.5
-    shield: 100
+    shield: 3938
     shieldRegenerationPS: 10
     shieldRechargeDelay: 15
-    entityTag: 0
-  movementAttributes:
+    entityTag: 1
+  playerStarshipMovementAttributes:
+    startSpeed: 0
+    minSpeed: 0
+    maxSpeed: 0
+    accelerateSpeed: 0
+    slowDownSpeed: 0
+    rotationSpeed: 0
+  aiMovementAttributes:
     movementSpeed: 35
     rotationSpeed: 20
   weaponAttributes:
@@ -29,4 +38,4 @@ MonoBehaviour:
     weaponType: 0
     shotDelay: 2
     weaponColor: {r: 0, g: 1, b: 0.009579897, a: 1}
-  enemyTag: 1
+  enemyTag: 0
