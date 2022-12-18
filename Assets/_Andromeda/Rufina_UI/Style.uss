@@ -3,9 +3,9 @@
     width: 425px;
     height: 140px;
     background-color: rgba(0, 0, 0, 0);
-    -unity-font: url('project://database/Assets/Sci-Fi%20UI/_SciFi_GUISkin_/Skin_Assets/font/zekton%20free.ttf?fileID=12800000&guid=8297a2bf97dbbba468bd2518d003a876&type=3#zekton free');
+    -unity-font: url('project://database/Packages/com.unity.searcher/Editor/Resources/FlatSkin/Font/Roboto-Thin.ttf?fileID=12800000&guid=19a9abb883540be48b75b951a927ae03&type=3#Roboto-Thin');
     font-size: 40px;
-    color: rgba(225, 254, 255, 255);
+    color: rgb(225, 254, 255);
     -unity-font-style: bold;
     align-items: center;
     justify-content: center;
@@ -29,7 +29,7 @@
     width: 425px;
     height: 140px;
     background-color: rgba(0, 0, 0, 0);
-    -unity-font: url('project://database/Assets/Sci-Fi%20UI/_SciFi_GUISkin_/Skin_Assets/font/zekton%20free.ttf?fileID=12800000&guid=8297a2bf97dbbba468bd2518d003a876&type=3#zekton free');
+    -unity-font: url('project://database/Packages/com.unity.searcher/Editor/Resources/FlatSkin/Font/Roboto-Thin.ttf?fileID=12800000&guid=19a9abb883540be48b75b951a927ae03&type=3#Roboto-Thin');
     font-size: 40px;
     color: rgb(225, 254, 255);
     -unity-font-style: bold;
@@ -55,7 +55,7 @@
     width: 425px;
     height: 140px;
     background-color: rgba(0, 0, 0, 0);
-    -unity-font: url('project://database/Assets/Sci-Fi%20UI/_SciFi_GUISkin_/Skin_Assets/font/zekton%20free.ttf?fileID=12800000&guid=8297a2bf97dbbba468bd2518d003a876&type=3#zekton free');
+    -unity-font: url('project://database/Packages/com.unity.searcher/Editor/Resources/FlatSkin/Font/Roboto-Thin.ttf?fileID=12800000&guid=19a9abb883540be48b75b951a927ae03&type=3#Roboto-Thin');
     font-size: 40px;
     color: rgb(225, 254, 255);
     -unity-font-style: bold;
