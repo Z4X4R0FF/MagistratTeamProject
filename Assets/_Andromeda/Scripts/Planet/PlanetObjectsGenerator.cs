@@ -19,6 +19,8 @@ public class PlanetObjectsGenerator : MonoBehaviour
     [SerializeField] private Transform spawnerParent;
     [SerializeField] private List<GameResourceAsset> resourceAssets;
 
+    public List<Vector3> PointsForSpawn => _pointsForSpawn;
+
     private enum PlanetObjectsTypes
     {
         Resource,

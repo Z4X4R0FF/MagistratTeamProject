@@ -17,6 +17,7 @@ public class PlanetMeshGenerator : MonoBehaviour
         _colorGenerator = colorGenerator;
         UpdateSettings();
         GenerateMesh();
+        GenerateColliders();
         GetPossibleSpawnPoints();
         GenerateColors();
         objectsGenerator.Init(objectSpawnPoints, _planet);
@@ -78,6 +79,19 @@ public class PlanetMeshGenerator : MonoBehaviour
         Debug.Log($"ElevationMinMax {_planet.elevationMinMax.Min}  {_planet.elevationMinMax.Max}");
     }
 
+    private void GenerateColliders()
+    {
+        for (var i = 0; i < 6; i++)
+        {
+            GameObject meshObj = meshFilters[i].gameObject;
+            if (meshObj.activeSelf)
+            {
+                meshObj.tag = "PlanetSurface";
+                meshObj.AddComponent<MeshCollider>();
+            }
+        }
+    }
+
     private void GenerateColors()
     {
         _colorGenerator.UpdateColors();
@@ -97,6 +111,6 @@ public class PlanetMeshGenerator : MonoBehaviour
             }
         }
 
-        Debug.Log(objectSpawnPoints.Count);
+        Debug.Log("Posiible spawn points count = " + objectSpawnPoints.Count);
     }
 }

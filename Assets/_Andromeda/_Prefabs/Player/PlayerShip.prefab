@@ -46,6 +46,7 @@ GameObject:
   - component: {fileID: 4536127469183657695}
   - component: {fileID: 1508386053716467839}
   - component: {fileID: 3056456287173069216}
+  - component: {fileID: 2692324390701857088}
   m_Layer: 0
   m_Name: PlayerShip
   m_TagString: Untagged
@@ -132,6 +133,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &2692324390701857088
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1453194502752808257}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4, y: 1.16, z: 8.4}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2734924802973840616
 GameObject:
   m_ObjectHideFlags: 0
@@ -224,14 +238,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8550117835757791324}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.907, z: -6.453}
+  m_LocalRotation: {x: 0.043619405, y: 0, z: 0, w: 0.9990483}
+  m_LocalPosition: {x: 0, y: 2.075, z: -7.78}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1453194502752808268}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 5, y: 0, z: 0}
 --- !u!1001 &946687047093480529
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -252,7 +266,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 09254fa4a020b0e4abb49fa4fc679e28,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.375
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 09254fa4a020b0e4abb49fa4fc679e28,
         type: 3}

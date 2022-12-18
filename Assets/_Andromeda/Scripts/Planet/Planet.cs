@@ -32,12 +32,15 @@ public class Planet : MonoBehaviour
 
     public FaceRenderMask FaceRenderMaskValue => faceRenderMask;
     [SerializeField] private PlanetMeshGenerator planetMeshGenerator;
+    [SerializeField] private PlanetObjectsGenerator planetObjectsGenerator;
     [SerializeField] private ColorGenerator colorGenerator;
     [SerializeField] private bool isOnValidateEnabled;
     public int tempOffsetX;
     public INoiseFilter[] NoiseFilters { get; private set; }
 
     public MinMax elevationMinMax;
+
+    public List<Vector3> FreePointsToLand => planetObjectsGenerator.PointsForSpawn;
 
     private void OnValidate()
     {

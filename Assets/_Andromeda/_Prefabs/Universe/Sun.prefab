@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7856209233436631819}
   m_Layer: 0
   m_Name: Surface
-  m_TagString: Untagged
+  m_TagString: StaticObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 18

@@ -7,6 +7,7 @@ using UnityEngine;
 using Random = UnityEngine.Random;
 
 public class SolarSystem : MonoBehaviour
+public class SolarSystem : MonoBehaviourSingleton<SolarSystem>
 {
     [SerializeField] private int planetCount;
     [SerializeField] private GameObject planetPrefab;
@@ -18,12 +19,7 @@ public class SolarSystem : MonoBehaviour
     private readonly List<int> _planetOrbitsOffsets = new();
     private GameObject[] _planets;
 
-    private void Start()
-    {
-        GenerateSystem();
-    }
-
-    private void GenerateSystem()
+    public void GenerateSystem()
     {
         _planets = null;
 
@@ -74,5 +70,10 @@ public class SolarSystem : MonoBehaviour
         _planets[planetIndex].GetComponentInChildren<Planet>().transform
             .DORotate(planetRot.eulerAngles + new Vector3(0, selfRotation, 0), 1f, RotateMode.Fast)
             .SetLoops(-1, LoopType.Incremental).SetEase(Ease.Linear);
+    }
+
+    public Planet[] GetPlanets()
+    {
+        return _planets;
     }
 }

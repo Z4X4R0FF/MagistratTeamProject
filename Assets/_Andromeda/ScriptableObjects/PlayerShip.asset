@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: PlayerShip
   m_EditorClassIdentifier: 
   shipType: 0
+  prefab: {fileID: 1508386053716467839, guid: 915aa75361212544a92266c8effa998a, type: 3}
   healthAttributes:
     health: 250
     protection: 10
@@ -21,7 +22,13 @@ MonoBehaviour:
     shieldRegenerationPS: 10
     shieldRechargeDelay: 5
     entityTag: 0
-  starshipData: {fileID: 11400000, guid: b4d803922d3abdb4b9ef42035c6e5c17, type: 2}
+  playerStarshipMovementAttributes:
+    startSpeed: 13
+    minSpeed: 0
+    maxSpeed: 200
+    accelerateSpeed: 20
+    slowDownSpeed: 20
+    rotationSpeed: 200
   aiMovementAttributes:
     movementSpeed: 50
     rotationSpeed: 10
