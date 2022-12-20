@@ -8,7 +8,7 @@ using UnityEngine.UIElements;
 public class InterfaceButtons : MonoBehaviour
 {
     // Start is called before the first frame update
-    private Button Tutor;
+    //private Button Tutor;
     private VisualElement StatusGroup;
     private VisualElement InfoGroup;
     private VisualElement Encyclopedy;
@@ -24,8 +24,8 @@ public class InterfaceButtons : MonoBehaviour
         EncText = _interface.rootVisualElement.Q<Label>("EncText");
         EncText.text = "";
 
-        Tutor = _interface.rootVisualElement.Q<Button>("Tutor");
-        Tutor.clicked += TutorButtonClicked;
+        // Tutor = _interface.rootVisualElement.Q<Button>("Tutor");
+        // Tutor.clicked += TutorButtonClicked;
 
         Goal = _interface.rootVisualElement.Q<Button>("Goal");
         Goal.clicked += GoalButtonClicked;
@@ -36,6 +36,14 @@ public class InterfaceButtons : MonoBehaviour
     }
 
     // Update is called once per frame
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            TutorButtonClicked();
+        }
+    }
 
     void TutorButtonClicked()
     {

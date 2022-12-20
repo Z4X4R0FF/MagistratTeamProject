@@ -70,12 +70,14 @@ public class ResourcesManager : MonoBehaviourSingleton<ResourcesManager>
                 throw new ArgumentOutOfRangeException(nameof(resourceType), resourceType, null);
         }
 
+        ResourcesPanel.Instance.UpdateResources();
         return result;
     }
 
     public void UpdatePeople(int value, bool subtract)
     {
         CurrentPeople += subtract ? -value : value;
+        ResourcesPanel.Instance.UpdateResources();
     }
 
     private void HandleResourceHarvest()
@@ -83,5 +85,6 @@ public class ResourcesManager : MonoBehaviourSingleton<ResourcesManager>
         CurrentMetal += _metalPerYield;
         CurrentUranium += _uraniumPerYield;
         CurrentMeals += _mealsPerYield;
+        ResourcesPanel.Instance.UpdateResources();
     }
 }
