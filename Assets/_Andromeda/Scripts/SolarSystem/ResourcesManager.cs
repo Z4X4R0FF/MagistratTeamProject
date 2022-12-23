@@ -30,6 +30,14 @@ public class ResourcesManager : MonoBehaviourSingleton<ResourcesManager>
         InvokeRepeating(nameof(HandleResourceHarvest), 0, 5);
     }
 
+    private void Update()
+    {
+        if (CurrentPeople >=1000)
+        {
+            TutorialManager.Instance.UpdateEventAction("isTargetReached");
+        }
+    }
+
     // Update is called once per frame
     public void UpdateResourceYield(ResourceType resourceType, int value, bool subtract)
     {

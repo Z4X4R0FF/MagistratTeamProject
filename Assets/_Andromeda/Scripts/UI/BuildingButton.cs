@@ -28,7 +28,29 @@ public class BuildingButton : MonoBehaviour
         {
             if (Input.GetKeyDown(hotKey))
             {
-                BuildingPlacement.Instance.PlaceBuilding(buildingAttributes);
+                if (BuildingPlacement.Instance.PlaceBuilding(buildingAttributes))
+                {
+                    switch (hotKey)
+                    {
+                        case "1":
+                        case "2":
+                        case "3":
+                        {
+                            TutorialManager.Instance.UpdateEventAction("isHarvesterBuilt");
+                            break;
+                        }
+                        case "4":
+                        {
+                            TutorialManager.Instance.UpdateEventAction("isHouseBuilt");
+                            break;
+                        }
+                        case "5":
+                        {
+                            TutorialManager.Instance.UpdateEventAction("isTurretBuilt");
+                            break;
+                        }
+                    }
+                }
             }
         }
     }

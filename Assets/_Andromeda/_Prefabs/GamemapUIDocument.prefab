@@ -10,6 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 5744607681644102751}
   - component: {fileID: 5744607681644102748}
+  - component: {fileID: 470029798}
+  - component: {fileID: 470029799}
+  - component: {fileID: 470029800}
   m_Layer: 5
   m_Name: GamemapUIDocument
   m_TagString: Untagged
@@ -49,3 +52,166 @@ MonoBehaviour:
   sourceAsset: {fileID: 9197481963319205126, guid: 7b0f016cefbd3c74a9b86190938aa623,
     type: 3}
   m_SortingOrder: 0
+--- !u!114 &470029798
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5744607681644102749}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e58039e9c5a6bed45840c0d3a9dfcac9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &470029799
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5744607681644102749}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 321f0d00c0fc1e2449d5bf95b5a6f9cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &470029800
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5744607681644102749}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c6990e4bd962dc40b3ef8a438d8bdf7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tutorialSteps:
+  - stepName: "\u041E\u0431\u0443\u0447\u0435\u043D\u0438\u0435: \u0417\u0432\u0435\u0437\u0434\u043E\u043B\u0435\u0442
+      1"
+    highlightText: "\u041F\u0438\u043B\u043E\u0442\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435"
+    text: "\u0418\u0441\u043F\u043E\u043B\u044C\u0437\u0443\u0439\u0442\u0435 W S
+      \u0434\u043B\u044F \u0443\u0441\u043A\u043E\u0440\u0435\u043D\u0438\u044F \u0438
+      \u0437\u0430\u043C\u0435\u0434\u043B\u0435\u043D\u0438\u044F"
+    keys: 7700000073000000
+    eventActions: []
+    events: []
+  - stepName: "\u041E\u0431\u0443\u0447\u0435\u043D\u0438\u0435: \u0417\u0432\u0435\u0437\u0434\u043E\u043B\u0435\u0442
+      2"
+    highlightText: "\u041F\u0438\u043B\u043E\u0442\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435"
+    text: "\u0418\u0441\u043F\u043E\u043B\u044C\u0437\u0443\u0439\u0442\u0435 A D
+      \u0434\u043B\u044F \u043A\u0440\u0435\u043D\u0430"
+    keys: 6100000064000000
+    eventActions: []
+    events: []
+  - stepName: "\u041E\u0431\u0443\u0447\u0435\u043D\u0438\u0435: \u0417\u0432\u0435\u0437\u0434\u043E\u043B\u0435\u0442
+      3"
+    highlightText: "\u0421\u0442\u0440\u0435\u043B\u044C\u0431\u0430"
+    text: "\u041D\u0430\u0436\u043C\u0438\u0442\u0435 LMB \u0434\u043B\u044F \u0441\u0442\u0440\u0435\u043B\u044C\u0431\u044B"
+    keys: 43010000
+    eventActions: []
+    events: []
+  - stepName: "\u041E\u0431\u0443\u0447\u0435\u043D\u0438\u0435: \u042D\u043D\u0446\u0438\u043A\u043B\u043E\u043F\u0435\u0434\u0438\u044F"
+    highlightText: "\u042D\u043D\u0446\u0438\u043A\u043B\u043E\u043F\u0435\u0434\u0438\u044F
+      \u0438 \u043C\u0435\u043D\u044E \u043F\u0430\u0443\u0437\u044B"
+    text: "\u041D\u0430\u0436\u043C\u0438\u0442\u0435 L \u0447\u0442\u043E\u0431\u044B
+      \u043E\u0442\u043A\u0440\u044B\u0442\u044C \u044D\u043D\u0446\u0438\u043A\u043B\u043E\u043F\u0435\u0434\u0438\u044E
+      \u0438 \u043F\u043E\u0441\u0442\u0430\u0432\u0438\u0442\u044C \u0438\u0433\u0440\u0443
+      \u043D\u0430 \u043F\u0430\u0443\u0437\u0443"
+    keys: 6c000000
+    eventActions: []
+    events: []
+  - stepName: "\u041E\u0431\u0443\u0447\u0435\u043D\u0438\u0435: \u0417\u0432\u0435\u0437\u0434\u043E\u043B\u0451\u0442
+      4"
+    highlightText: "\u041F\u0440\u0438\u0437\u0435\u043C\u043B\u0435\u043D\u0438\u0435"
+    text: "\u041D\u0430\u0436\u043C\u0438\u0442\u0435 F \u043E\u043A\u043E\u043B\u043E
+      \u043F\u043B\u0430\u043D\u0435\u0442\u044B, \u0447\u0442\u043E\u0431\u044B
+      \u043F\u0440\u0438\u0437\u0435\u043C\u043B\u0438\u0442\u044C\u0441\u044F"
+    keys: 66000000
+    eventActions:
+    - hasLanded
+    events: []
+  - stepName: "\u041E\u0431\u0443\u0447\u0435\u043D\u0438\u0435: \u041F\u043B\u0430\u043D\u0435\u0442\u043E\u0445\u043E\u0434"
+    highlightText: "\u041F\u0438\u043B\u043E\u0442\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435"
+    text: "\u0418\u0441\u043F\u043E\u043B\u044C\u0437\u0443\u0439\u0442\u0435 W S
+      A D \u0434\u043B\u044F \u043F\u0435\u0440\u0435\u0434\u0432\u0438\u0436\u0435\u043D\u0438\u044F"
+    keys: 77000000730000006100000064000000
+    eventActions: []
+    events: []
+  - stepName: "\u041E\u0431\u0443\u0447\u0435\u043D\u0438\u0435: \u0421\u0442\u0440\u043E\u0438\u0442\u0435\u043B\u044C\u0441\u0442\u0432\u043E
+      1"
+    highlightText: "\u0420\u0435\u0436\u0438\u043C \u0441\u0442\u0440\u043E\u0438\u0442\u0435\u043B\u044C\u0441\u0442\u0432\u0430"
+    text: "\u041D\u0430\u0436\u043C\u0438\u0442\u0435 B \u0447\u0442\u043E\u0431\u044B
+      \u043F\u0435\u0440\u0435\u043A\u043B\u044E\u0447\u0438\u0442\u044C\u0441\u044F
+      \u0432 \u0440\u0435\u0436\u0438\u043C \u0441\u0442\u0440\u043E\u0438\u0442\u0435\u043B\u044C\u0441\u0442\u0432\u0430"
+    keys: 62000000
+    eventActions: []
+    events: []
+  - stepName: "\u041E\u0431\u0443\u0447\u0435\u043D\u0438\u0435: \u0421\u0442\u0440\u043E\u0438\u0442\u0435\u043B\u044C\u0441\u0442\u0432\u043E
+      2"
+    highlightText: "\u0414\u043E\u0431\u044B\u0432\u0430\u044E\u0449\u0438\u0435
+      \u0437\u0434\u0430\u043D\u0438\u044F"
+    text: "\u0418\u0441\u043F\u043E\u043B\u044C\u0437\u0443\u0439\u0442\u0435 \u043A\u043B\u0430\u0432\u0438\u0448\u0438
+      1-3 \u0447\u0442\u043E\u0431\u044B \u043F\u043E\u0441\u0442\u0440\u043E\u0438\u0442\u044C
+      \u0440\u0443\u0434\u043D\u0438\u043A\u0438. \u0425\u0430\u0440\u0432\u0435\u0441\u0442\u0435\u0440\u044B
+      \u043C\u043E\u0436\u043D\u043E \u0440\u0430\u0437\u043C\u0435\u0441\u0442\u0438\u0442\u044C
+      \u0442\u043E\u043B\u044C\u043A\u043E \u043D\u0430 \u043C\u0435\u0441\u0442\u0430\u0445
+      \u0434\u043E\u0431\u044B\u0447\u0438"
+    keys: 310000003200000033000000
+    eventActions:
+    - isHarvesterBuilt
+    events: []
+  - stepName: "\u041E\u0431\u0443\u0447\u0435\u043D\u0438\u0435: \u0421\u0442\u0440\u043E\u0438\u0442\u0435\u043B\u044C\u0441\u0442\u0432\u043E
+      3"
+    highlightText: "\u041A\u043E\u043B\u043E\u043D\u0438\u0437\u0430\u0446\u0438\u044F"
+    text: "\u0418\u0441\u043F\u043E\u043B\u044C\u0437\u0443\u0439\u0442\u0435 \u043A\u043B\u0430\u0432\u0438\u0448\u0443
+      4 \u0434\u043B\u044F \u0441\u0442\u0440\u043E\u0438\u0442\u0435\u043B\u044C\u0441\u0442\u0432\u0430
+      \u0436\u0438\u043B\u044C\u044F"
+    keys: 34000000
+    eventActions:
+    - isHouseBuilt
+    events:
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 0}
+          m_TargetAssemblyTypeName: WaveSpawner, Assembly-CSharp
+          m_MethodName: EnableWaves
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - stepName: "\u041E\u0431\u0443\u0447\u0435\u043D\u0438\u0435: \u0421\u0442\u0440\u043E\u0438\u0442\u0435\u043B\u044C\u0441\u0442\u0432\u043E
+      4"
+    highlightText: "\u041E\u0431\u043E\u0440\u043E\u043D\u0430"
+    text: "\u0418\u0441\u043F\u043E\u043B\u044C\u0437\u0443\u0439\u0442\u0435 \u043A\u043B\u0430\u0432\u0438\u0448\u0443
+      5 \u0434\u043B\u044F \u0441\u0442\u0440\u043E\u0438\u0442\u0435\u043B\u044C\u0441\u0442\u0432\u0430
+      \u0442\u0443\u0440\u0435\u043B\u0435\u0439. \u0412\u0440\u0435\u043C\u044F
+      \u0434\u043E \u043D\u0430\u043F\u0430\u0434\u0435\u043D\u0438\u044F \u0443\u043A\u0430\u0437\u0430\u043D\u043E
+      \u0432 \u0432\u0435\u0440\u0445\u043D\u0435\u043C \u043F\u0440\u0430\u0432\u043E\u043C
+      \u0443\u0433\u043B\u0443 \u044D\u043A\u0440\u0430\u043D\u0430."
+    keys: 35000000
+    eventActions:
+    - isTurretBuilt
+    events: []
+  - stepName: "\u041A\u043E\u043B\u043E\u043D\u0438\u0437\u0430\u0446\u0438\u044F"
+    highlightText: "\u0426\u0435\u043B\u044C:"
+    text: "\u0414\u043E\u0441\u0442\u0438\u0433\u043D\u0438\u0442\u0435 \u0442\u0440\u0435\u0431\u0443\u0435\u043C\u043E\u0433\u043E
+      \u043A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u0430 \u043A\u043E\u043B\u043E\u043D\u0438\u0441\u0442\u043E\u0432"
+    keys: 
+    eventActions:
+    - isTargetReached
+    events: []
+  - stepName: "\u0421\u0432\u043E\u0431\u043E\u0434\u043D\u0430\u044F \u0438\u0433\u0440\u0430"
+    highlightText: "\u041A\u0430\u043C\u043F\u0430\u043D\u0438\u044F \u043F\u0440\u043E\u0439\u0434\u0435\u043D\u0430"
+    text: "\u041C\u043E\u0436\u0435\u0442\u0435 \u0434\u0435\u043B\u0430\u0442\u044C
+      \u0447\u0442\u043E \u0443\u0433\u043E\u0434\u043D\u043E :)"
+    keys: 00000000
+    eventActions: []
+    events: []

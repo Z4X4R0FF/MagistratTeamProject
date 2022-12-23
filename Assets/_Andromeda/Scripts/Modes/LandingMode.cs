@@ -85,6 +85,7 @@ namespace Assets.Scripts.Modes
         private void FinishLanding()
         {
             Debug.Log("Stop landing");
+            TutorialManager.Instance.UpdateEventAction("hasLanded");
             takeOffMode.Play(currentStarship, currentStarshipAttributes, currentPlanet, currentShipCamera);
             Stop();
         }

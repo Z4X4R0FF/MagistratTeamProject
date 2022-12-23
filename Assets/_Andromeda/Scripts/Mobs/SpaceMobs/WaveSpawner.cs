@@ -8,6 +8,7 @@ using Random = UnityEngine.Random;
 
 public class WaveSpawner : MonoBehaviourSingleton<WaveSpawner>
 {
+    [SerializeField] private RectTransform waveInfo;
     [SerializeField] private Text waveText;
 
     [SerializeField] private float systemRadius;
@@ -22,8 +23,14 @@ public class WaveSpawner : MonoBehaviourSingleton<WaveSpawner>
 
     private void Start()
     {
+        waveInfo.gameObject.SetActive(false);
         currWave = GetRandomWave();
         timeLeft = currWave.awareTime;
+    }
+
+    public void EnableWaves()
+    {
+        waveInfo.gameObject.SetActive(true);
         timerOn = true;
     }
 

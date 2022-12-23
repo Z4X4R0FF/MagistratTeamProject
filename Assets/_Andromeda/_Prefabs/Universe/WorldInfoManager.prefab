@@ -71,6 +71,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd97abfc9f022434dbcc9fd7898b4b63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  waveInfo: {fileID: 0}
   waveText: {fileID: 0}
   systemRadius: 10000
   spawnRadius: 100

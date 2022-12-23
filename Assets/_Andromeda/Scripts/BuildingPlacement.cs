@@ -9,7 +9,7 @@ public class BuildingPlacement : MonoBehaviourSingleton<BuildingPlacement>
 {
     private const float DistanceToPlace = 10f;
 
-    public void PlaceBuilding(BuildingAttributes attributes)
+    public bool PlaceBuilding(BuildingAttributes attributes)
     {
         var nearestPlanet =
             WorldInfo.Instance.planetObjectsInfos.OrderBy(r => Vector3.Distance(transform.position, r.PlanetPosition))
@@ -36,6 +36,7 @@ public class BuildingPlacement : MonoBehaviourSingleton<BuildingPlacement>
                         var building = Instantiate(attributes.prefab, nearestOreTransform.position,
                             nearestOreTransform.rotation, nearestPlanet.Generator.GetBuildingsParent());
                         WorldInfo.Instance.RegisterBuilding(building.GetComponent<Building>(), nearestOre.Value);
+                        return true;
                     }
                 }
 
@@ -62,6 +63,7 @@ public class BuildingPlacement : MonoBehaviourSingleton<BuildingPlacement>
                             nearestPlacePoint.transform.rotation,
                             nearestPlanet.Generator.GetBuildingsParent());
                         WorldInfo.Instance.RegisterBuilding(building.GetComponent<Building>(), nearestPlacePoint);
+                        return true;
                     }
                 }
 
@@ -69,5 +71,7 @@ public class BuildingPlacement : MonoBehaviourSingleton<BuildingPlacement>
             default:
                 throw new ArgumentOutOfRangeException();
         }
+
+        return false;
     }
 }
