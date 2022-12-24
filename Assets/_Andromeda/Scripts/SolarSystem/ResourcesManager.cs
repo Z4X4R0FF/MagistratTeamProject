@@ -19,8 +19,8 @@ public class ResourcesManager : MonoBehaviourSingleton<ResourcesManager>
 
     private void Awake()
     {
-        CurrentMetal = 5000;
-        CurrentUranium = 2500;
+        CurrentMetal = 1000;
+        CurrentUranium = 1500;
         CurrentMeals = 1000;
 
         MetalPerYield = 0;
