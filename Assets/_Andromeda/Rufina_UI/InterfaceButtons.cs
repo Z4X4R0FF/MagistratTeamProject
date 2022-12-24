@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UIElements;
+using Cursor = UnityEngine.Cursor;
 
 public class InterfaceButtons : MonoBehaviour
 {
@@ -16,7 +17,7 @@ public class InterfaceButtons : MonoBehaviour
     private Button Goal;
     private Button Controls;
     private UIDocument _interface;
- 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -32,7 +33,6 @@ public class InterfaceButtons : MonoBehaviour
 
         Controls = _interface.rootVisualElement.Q<Button>("Controls");
         Controls.clicked += ControlsButtonClicked;
-
     }
 
     // Update is called once per frame
@@ -52,11 +52,14 @@ public class InterfaceButtons : MonoBehaviour
         InfoGroup = _interface.rootVisualElement.Q<VisualElement>("InfoGroup");
 
 
-        if (StatusGroup.visible == true)
+        if (StatusGroup.visible)
         {
             StatusGroup.style.visibility = Visibility.Hidden;
             InfoGroup.style.visibility = Visibility.Hidden;
             Encyclopedy.style.visibility = Visibility.Visible;
+            Time.timeScale = 0f;
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.Confined;
         }
         else
         {
@@ -64,18 +67,23 @@ public class InterfaceButtons : MonoBehaviour
             InfoGroup.style.visibility = Visibility.Visible;
             Encyclopedy.style.visibility = Visibility.Hidden;
             EncText.text = "";
+            Time.timeScale = 1f;
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
         }
     }
+
     void GoalButtonClicked()
     {
         EncText = _interface.rootVisualElement.Q<Label>("EncText");
-        EncText.text = "÷ель игры:\r\n- исследовать неизученную систему\r\n- начать добычу ресурсов: металла, энергии и еды\r\n- основать колонии \r\n- обеспечить защиту и услови€ проживани€ колонистам\r\n- достичь требуемого количества жителей";
+        EncText.text =
+            "÷ель игры:\r\n- исследовать неизученную систему\r\n- начать добычу ресурсов: металла, энергии и еды\r\n- основать колонии \r\n- обеспечить защиту и услови€ проживани€ колонистам\r\n- достичь требуемого количества жителей";
     }
 
     void ControlsButtonClicked()
     {
         EncText = _interface.rootVisualElement.Q<Label>("EncText");
-        EncText.text = "”правление транспортом:\r\nW Ц вперед\r\nA Ц влево\r\nS Ц назад\r\nD Ц вправо\r\nF Ц приземлитьс€/отлететь от планеты\r\nR Ц починить транспорт\r\nB Ц открыть режим строительства";
+        EncText.text =
+            "”правление транспортом:\r\nW Ц вперед\r\nA Ц влево\r\nS Ц назад\r\nD Ц вправо\r\nF Ц приземлитьс€/отлететь от планеты\r\nR Ц починить транспорт\r\nB Ц открыть режим строительства";
     }
- 
 }

@@ -13,10 +13,17 @@ public class HealthAttributes
     public float shieldRegenerationPS;
     public int shieldRechargeDelay;
     public EntityTag entityTag;
+    public EntityType entityType;
 }
 
 public enum EntityTag
 {
     AIDamageable,
     PlayerDamageable
+}
+
+public enum EntityType
+{
+    Building,
+    Ship
 }

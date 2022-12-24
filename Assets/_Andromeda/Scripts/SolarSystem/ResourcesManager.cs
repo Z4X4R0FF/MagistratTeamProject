@@ -13,15 +13,19 @@ public class ResourcesManager : MonoBehaviourSingleton<ResourcesManager>
 
     public int CurrentPeople { get; private set; }
 
-    private int _metalPerYield;
-    private int _uraniumPerYield;
-    private int _mealsPerYield;
+    public int MetalPerYield { get; private set; }
+    public int UraniumPerYield { get; private set; }
+    public int MealsPerYield { get; private set; }
 
     private void Awake()
     {
-        CurrentMetal = 50000;
-        CurrentUranium = 25000;
-        CurrentMeals = 10000;
+        CurrentMetal = 5000;
+        CurrentUranium = 2500;
+        CurrentMeals = 1000;
+
+        MetalPerYield = 0;
+        UraniumPerYield = 0;
+        MealsPerYield = 0;
     }
 
     // Start is called before the first frame update
@@ -32,7 +36,7 @@ public class ResourcesManager : MonoBehaviourSingleton<ResourcesManager>
 
     private void Update()
     {
-        if (CurrentPeople >=1000)
+        if (CurrentPeople >= 1000)
         {
             TutorialManager.Instance.UpdateEventAction("isTargetReached");
         }
@@ -44,17 +48,19 @@ public class ResourcesManager : MonoBehaviourSingleton<ResourcesManager>
         switch (resourceType)
         {
             case ResourceType.Metal:
-                _metalPerYield += subtract ? -value : value;
+                MetalPerYield += subtract ? -value : value;
                 break;
             case ResourceType.Uranium:
-                _uraniumPerYield += subtract ? -value : value;
+                UraniumPerYield += subtract ? -value : value;
                 break;
             case ResourceType.Meals:
-                _mealsPerYield += subtract ? -value : value;
+                MealsPerYield += subtract ? -value : value;
                 break;
             default:
                 throw new ArgumentOutOfRangeException(nameof(resourceType), resourceType, null);
         }
+
+        ResourcesPanel.Instance.UpdateResourceYield();
     }
 
     public bool WithdrawResource(ResourceType resourceType, int value)
@@ -90,9 +96,9 @@ public class ResourcesManager : MonoBehaviourSingleton<ResourcesManager>
 
     private void HandleResourceHarvest()
     {
-        CurrentMetal += _metalPerYield;
-        CurrentUranium += _uraniumPerYield;
-        CurrentMeals += _mealsPerYield;
+        CurrentMetal += MetalPerYield;
+        CurrentUranium += UraniumPerYield;
+        CurrentMeals += MealsPerYield;
         ResourcesPanel.Instance.UpdateResources();
     }
 }

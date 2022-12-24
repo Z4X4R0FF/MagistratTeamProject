@@ -9,7 +9,9 @@ public class SpaceEnemyAi : MonoBehaviour
 {
     [SerializeField] private SpaceEnemyMovement movement;
 
-    public Transform CurrentTarget { get; private set; }
+    public HealthComponent CurrentTarget { get; private set; }
+    public Vector3 PositionTarget;
+    public bool isReachedPosition;
     private bool hasTarget;
     private const float MinDistanceToTarget = 50f;
     private EntityTag _enemyTag;
@@ -27,7 +29,24 @@ public class SpaceEnemyAi : MonoBehaviour
         if (CurrentTarget == null) hasTarget = false;
         if (hasTarget)
         {
-            movement.SetState(Vector3.Distance(transform.position, CurrentTarget.position) <= MinDistanceToTarget
+            //Debug.Log("Distance - " + Vector3.Distance(transform.position, PositionTarget));
+            if (Vector3.Distance(transform.position, PositionTarget) <= 60f)
+                isReachedPosition = true;
+            
+            if (!isReachedPosition)
+            {
+                if (CurrentTarget.GetEntityType() == EntityType.Building)
+                {
+                    PositionTarget = CurrentTarget.transform.position +
+                                     CurrentTarget.transform.up * MinDistanceToTarget * 10;
+                }
+            }
+            else
+            {
+                PositionTarget = CurrentTarget.transform.position;
+            }
+
+            movement.SetState(Vector3.Distance(transform.position, PositionTarget) <= MinDistanceToTarget
                 ? SpaceEnemyMovement.MovementState.Seeking
                 : SpaceEnemyMovement.MovementState.Moving);
         }
@@ -38,11 +57,22 @@ public class SpaceEnemyAi : MonoBehaviour
         }
     }
 
-    private void SetTarget(Transform target)
+    private void SetTarget(HealthComponent target)
     {
+        if (target.GetEntityType() == EntityType.Building)
+        {
+            PositionTarget = target.transform.position + target.transform.up * MinDistanceToTarget;
+            isReachedPosition = false;
+        }
+        else
+        {
+            isReachedPosition = true;
+            PositionTarget = target.transform.position;
+        }
+
         CurrentTarget = target;
         hasTarget = true;
-        onTargetUpdated.Invoke(target);
+        onTargetUpdated.Invoke(CurrentTarget.Hull);
     }
 
     private void FindTarget()
@@ -55,7 +85,7 @@ public class SpaceEnemyAi : MonoBehaviour
                     WorldInfo.Instance.entitiesByTag[_enemyTag]
                         .OrderBy(go => Vector3.Distance(transform.position, go.transform.position))
                         .First();
-                SetTarget(target.Hull);
+                SetTarget(target);
             }
         }
     }

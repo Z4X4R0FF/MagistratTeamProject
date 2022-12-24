@@ -28,6 +28,15 @@ public class AttackComponent : MonoBehaviour
         }
     }
 
+    public void PlayerFire()
+    {
+        foreach (var laser in lasers)
+        {
+            //Debug.Log($"{gameObject.name}: Fire");
+            laser.FireLaser();
+        }
+    }
+
     public void UpdateTarget(Transform newTarget) => _attackTarget = newTarget;
 
     // Update is called once per frame

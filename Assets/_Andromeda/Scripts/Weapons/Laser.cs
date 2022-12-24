@@ -14,12 +14,14 @@ public class Laser : MonoBehaviour
     private Transform myTransform;
     private WeaponAttributes _weaponAttributes;
     private EntityTag _enemyTag;
+    private AudioSource source;
 
     public float Distance => maxDistance;
 
     private void Awake()
     {
         lr = GetComponent<LineRenderer>();
+        source = GetComponent<AudioSource>();
         myTransform = transform;
     }
 
@@ -36,6 +38,12 @@ public class Laser : MonoBehaviour
     {
         lr.enabled = false;
         CanFire();
+    }
+
+    private void Update()
+    {
+        if (lr.enabled)
+            lr.SetPosition(0, myTransform.position);
     }
 
     private Vector3 CastRay()
@@ -65,7 +73,10 @@ public class Laser : MonoBehaviour
     //for player
     public void FireLaser()
     {
-        FireLaser(CastRay());
+        if (canFire)
+        {
+            FireLaser(CastRay());
+        }
     }
 
     public void FireLaser(Vector3 targetPosition, Transform target = null)
@@ -77,6 +88,7 @@ public class Laser : MonoBehaviour
             lr.SetPosition(0, myTransform.position);
             lr.SetPosition(1, targetPosition);
             lr.enabled = true;
+            source.Play();
             canFire = false;
             Invoke(nameof(TurnOffLaser), laserOffTime);
             Invoke(nameof(CanFire), _weaponAttributes.shotDelay);

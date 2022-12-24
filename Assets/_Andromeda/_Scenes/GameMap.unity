@@ -271,7 +271,7 @@ PrefabInstance:
     - target: {fileID: 4030572826729085705, guid: 3ee8612d61392f746b78b8fae293025a,
         type: 3}
       propertyPath: m_RootOrder
-      value: 10
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 4030572826729085705, guid: 3ee8612d61392f746b78b8fae293025a,
         type: 3}
@@ -335,7 +335,7 @@ PrefabInstance:
     - target: {fileID: 4938700169194821076, guid: 2fb62a0afe154e749a9046a08e81a488,
         type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4938700169194821076, guid: 2fb62a0afe154e749a9046a08e81a488,
         type: 3}
@@ -549,7 +549,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!224 &1255427780 stripped
 RectTransform:
@@ -567,7 +567,7 @@ PrefabInstance:
     - target: {fileID: 6757640042828571958, guid: 595f0a5bf10afc04396886b762432b26,
         type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 6757640042828571958, guid: 595f0a5bf10afc04396886b762432b26,
         type: 3}
@@ -626,53 +626,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 595f0a5bf10afc04396886b762432b26, type: 3}
---- !u!1 &1354778113
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1354778115}
-  - component: {fileID: 1354778114}
-  m_Layer: 0
-  m_Name: EnemySpawner
-  m_TagString: Untagged
-  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1354778114
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1354778113}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c475ec958acf5e48ac1d8b331408343, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 1453194502752808257, guid: 44d476a9f805f1e43a386d189299a50f,
-    type: 3}
-  spawnTimer: 10
---- !u!4 &1354778115
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1354778113}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1000, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1782232796
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -692,7 +645,7 @@ PrefabInstance:
     - target: {fileID: 5744607681644102751, guid: b26eca6f2db16264883d630aa72a593a,
         type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 5744607681644102751, guid: b26eca6f2db16264883d630aa72a593a,
         type: 3}
@@ -765,6 +718,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 364028152, guid: 03f50c7efcc5cea449d7abf02be48023, type: 3}
+      propertyPath: m_Volume
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 163744671286189713, guid: 03f50c7efcc5cea449d7abf02be48023,
         type: 3}
       propertyPath: m_Name
@@ -783,7 +740,7 @@ PrefabInstance:
     - target: {fileID: 163744671286189717, guid: 03f50c7efcc5cea449d7abf02be48023,
         type: 3}
       propertyPath: m_RootOrder
-      value: 11
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 163744671286189717, guid: 03f50c7efcc5cea449d7abf02be48023,
         type: 3}
@@ -971,7 +928,7 @@ PrefabInstance:
     - target: {fileID: 684306830835250956, guid: 507f390ccd2f168438ff9efeedfc1a14,
         type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 684306830835250956, guid: 507f390ccd2f168438ff9efeedfc1a14,
         type: 3}

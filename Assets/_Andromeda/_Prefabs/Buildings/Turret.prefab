@@ -489,9 +489,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitExplosion: {fileID: 100014, guid: 5332791ebce075d4a9e56f4581e7fb47, type: 3}
   destroyExplosion: {fileID: 100012, guid: 3364c97de68d3a147af572d1c71c6455, type: 3}
+  destroySound: {fileID: 4702712518515954568, guid: d2a3b130e29bbaa4ebe4e5a22bc19bd3,
+    type: 3}
   hull: {fileID: 1410433794446230777}
   healthSlider: {fileID: 1228020651204638572}
   shieldSlider: {fileID: 1850563371985051284}
+  isPlayer: 0
   onEntityDestroyed:
     m_PersistentCalls:
       m_Calls: []

@@ -12,16 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88f043f70b350ee47af6145981c89b84, type: 3}
   m_Name: MediumShip
   m_EditorClassIdentifier: 
-  shipType: 0
+  shipType: 1
   prefab: {fileID: 0}
   healthAttributes:
-    health: 3282
+    health: 250
     protection: 20
     regenerationPS: 0.5
-    shield: 3938
+    shield: 100
     shieldRegenerationPS: 10
     shieldRechargeDelay: 15
     entityTag: 1
+    entityType: 1
   playerStarshipMovementAttributes:
     startSpeed: 0
     minSpeed: 0

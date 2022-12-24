@@ -116,6 +116,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enableDrawRay: 0
+  forwardTransform: {fileID: 0}
+  sightAngle: 90
 --- !u!114 &2689265627246877904
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -143,9 +145,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitExplosion: {fileID: 100008, guid: 7075bd5fe1480184695a32611c15da57, type: 3}
   destroyExplosion: {fileID: 100006, guid: 4575df893a6e3f64a8283dee38413a34, type: 3}
+  destroySound: {fileID: 4702712518515954568, guid: d2a3b130e29bbaa4ebe4e5a22bc19bd3,
+    type: 3}
   hull: {fileID: 4185408797001406699}
   healthSlider: {fileID: 5270952971252892869}
   shieldSlider: {fileID: 4720445445106593085}
+  isPlayer: 0
   onEntityDestroyed:
     m_PersistentCalls:
       m_Calls: []

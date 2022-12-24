@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 using DG.Tweening;
-using UnityEngine.SceneManagement;
-using UnityEditor.SearchService;
 
 public class LoadingAnimation : MonoBehaviour
 {

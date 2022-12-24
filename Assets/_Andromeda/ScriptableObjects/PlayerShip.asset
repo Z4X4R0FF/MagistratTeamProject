@@ -18,10 +18,11 @@ MonoBehaviour:
     health: 250
     protection: 10
     regenerationPS: 2
-    shield: 100
+    shield: 250
     shieldRegenerationPS: 10
     shieldRechargeDelay: 5
-    entityTag: 0
+    entityTag: 1
+    entityType: 1
   playerStarshipMovementAttributes:
     startSpeed: 13
     minSpeed: 0
@@ -33,9 +34,9 @@ MonoBehaviour:
     movementSpeed: 50
     rotationSpeed: 10
   weaponAttributes:
-    damage: 30
+    damage: 40
     ignoresProtection: 0
     weaponType: 0
     shotDelay: 2
-    weaponColor: {r: 1, g: 0, b: 0.7957611, a: 0}
-  enemyTag: 0
+    weaponColor: {r: 1, g: 0, b: 0.7957611, a: 1}
+  enemyTag: 1

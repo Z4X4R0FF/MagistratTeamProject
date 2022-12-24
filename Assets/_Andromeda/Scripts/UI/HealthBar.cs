@@ -20,8 +20,8 @@ public class HealthBar : MonoBehaviour
 
     private void SetVisibility(float val)
     {
-        if (Math.Abs(healthSlider.value - healthSlider.maxValue) < 0.0001 &&
-            Math.Abs(shieldSlider.maxValue - shieldSlider.value) < 0.0001)
+        if (Math.Abs(healthSlider.value - healthSlider.maxValue) < 1 &&
+            Math.Abs(shieldSlider.value - shieldSlider.maxValue) < 1)
         {
             canvas.enabled = false;
         }

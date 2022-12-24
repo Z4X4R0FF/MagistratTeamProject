@@ -10,6 +10,10 @@ public class ResourcesPanel : MonoBehaviourSingleton<ResourcesPanel>
     private Label uraniumLabel;
     private Label peopleLabel;
 
+    private Label mealGainLabel;
+    private Label metalGainLabel;
+    private Label uraniumGainLabel;
+
     private UIDocument _interface;
 
     // Start is called before the first frame update
@@ -22,6 +26,10 @@ public class ResourcesPanel : MonoBehaviourSingleton<ResourcesPanel>
         uraniumLabel = _interface.rootVisualElement.Q<Label>("TextEnergy");
         peopleLabel = _interface.rootVisualElement.Q<Label>("TextPeople");
 
+        mealGainLabel = _interface.rootVisualElement.Q<Label>("EatGain");
+        metalGainLabel = _interface.rootVisualElement.Q<Label>("MetalGain");
+        uraniumGainLabel = _interface.rootVisualElement.Q<Label>("EnergyGain");
+
         UpdateResources();
     }
 
@@ -31,5 +39,18 @@ public class ResourcesPanel : MonoBehaviourSingleton<ResourcesPanel>
         metalLabel.text = ResourcesManager.Instance.CurrentMetal.ToString();
         uraniumLabel.text = ResourcesManager.Instance.CurrentUranium.ToString();
         peopleLabel.text = $"{ResourcesManager.Instance.CurrentPeople.ToString()}/1000";
+    }
+
+    public void UpdateResourceYield()
+    {
+        mealGainLabel.text = (ResourcesManager.Instance.MealsPerYield >= 0
+            ? "+"
+            : "") + ResourcesManager.Instance.MealsPerYield;
+        metalGainLabel.text = (ResourcesManager.Instance.MetalPerYield >= 0
+            ? "+"
+            : "") + ResourcesManager.Instance.MetalPerYield;
+        uraniumGainLabel.text = (ResourcesManager.Instance.UraniumPerYield >= 0
+            ? "+"
+            : "") + ResourcesManager.Instance.UraniumPerYield;
     }
 }

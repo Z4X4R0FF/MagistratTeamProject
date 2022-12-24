@@ -59,7 +59,7 @@ public class SpaceEnemyMovement : MonoBehaviour
 
     private void Turn()
     {
-        var pos = ai.CurrentTarget.position - myTransform.position;
+        var pos = ai.PositionTarget - myTransform.position;
         var rot = Quaternion.LookRotation(pos);
         myTransform.rotation = Quaternion.Slerp(myTransform.rotation, rot, rotationalDump * Time.deltaTime);
     }

@@ -110,12 +110,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1453194502752808257}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 732bec82033e886468072d6500270545, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   enableDrawRay: 1
+  forwardTransform: {fileID: 0}
+  sightAngle: 90
 --- !u!114 &4255726356919985549
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -130,9 +132,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitExplosion: {fileID: 100008, guid: 7075bd5fe1480184695a32611c15da57, type: 3}
   destroyExplosion: {fileID: 100006, guid: 4575df893a6e3f64a8283dee38413a34, type: 3}
+  destroySound: {fileID: 4702712518515954568, guid: d2a3b130e29bbaa4ebe4e5a22bc19bd3,
+    type: 3}
   hull: {fileID: 3792676431319919622}
   healthSlider: {fileID: 6580295942846006719}
   shieldSlider: {fileID: 6049921549419818055}
+  isPlayer: 0
   onEntityDestroyed:
     m_PersistentCalls:
       m_Calls: []

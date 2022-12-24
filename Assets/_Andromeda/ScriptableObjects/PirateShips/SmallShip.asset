@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88f043f70b350ee47af6145981c89b84, type: 3}
   m_Name: SmallShip
   m_EditorClassIdentifier: 
+  shipType: 1
+  prefab: {fileID: 0}
   healthAttributes:
     health: 100
     protection: 10
@@ -20,7 +22,15 @@ MonoBehaviour:
     shieldRegenerationPS: 10
     shieldRechargeDelay: 10
     entityTag: 1
-  movementAttributes:
+    entityType: 1
+  playerStarshipMovementAttributes:
+    startSpeed: 0
+    minSpeed: 0
+    maxSpeed: 0
+    accelerateSpeed: 0
+    slowDownSpeed: 0
+    rotationSpeed: 0
+  aiMovementAttributes:
     movementSpeed: 50
     rotationSpeed: 40
   weaponAttributes:
