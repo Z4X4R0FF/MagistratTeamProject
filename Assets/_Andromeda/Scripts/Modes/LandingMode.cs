@@ -46,11 +46,14 @@ namespace Assets.Scripts.Modes
             currentShipCamera.transform.localRotation = Quaternion.identity;
 
             Cursor.lockState = CursorLockMode.Locked;
-            landingPosition = position;
-            landingRotation = rotation;
+            GameObject obj = Instantiate(new GameObject(), position, rotation, planetInfo.Planet.transform);
+            landingPosition = obj.transform.localPosition;
+            //landingPosition = planetInfo.Planet.transform.rotation * (position - planetInfo.Planet.transform.position);
+            landingRotation = obj.transform.localRotation;
+            Destroy(obj);
 
-            currentStarship.transform.DORotate(landingRotation.eulerAngles, 3f);
-            currentStarship.transform.DOMove(landingPosition, 4f).OnComplete(FinishLanding);
+            currentStarship.transform.DOLocalRotate(landingRotation.eulerAngles, 3f);
+            currentStarship.transform.DOLocalMove(landingPosition, 4f).OnComplete(FinishLanding);
         }
 
         public void Stop()

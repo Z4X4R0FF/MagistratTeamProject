@@ -186,5 +186,6 @@ namespace Assets.Scripts.InputSystem
         MouseHorizontal = 3,
         MouseVertical = 4,
         ChangeMode = 5,
+        Attack = 6,
     }
 }

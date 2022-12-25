@@ -17,12 +17,15 @@ namespace Assets.Scripts.Vehicles.Rover
 
         private RaycastHit hit;
 
+        private GameObject moveHelper;
+
         public void StartControl(Rover controlledRover, PlayerRoverMovementAttributes movementAttributes,
             WorldInfo.PlanetObjectsInfo planetInfo)
         {
             rover = controlledRover;
             roverMovementAttributes = movementAttributes;
             currentPlanetInfo = planetInfo;
+            moveHelper = Instantiate(new GameObject());
             isActive = true;
         }
 
@@ -72,8 +75,10 @@ namespace Assets.Scripts.Vehicles.Rover
 
                 var angle = Vector3.Angle(rover.transform.position - planetPosition, newPosition - planetPosition);
 
-                rover.transform.position = newPosition;
-                rover.transform.Rotate(new Vector3(angle, 0, 0));
+                moveHelper.transform.parent = currentPlanetInfo.Planet.transform;
+                moveHelper.transform.position = newPosition;
+                rover.transform.localPosition = moveHelper.transform.localPosition;
+                rover.transform.localRotation *= Quaternion.Euler(new Vector3(angle, 0, 0));
             }
             else
             {

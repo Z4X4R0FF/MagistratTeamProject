@@ -16,6 +16,8 @@ namespace Assets.Scripts.Modes
         private StarshipController starshipController;
         private ShipAttributes currentStarshipAttributes;
         private LandingMode landingMode;
+        private HealthComponent healthComponent;
+        private AttackComponent attackComponent;
 
         private Starship currentStarship;
         private Camera currentShipCamera;
@@ -44,7 +46,14 @@ namespace Assets.Scripts.Modes
             currentStarshipAttributes = shipAttributes;
             currentStarship.shipAttributes = shipAttributes;
             currentStarship.transform.parent = null;
+
+            healthComponent = currentStarship.GetComponent<HealthComponent>();
+            healthComponent.Init(shipAttributes.healthAttributes);
+            attackComponent = currentStarship.GetComponent<AttackComponent>();
+            attackComponent.Init(shipAttributes.weaponAttributes, shipAttributes.enemyTag);
+
             starshipController.StartControl(starship, shipAttributes.playerStarshipMovementAttributes);
+
             currentShipCamera = mainCamera;
             currentShipCamera.transform.parent = starship.CameraPoint;
             currentShipCamera.transform.localPosition = Vector3.zero;
@@ -60,6 +69,7 @@ namespace Assets.Scripts.Modes
             inputManager.SubscribeToInputEvent(InputType.MouseHorizontal, UpdateMouseXInput, true);
             inputManager.SubscribeToInputEvent(InputType.MouseVertical, UpdateMouseYInput, true);
             inputManager.SubscribeToInputEvent(InputType.ChangeMode, Land);
+            inputManager.SubscribeToInputEvent(InputType.Attack, PlayerFire);
 
             currentStarship.staticObjectCollisionCallback += DamagePlayer;
             currentStarship.planetSurfaceCollisionCallback += PlayerCrushed;
@@ -72,11 +82,13 @@ namespace Assets.Scripts.Modes
             inputManager.UnsubscribeFromInputEvent(InputType.MouseHorizontal, UpdateMouseXInput);
             inputManager.UnsubscribeFromInputEvent(InputType.MouseHorizontal, UpdateMouseXInput);
             inputManager.UnsubscribeFromInputEvent(InputType.ChangeMode, Land);
+            inputManager.UnsubscribeFromInputEvent(InputType.Attack, PlayerFire);
 
             currentStarship.staticObjectCollisionCallback -= DamagePlayer;
             currentStarship.planetSurfaceCollisionCallback -= PlayerCrushed;
 
             starshipController.StopControl();
+            healthComponent.onEntityDestroyed.Invoke(healthComponent);
 
             isActive = false;
         }
@@ -164,6 +176,11 @@ namespace Assets.Scripts.Modes
             }
         }
 
+        private void PlayerFire(float value)
+        {
+            attackComponent.PlayerFire();
+        }
+
         private void CheckPlanetsDistance()
         {
             var nearestPlanet =
@@ -227,8 +244,9 @@ namespace Assets.Scripts.Modes
         private void PlayerCrushed()
         {
             // TODO Crash
+            healthComponent.OnEntityHitSurface();
             Debug.Log("CRASH");
-            //Stop();
+            Stop();
         }
 
         private void DamagePlayer()

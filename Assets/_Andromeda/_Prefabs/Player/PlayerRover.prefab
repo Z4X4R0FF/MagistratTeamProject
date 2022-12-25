@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 4536127469183657695}
   - component: {fileID: 4380866946709401375}
   - component: {fileID: 7203352543945791394}
-  - component: {fileID: 4578699039068830914}
   m_Layer: 0
   m_Name: PlayerRover
   m_TagString: Untagged
@@ -101,19 +100,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9a8716a6cd6463429b478b43c096648, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &4578699039068830914
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1453194502752808257}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e28cf34ea4034634194c3de7cb84b58f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shipAttributes: {fileID: 11400000, guid: 200e9757798de2440a7b9c1613868349, type: 2}
 --- !u!1 &2734924802973840616
 GameObject:
   m_ObjectHideFlags: 0

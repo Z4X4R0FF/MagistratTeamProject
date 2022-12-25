@@ -13,6 +13,8 @@ namespace Assets.Scripts.Modes
         private RoverController roverController;
         private TakeOffMode takeOffMode;
 
+        private HealthComponent healthComponent;
+
         private const float DISTANCE_TO_STARSHIP = 15f;
 
         private Starship currentStarship;
@@ -22,6 +24,7 @@ namespace Assets.Scripts.Modes
         private Vector2 axisInput;
         private Vector2 mouseAxisInput;
         private bool isActive;
+        private bool isAvailableToTakeOff;
 
         public void Init()
         {
@@ -40,6 +43,11 @@ namespace Assets.Scripts.Modes
             currentRover = rover;
             currentStarship = starship;
             currentPlanetinfo = planetInfo;
+            isAvailableToTakeOff = false;
+
+            healthComponent = currentRover.GetComponent<HealthComponent>();
+            healthComponent.Init(roverAttributes.healthAttributes);
+
             currentCamera = mainCamera;
             mainCamera.transform.parent = rover.CameraPoint;
             mainCamera.transform.localPosition = Vector3.zero;
@@ -63,6 +71,8 @@ namespace Assets.Scripts.Modes
             inputManager.UnsubscribeFromInputEvent(InputType.ChangeMode, TakeOff);
 
             roverController.StopControl();
+            healthComponent.onEntityDestroyed.Invoke(healthComponent);
+
             Destroy(currentRover.gameObject);
 
             BuildingPanel.Instance.EnableBuilding(false);
@@ -71,8 +81,9 @@ namespace Assets.Scripts.Modes
 
         private void TakeOff(float value)
         {
-            if (IsNearStarship())
+            if (isAvailableToTakeOff)
             {
+                LandingHint.Instance.DisableHint();
                 takeOffMode.Play(currentStarship, currentStarship.shipAttributes, currentPlanetinfo, currentCamera);
                 Stop();
             }
@@ -87,6 +98,8 @@ namespace Assets.Scripts.Modes
 
             roverController.UpdateAxis(axisInput, mouseAxisInput);
             roverController.UpdateController();
+
+            CheckTakeOffAbility();
         }
 
         private void UpdateXInput(float value)
@@ -126,6 +139,26 @@ namespace Assets.Scripts.Modes
             if (Mathf.Abs(mouseAxisInput.y) < 0.01f)
             {
                 mouseAxisInput.y = 0;
+            }
+        }
+
+        private void CheckTakeOffAbility()
+        {
+            if (IsNearStarship())
+            {
+                if (!isAvailableToTakeOff)
+                {
+                    isAvailableToTakeOff = true;
+                    LandingHint.Instance.OnEnableTakeOff();
+                }
+            }
+            else
+            {
+                if (isAvailableToTakeOff)
+                {
+                    isAvailableToTakeOff = false;
+                    LandingHint.Instance.DisableHint();
+                }
             }
         }
 

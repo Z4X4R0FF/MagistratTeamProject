@@ -3,13 +3,15 @@ using UnityEngine;
 
 namespace Assets.Scripts.Vehicles.Starship
 {
+    [RequireComponent(typeof(AttackComponent))]
+    [RequireComponent(typeof(HealthComponent))]
     public class Starship : Vehicle, IStarship
     {
         public delegate void StaticObjectCollision();
         public StaticObjectCollision staticObjectCollisionCallback;
         public StaticObjectCollision planetSurfaceCollisionCallback;
 
-        public ShipAttributes shipAttributes;
+        [HideInInspector] public ShipAttributes shipAttributes;
 
         private void OnTriggerEnter(Collider other)
         {

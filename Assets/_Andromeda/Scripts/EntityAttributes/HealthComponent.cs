@@ -99,7 +99,7 @@ public class HealthComponent : MonoBehaviour
 
     public void OnEntityHitSurface()
     {
-        
+        EntityCrash();
     }
 
     public void OnEntityHit(Vector3 pos, WeaponAttributes weaponAttributes)
@@ -128,20 +128,25 @@ public class HealthComponent : MonoBehaviour
 
         if (CurrentHealth <= 0)
         {
-            onEntityDestroyed.Invoke(this);
-            var destroyExp = Instantiate(destroyExplosion, myTransform.position, myTransform.rotation);
-            var destrSound = Instantiate(destroySound, myTransform.position, Quaternion.identity);
-            Destroy(destroyExp, 3);
-            Destroy(destrSound, 5);
-            if (isPlayer)
-            {
-                hull.gameObject.SetActive(false);
-                Invoke(nameof(EndGame), 2f);
-            }
-            else
-            {
-                Destroy(gameObject);
-            }
+            EntityCrash();
+        }
+    }
+
+    private void EntityCrash()
+    {
+        onEntityDestroyed.Invoke(this);
+        var destroyExp = Instantiate(destroyExplosion, myTransform.position, myTransform.rotation);
+        var destrSound = Instantiate(destroySound, myTransform.position, Quaternion.identity);
+        Destroy(destroyExp, 3);
+        Destroy(destrSound, 5);
+        if (isPlayer)
+        {
+            hull.gameObject.SetActive(false);
+            Invoke(nameof(EndGame), 2f);
+        }
+        else
+        {
+            Destroy(gameObject);
         }
     }
 
