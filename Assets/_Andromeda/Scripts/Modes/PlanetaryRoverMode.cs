@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using Assets.Scripts.InputSystem;
 using Assets.Scripts.Main;
@@ -52,6 +54,7 @@ namespace Assets.Scripts.Modes
             mainCamera.transform.parent = rover.CameraPoint;
             mainCamera.transform.localPosition = Vector3.zero;
             mainCamera.transform.localRotation = Quaternion.identity;
+            
 
             inputManager.SubscribeToInputEvent(InputType.Horizontal, UpdateXInput, true);
             inputManager.SubscribeToInputEvent(InputType.Vertical, UpdateYInput, true);

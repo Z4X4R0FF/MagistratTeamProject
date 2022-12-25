@@ -153,6 +153,7 @@ public class HealthComponent : MonoBehaviour
     private void EndGame()
     {
         Cursor.lockState = CursorLockMode.Confined;
+        Cursor.visible = true;
         SceneManager.LoadScene(0);
     }
 

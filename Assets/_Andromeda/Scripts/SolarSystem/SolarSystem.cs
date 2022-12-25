@@ -59,7 +59,7 @@ public class SolarSystem : MonoBehaviourSingleton<SolarSystem>
         var planetRot = _planets[planetIndex].GetComponentInChildren<Planet>().transform.rotation = Random.rotation;
 
         // orbit speed
-        var orbitSpeed = Random.Range(0.1f, 0.5f);
+        var orbitSpeed = Random.Range(0.025f, 0.1f);
         _planets[planetIndex].transform.DORotate(
                 _planets[planetIndex].transform.rotation.eulerAngles + new Vector3(0, orbitSpeed, 0), 1f,
                 RotateMode.Fast).SetUpdate(UpdateType.Late)

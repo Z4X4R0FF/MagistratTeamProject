@@ -24,6 +24,7 @@ MonoBehaviour:
     shieldRegenerationPS: 5
     shieldRechargeDelay: 5
     entityTag: 0
+    entityType: 0
   prefab: {fileID: 5636776677993048010, guid: cdf905da367a82547b7f979fd447eb27, type: 3}
   weaponAttributes:
     damage: 0
@@ -34,7 +35,7 @@ MonoBehaviour:
   enemyTag: 0
   harvestAttributes:
     harvestResourceType: 1
-    harvestAmount: 25
+    harvestAmount: 12
   housingAttributes:
     capacity: 0
     mealsPerTickCost: 0

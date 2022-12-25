@@ -31,12 +31,12 @@ MonoBehaviour:
     slowDownSpeed: 0
     rotationSpeed: 0
   aiMovementAttributes:
-    movementSpeed: 150
-    rotationSpeed: 30
+    movementSpeed: 50
+    rotationSpeed: 35
   weaponAttributes:
-    damage: 20
-    ignoresProtection: 0
+    damage: 25
+    ignoresProtection: 1
     weaponType: 0
-    shotDelay: 2
+    shotDelay: 5
     weaponColor: {r: 0, g: 1, b: 0.009579897, a: 1}
   enemyTag: 0

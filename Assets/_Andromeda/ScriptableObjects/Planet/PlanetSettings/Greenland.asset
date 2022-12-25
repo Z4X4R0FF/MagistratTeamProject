@@ -15,7 +15,7 @@ MonoBehaviour:
   minRadius: 80
   maxRadius: 350
   planetResolutionScaleFactor: 0.7
-  spawnHeightPercentage: 0.1
+  spawnHeightPercentage: 0.25
   noiseLayers:
   - {fileID: 11400000, guid: 2b5f03b82956e1f4ba674ed6aa620101, type: 2}
   - {fileID: 11400000, guid: 1b5a4abb0f08ea149b95c556a7146b02, type: 2}

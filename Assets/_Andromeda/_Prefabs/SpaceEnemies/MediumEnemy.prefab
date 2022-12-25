@@ -83,6 +83,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movement: {fileID: 1453194502752808258}
+  PositionTarget: {x: 0, y: 0, z: 0}
+  isReachedPosition: 0
   onTargetUpdated:
     m_PersistentCalls:
       m_Calls: []
@@ -118,6 +120,9 @@ MonoBehaviour:
   enableDrawRay: 0
   forwardTransform: {fileID: 0}
   sightAngle: 90
+  _layerMask:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!114 &2689265627246877904
 MonoBehaviour:
   m_ObjectHideFlags: 0

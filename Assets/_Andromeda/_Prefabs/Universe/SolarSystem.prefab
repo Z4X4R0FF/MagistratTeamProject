@@ -44,12 +44,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8f2a3c6d7920dc418600d5a52770e46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  planetCount: 6
+  planetCount: 5
   planetPrefab: {fileID: 8175696934428737668, guid: 4cf0489cb707ce6468c6d43772c1af54,
     type: 3}
   maxOffsetX: 9000
-  minOffsetX: 4000
-  minDistanceBetweenPlanetOrbits: 400
+  minOffsetX: 3000
+  minDistanceBetweenPlanetOrbits: 700
   planetPresets:
   - {fileID: 11400000, guid: d3a122ddf78f3584caadc04f9861d751, type: 2}
   - {fileID: 11400000, guid: 0cfb3c30419b8e44895a7a14e7fc8ae1, type: 2}

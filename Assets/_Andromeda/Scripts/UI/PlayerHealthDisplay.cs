@@ -29,10 +29,10 @@ public class PlayerHealthDisplay : MonoBehaviourSingleton<PlayerHealthDisplay>
                 speedLabel.text = $"{Math.Round(value, 2)}/{maxValue}";
                 break;
             case PlayerStat.Health:
-                healthLabel.text = $"{value}/{maxValue}";
+                healthLabel.text = $"{Math.Round(value, 2)}/{maxValue}";
                 break;
             case PlayerStat.Shield:
-                shieldLabel.text = $"{value}/{maxValue}";
+                shieldLabel.text = $"{Math.Round(value, 2)}/{maxValue}";
                 break;
             default:
                 throw new ArgumentOutOfRangeException(nameof(stat), stat, null);

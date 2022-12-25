@@ -72,9 +72,9 @@ public class AttackComponent : MonoBehaviour
         {
             var dir = _attackTarget.position - laser.transform.position;
             if (enableDrawRay) Debug.DrawRay(laser.transform.position, dir, Color.magenta);
-            if (Physics.Raycast(laser.transform.position, dir, out var hit, laser.Distance, 127))
+            if (Physics.Raycast(laser.transform.position, dir, out var hit, laser.Distance, ~(1<< LayerMask.NameToLayer("IgnoreAttack"))))
             {
-                if (hit.transform == _attackTarget)
+                if (hit.collider.transform == _attackTarget)
                 {
                     if (enableDrawRay) Debug.DrawRay(laser.transform.position, dir, Color.red);
                     hitPosition = hit.transform.position;

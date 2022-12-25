@@ -76,11 +76,19 @@ MonoBehaviour:
   systemRadius: 10000
   spawnRadius: 100
   waves:
-  - awareTime: 20
+  - awareTime: 100
     enemies:
     - {fileID: 1453194502752808257, guid: 44d476a9f805f1e43a386d189299a50f, type: 3}
     - {fileID: 1453194502752808257, guid: 8ee2691086b987544bf9308c1b563576, type: 3}
-    baseCount: 0400000002000000
+    baseCount: 0300000001000000
+  - awareTime: 60
+    enemies:
+    - {fileID: 1453194502752808257, guid: 44d476a9f805f1e43a386d189299a50f, type: 3}
+    baseCount: 06000000
+  - awareTime: 120
+    enemies:
+    - {fileID: 1453194502752808257, guid: 8ee2691086b987544bf9308c1b563576, type: 3}
+    baseCount: 03000000
 --- !u!114 &684306830835250953
 MonoBehaviour:
   m_ObjectHideFlags: 0

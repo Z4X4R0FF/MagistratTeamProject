@@ -15,18 +15,18 @@ MonoBehaviour:
   shipType: 0
   prefab: {fileID: 1508386053716467839, guid: 915aa75361212544a92266c8effa998a, type: 3}
   healthAttributes:
-    health: 250
-    protection: 10
+    health: 500
+    protection: 15
     regenerationPS: 2
     shield: 250
-    shieldRegenerationPS: 10
+    shieldRegenerationPS: 25
     shieldRechargeDelay: 5
     entityTag: 0
     entityType: 1
   playerStarshipMovementAttributes:
-    startSpeed: 13
+    startSpeed: 0
     minSpeed: 0
-    maxSpeed: 200
+    maxSpeed: 150
     accelerateSpeed: 35
     slowDownSpeed: 60
     rotationSpeed: 150
@@ -37,6 +37,6 @@ MonoBehaviour:
     damage: 40
     ignoresProtection: 0
     weaponType: 0
-    shotDelay: 2
+    shotDelay: 1
     weaponColor: {r: 1, g: 0, b: 0.7957611, a: 1}
   enemyTag: 1

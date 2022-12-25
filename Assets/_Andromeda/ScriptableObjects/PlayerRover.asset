@@ -14,16 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 4380866946709401375, guid: b4006d6bd8c4fab40b22d4f48b4fdc61, type: 3}
   healthAttributes:
-    health: 100
+    health: 250
     protection: 3
-    regenerationPS: 1
-    shield: 50
-    shieldRegenerationPS: 5
+    regenerationPS: 2
+    shield: 100
+    shieldRegenerationPS: 10
     shieldRechargeDelay: 5
     entityTag: 0
     entityType: 0
   playerRoverMovementAttributes:
-    maxSpeed: 5
+    maxSpeed: 10
     accelerateSpeed: 0.1
     slowDownSpeed: 0.1
     rotationSpeed: 300

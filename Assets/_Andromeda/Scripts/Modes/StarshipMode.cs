@@ -24,6 +24,7 @@ namespace Assets.Scripts.Modes
         private Vector2 axisInput;
         private Vector2 mouseAxisInput;
 
+
         private bool isActive;
 
         //private Planet[] planets;
@@ -63,6 +64,7 @@ namespace Assets.Scripts.Modes
 
             availableToLand = false;
             currentPlanetToLand = null;
+            
 
             inputManager.SubscribeToInputEvent(InputType.Horizontal, UpdateXInput, true);
             inputManager.SubscribeToInputEvent(InputType.Vertical, UpdateYInput, true);
@@ -86,6 +88,7 @@ namespace Assets.Scripts.Modes
 
             currentStarship.staticObjectCollisionCallback -= DamagePlayer;
             currentStarship.planetSurfaceCollisionCallback -= PlayerCrushed;
+            
 
             starshipController.StopControl();
             healthComponent.onEntityDestroyed.Invoke(healthComponent);
