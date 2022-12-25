@@ -14,7 +14,7 @@ namespace Assets.Scripts.Modes
         private Starship currentStarship;
         private ShipAttributes currentStarshipAttributes;
         private bool isActive;
-        private Planet currentPlanet;
+        private WorldInfo.PlanetObjectsInfo currentPlanetInfo;
         private Camera currentShipCamera;
         private float takingOffProgress = 0f;
 
@@ -27,15 +27,15 @@ namespace Assets.Scripts.Modes
             starshipMode = ModesManager.instance.StarshipMode;
         }
 
-        public void Play(Starship starship, ShipAttributes shipAttributes, Planet planet, Camera mainCamera)
+        public void Play(Starship starship, ShipAttributes shipAttributes, WorldInfo.PlanetObjectsInfo planetInfo, Camera mainCamera)
         {
             Debug.Log("Start taking off");
             currentModeManager.ChangeCurrentMode(this);
             isActive = true;
             currentStarship = starship;
-            currentStarship.transform.parent = planet.transform;
+            currentStarship.transform.parent = planetInfo.Planet.transform;
             currentStarshipAttributes = shipAttributes;
-            currentPlanet = planet;
+            currentPlanetInfo = planetInfo;
 
             currentShipCamera = mainCamera;
             currentShipCamera.transform.parent = starship.CameraPoint;

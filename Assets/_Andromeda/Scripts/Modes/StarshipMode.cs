@@ -42,6 +42,7 @@ namespace Assets.Scripts.Modes
             isActive = true;
             currentStarship = starship;
             currentStarshipAttributes = shipAttributes;
+            currentStarship.shipAttributes = shipAttributes;
             currentStarship.transform.parent = null;
             starshipController.StartControl(starship, shipAttributes.playerStarshipMovementAttributes);
             currentShipCamera = mainCamera;
@@ -51,9 +52,7 @@ namespace Assets.Scripts.Modes
 
             Cursor.lockState = CursorLockMode.Locked;
 
-            //planets = solarSystem.GetPlanets();
             availableToLand = false;
-            ;
             currentPlanetToLand = null;
 
             inputManager.SubscribeToInputEvent(InputType.Horizontal, UpdateXInput, true);
@@ -62,7 +61,8 @@ namespace Assets.Scripts.Modes
             inputManager.SubscribeToInputEvent(InputType.MouseVertical, UpdateMouseYInput, true);
             inputManager.SubscribeToInputEvent(InputType.ChangeMode, Land);
 
-            starship.staticObjectCollisionCallBack += PlayerCrashed;
+            currentStarship.staticObjectCollisionCallback += DamagePlayer;
+            currentStarship.planetSurfaceCollisionCallback += PlayerCrushed;
         }
 
         public void Stop()
@@ -72,6 +72,9 @@ namespace Assets.Scripts.Modes
             inputManager.UnsubscribeFromInputEvent(InputType.MouseHorizontal, UpdateMouseXInput);
             inputManager.UnsubscribeFromInputEvent(InputType.MouseHorizontal, UpdateMouseXInput);
             inputManager.UnsubscribeFromInputEvent(InputType.ChangeMode, Land);
+
+            currentStarship.staticObjectCollisionCallback -= DamagePlayer;
+            currentStarship.planetSurfaceCollisionCallback -= PlayerCrushed;
 
             starshipController.StopControl();
 
@@ -102,9 +105,18 @@ namespace Assets.Scripts.Modes
         {
             if (availableToLand)
             {
-                var landPoint = FindClosestLandPoint(currentPlanetToLand);
-                landingMode.Play(currentStarship, currentStarshipAttributes, currentPlanetToLand.Planet, landPoint,
-                    currentShipCamera);
+                Vector3 position = FindClosestLandPoint(currentPlanetToLand);
+                Quaternion rotation = Quaternion.LookRotation(position - currentPlanetToLand.Planet.transform.position, Vector3.up) * Quaternion.Euler(90, 0, 0);
+
+                if (position.Equals(Vector3.zero))
+                {
+                    Debug.Log("Zero land vector");
+                    GameObject landingPoint = CalculateClosestLandPoint(currentPlanetToLand);
+                    position = landingPoint.transform.position;
+                    rotation = landingPoint.transform.rotation;
+                }
+
+                landingMode.Play(currentStarship, currentPlanetToLand, position, rotation, currentShipCamera);
                 Stop();
             }
         }
@@ -162,67 +174,60 @@ namespace Assets.Scripts.Modes
                 currentPlanetToLand = nearestPlanet;
                 Debug.Log("LAND");
             }
-            // foreach (Planet planet in planets)
-            // {
-            //     float distance = Vector3.Distance(currentStarship.transform.position, planet.transform.position);
-            //     if (distance <= LANDING_DISTANCE + planet.Settings.radius)
-            //     {
-            //         availableToLand = true;
-            //         currentPlanetToLand = planet;
-            //         Debug.Log("LAND");
-            //         return;
-            //     }
-            // }
         }
 
         private void CheckCurrentPlanetToLandDistance()
         {
             float distance =
                 Vector3.Distance(currentStarship.transform.position, currentPlanetToLand.PlanetPosition);
-            if (distance > LANDING_DISTANCE + currentPlanetToLand.Planet.Settings.radius)
+            if (distance > LANDING_DISTANCE + currentPlanetToLand.Planet.elevationMinMax.Max)
             {
                 availableToLand = false;
-                ;
                 currentPlanetToLand = null;
                 Debug.Log("NOT LAND");
             }
         }
 
-        private GameObject FindClosestLandPoint(WorldInfo.PlanetObjectsInfo planetObjectsInfo)
+        private GameObject CalculateClosestLandPoint(WorldInfo.PlanetObjectsInfo planetObjectsInfo)
         {
             var point = planetObjectsInfo.Generator.spawnPoints
                 .Where(r => planetObjectsInfo.Generator.takenPoints.All(d =>
                     d.transform.localPosition != r.transform.localPosition))
                 .Where(r =>
                     WorldInfo.Instance.placedBuildings.All(b =>
-                        Vector3.Distance(b.Value.transform.localPosition, r.transform.localPosition) >
-                        WorldInfo.MinDistanceBetweenBuildings))
+                    (b.Value.transform.localPosition - r.transform.localPosition).sqrMagnitude >
+                        WorldInfo.MinDistanceBetweenBuildings * WorldInfo.MinDistanceBetweenBuildings))
                 .OrderBy(r => Vector3.Distance(currentStarship.transform.position, r.transform.position)).First();
-
-
-            // float minSqrDist = float.MaxValue;
-            // float sqrDist;
-            // Vector3 closestPoint = points[0];
-            // Vector3 relativePosition = currentStarship.transform.position - planet.transform.position;
-            // foreach (Vector3 point in points)
-            // {
-            //     sqrDist = (point - relativePosition).sqrMagnitude;
-            //     if (sqrDist < minSqrDist)
-            //     {
-            //         minSqrDist = sqrDist;
-            //         closestPoint = point;
-            //     }
-            // }
-            //
-            // return closestPoint;
             return point;
         }
 
-        private void PlayerCrashed()
+
+        private Vector3 FindClosestLandPoint(WorldInfo.PlanetObjectsInfo planetObjectsInfo)
+        {
+            Vector3 direction = planetObjectsInfo.Planet.transform.position - currentStarship.transform.position;
+            RaycastHit hit;
+            if (Physics.Raycast(currentStarship.transform.position, direction, out hit, planetObjectsInfo.Planet.elevationMinMax.Max + 200f, 64))
+            {
+                Debug.DrawRay(currentStarship.transform.position, direction, Color.yellow, 30f);
+                return hit.point;
+            }
+            Debug.DrawRay(currentStarship.transform.position, direction, Color.red, 30f);
+
+            Debug.Log("Raycast cant find closest land point");
+            return Vector3.zero;
+        }
+
+        private void PlayerCrushed()
         {
             // TODO Crash
             Debug.Log("CRASH");
             //Stop();
+        }
+
+        private void DamagePlayer()
+        {
+            //TODO damage
+            Debug.Log("Damage");
         }
     }
 }

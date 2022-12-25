@@ -7,7 +7,6 @@ namespace Assets.Scripts.SpawnSystem
     public class PlayerSpawnManager : MonoBehaviour
     {
         [SerializeField] private Transform playerSpawnTransform;
-        [SerializeField] private Transform playerRoverSpawnTransform;
 
         public static PlayerSpawnManager instance;
 
@@ -22,9 +21,9 @@ namespace Assets.Scripts.SpawnSystem
             return starship;
         }
 
-        public Rover SpawnPlayerAtDefaultPositionRover(Rover roverPrefab)
+        public Rover SpawnRover(Rover roverPrefab, Planet parentPlanet, Vector3 position, Quaternion rotation)
         {
-            Rover rover = Instantiate(roverPrefab, playerRoverSpawnTransform.position, playerRoverSpawnTransform.rotation);
+            Rover rover = Instantiate(roverPrefab, position, rotation, parentPlanet.transform);
             return rover;
         }
     }

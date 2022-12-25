@@ -6,7 +6,7 @@ using Assets.Scripts.Modes;
 
 namespace Assets.Scripts.Main
 {
-    public class GameManager : MonoBehaviour
+    public class GameManager : MonoBehaviourSingleton<GameManager>
     {
         private Camera mainCamera;
         private DatabaseManager databaseManager;
@@ -29,6 +29,13 @@ namespace Assets.Scripts.Main
             ShipAttributes playerStarshipAttributes = databaseManager.PlayerStarship;
             Starship starship = PlayerSpawnManager.instance.SpawnPlayerAtDefaultPosition(playerStarshipAttributes.prefab);
             modesManager.StarshipMode.Play(starship, playerStarshipAttributes, mainCamera);
+        }
+
+        public void StartRoverMode(Starship starship, WorldInfo.PlanetObjectsInfo planetInfo, Vector3 spawnPosition, Quaternion spawnRotation)
+        {
+            RoverAttributes playerRoverAttributes = databaseManager.PlayerRover;
+            Rover rover = PlayerSpawnManager.instance.SpawnRover(playerRoverAttributes.prefab, planetInfo.Planet, spawnPosition, spawnRotation);
+            modesManager.PlanetaryRoverMode.Play(starship, rover, playerRoverAttributes, planetInfo, mainCamera);
         }
 
         private void Update()

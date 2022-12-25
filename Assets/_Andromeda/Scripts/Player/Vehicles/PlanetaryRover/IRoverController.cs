@@ -6,7 +6,7 @@ namespace Assets.Scripts.Vehicles.Rover
 {
     public interface IRoverController : IVehicleController
     {
-        void StartControl(Rover controlledStarship, PlayerRoverMovementAttributes movementAttributes);
+        void StartControl(Rover controlledStarship, PlayerRoverMovementAttributes movementAttributes, WorldInfo.PlanetObjectsInfo planetInfo);
         void StopControl();
         void UpdateAxis(Vector2 axisInput, Vector2 mouseAxisInput);
         void UpdateController();
