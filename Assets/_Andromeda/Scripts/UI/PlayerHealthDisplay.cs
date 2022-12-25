@@ -15,7 +15,7 @@ public class PlayerHealthDisplay : MonoBehaviourSingleton<PlayerHealthDisplay>
     private void Start()
     {
         _interface = GetComponent<UIDocument>();
-        
+
         speedLabel = _interface.rootVisualElement.Q<Label>("Speed");
         healthLabel = _interface.rootVisualElement.Q<Label>("Health");
         shieldLabel = _interface.rootVisualElement.Q<Label>("Shield");
@@ -26,7 +26,7 @@ public class PlayerHealthDisplay : MonoBehaviourSingleton<PlayerHealthDisplay>
         switch (stat)
         {
             case PlayerStat.Speed:
-                speedLabel.text = $"{value}/{maxValue}";
+                speedLabel.text = $"{Math.Round(value, 2)}/{maxValue}";
                 break;
             case PlayerStat.Health:
                 healthLabel.text = $"{value}/{maxValue}";

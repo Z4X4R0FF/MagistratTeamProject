@@ -31,7 +31,8 @@ namespace Assets.Scripts.Modes
             takeOffMode = ModesManager.instance.TakeOffMode;
         }
 
-        public void Play(Starship starship, Rover rover, RoverAttributes roverAttributes, WorldInfo.PlanetObjectsInfo planetInfo, Camera mainCamera)
+        public void Play(Starship starship, Rover rover, RoverAttributes roverAttributes,
+            WorldInfo.PlanetObjectsInfo planetInfo, Camera mainCamera)
         {
             currentModeManager.ChangeCurrentMode(this);
             isActive = true;
@@ -49,6 +50,8 @@ namespace Assets.Scripts.Modes
             inputManager.SubscribeToInputEvent(InputType.MouseHorizontal, UpdateMouseXInput, true);
             inputManager.SubscribeToInputEvent(InputType.MouseVertical, UpdateMouseYInput, true);
             inputManager.SubscribeToInputEvent(InputType.ChangeMode, TakeOff);
+
+            BuildingPanel.Instance.EnableBuilding(true);
         }
 
         public void Stop()
@@ -60,8 +63,9 @@ namespace Assets.Scripts.Modes
             inputManager.UnsubscribeFromInputEvent(InputType.ChangeMode, TakeOff);
 
             roverController.StopControl();
-            Destroy(currentRover);
+            Destroy(currentRover.gameObject);
 
+            BuildingPanel.Instance.EnableBuilding(false);
             isActive = false;
         }
 

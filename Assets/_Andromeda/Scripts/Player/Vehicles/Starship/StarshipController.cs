@@ -50,6 +50,7 @@ namespace Assets.Scripts.Vehicles.Starship
             {
                 SlowDown();
             }
+            PlayerHealthDisplay.Instance.UpdatePlayerStat(PlayerHealthDisplay.PlayerStat.Speed,starship.CurrentSpeed,starshipMovementAttributes.maxSpeed);
             Move();
         }
 
@@ -65,12 +66,14 @@ namespace Assets.Scripts.Vehicles.Starship
 
         private void Accelerate()
         {
-            starship.CurrentSpeed = Mathf.Lerp(starship.CurrentSpeed, starshipMovementAttributes.maxSpeed, starshipMovementAttributes.accelerateSpeed * Time.deltaTime);
+            starship.CurrentSpeed = Mathf.Clamp(starship.CurrentSpeed + starshipMovementAttributes.accelerateSpeed * Time.deltaTime,
+                starshipMovementAttributes.minSpeed, starshipMovementAttributes.maxSpeed);
         }
 
         private void SlowDown()
         {
-            starship.CurrentSpeed = Mathf.Lerp(starship.CurrentSpeed, starshipMovementAttributes.minSpeed, starshipMovementAttributes.slowDownSpeed * Time.deltaTime);
+            starship.CurrentSpeed = Mathf.Clamp(starship.CurrentSpeed - starshipMovementAttributes.slowDownSpeed * Time.deltaTime,
+                starshipMovementAttributes.minSpeed, starshipMovementAttributes.maxSpeed);
         }
     }
 }

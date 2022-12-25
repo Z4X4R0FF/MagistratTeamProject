@@ -39,7 +39,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.04434053, g: 0.03931733, b: 0.047051936, a: 1}
+  m_IndirectSpecularColor: {r: 0.04434458, g: 0.039324645, b: 0.04705926, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -897,6 +897,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 286162428316306769, guid: 18b6ff81fb85903498d3d72f7b996f3b,
+        type: 3}
+      propertyPath: planetCount
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 286162428316306770, guid: 18b6ff81fb85903498d3d72f7b996f3b,
         type: 3}

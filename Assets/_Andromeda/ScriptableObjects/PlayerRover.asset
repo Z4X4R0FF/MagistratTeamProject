@@ -21,8 +21,9 @@ MonoBehaviour:
     shieldRegenerationPS: 5
     shieldRechargeDelay: 5
     entityTag: 0
+    entityType: 0
   playerRoverMovementAttributes:
-    maxSpeed: 2
+    maxSpeed: 5
     accelerateSpeed: 0.1
     slowDownSpeed: 0.1
     rotationSpeed: 300

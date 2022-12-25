@@ -28,7 +28,8 @@ namespace Assets.Scripts.Modes
             currentModeManager = CurrentModeManager.instance;
         }
 
-        public void Play(Starship starship, WorldInfo.PlanetObjectsInfo planetInfo, Vector3 position, Quaternion rotation,
+        public void Play(Starship starship, WorldInfo.PlanetObjectsInfo planetInfo, Vector3 position,
+            Quaternion rotation,
             Camera mainCamera)
         {
             Debug.Log("Start landing");
@@ -80,9 +81,11 @@ namespace Assets.Scripts.Modes
             Debug.Log("Stop landing");
 
             Vector3 roverSpawnPoint = FindBestLandPointInDistance(currentPlanetInfo);
-            Quaternion roverSpawnRotation = Quaternion.LookRotation(roverSpawnPoint - currentPlanetInfo.Planet.transform.position, Vector3.up) * Quaternion.Euler(90, 0, 0);
+            Quaternion roverSpawnRotation =
+                Quaternion.LookRotation(roverSpawnPoint - currentPlanetInfo.Planet.transform.position, Vector3.up) *
+                Quaternion.Euler(90, 0, 0);
 
-            if(roverSpawnPoint == null)
+            if (roverSpawnPoint == null)
             {
                 Debug.Log("Point is null, trying to find another");
                 GameObject point = FindClosestLandPointInDistance(currentPlanetInfo, ROVER_SPAWN_DISTANCE);
@@ -90,9 +93,10 @@ namespace Assets.Scripts.Modes
                 roverSpawnRotation = point.transform.rotation;
             }
 
-            roverSpawnPoint += roverSpawnRotation * Vector3.up * 2f;
+            roverSpawnPoint += roverSpawnRotation * Vector3.up;
 
-            GameManager.Instance.StartRoverMode(currentStarship, currentPlanetInfo, roverSpawnPoint, roverSpawnRotation);
+            GameManager.Instance.StartRoverMode(currentStarship, currentPlanetInfo, roverSpawnPoint,
+                roverSpawnRotation);
             TutorialManager.Instance.UpdateEventAction("hasLanded");
             Stop();
         }
@@ -111,10 +115,10 @@ namespace Assets.Scripts.Modes
 
             List<Vector3> spawnPoints = new List<Vector3>();
 
-            foreach(Vector3 raycastPoint in raycastPoints)
+            foreach (Vector3 raycastPoint in raycastPoints)
             {
                 if (Physics.Raycast(raycastPoint, planetObjectsInfo.Planet.transform.position - raycastPoint,
-                    out RaycastHit hit, planetObjectsInfo.Planet.elevationMinMax.Max + 100f, 64))
+                        out RaycastHit hit, planetObjectsInfo.Planet.elevationMinMax.Max + 100f, 64))
                 {
                     spawnPoints.Add(hit.point);
                 }
@@ -139,7 +143,7 @@ namespace Assets.Scripts.Modes
                         Vector3.Distance(b.Value.transform.localPosition, r.transform.localPosition) >
                         WorldInfo.MinDistanceBetweenBuildings))
                 .Where(r => Vector3.Distance(r.transform.localPosition, currentStarship.transform.localPosition) >
-                distance)
+                            distance)
                 .OrderBy(r => Vector3.Distance(currentStarship.transform.position, r.transform.position)).First();
             return point;
         }

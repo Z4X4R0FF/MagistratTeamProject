@@ -21,15 +21,15 @@ MonoBehaviour:
     shield: 250
     shieldRegenerationPS: 10
     shieldRechargeDelay: 5
-    entityTag: 1
+    entityTag: 0
     entityType: 1
   playerStarshipMovementAttributes:
     startSpeed: 13
     minSpeed: 0
     maxSpeed: 200
-    accelerateSpeed: 20
-    slowDownSpeed: 20
-    rotationSpeed: 200
+    accelerateSpeed: 35
+    slowDownSpeed: 60
+    rotationSpeed: 150
   aiMovementAttributes:
     movementSpeed: 50
     rotationSpeed: 10

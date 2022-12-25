@@ -105,8 +105,11 @@ namespace Assets.Scripts.Modes
         {
             if (availableToLand)
             {
+                LandingHint.Instance.DisableHint();
                 Vector3 position = FindClosestLandPoint(currentPlanetToLand);
-                Quaternion rotation = Quaternion.LookRotation(position - currentPlanetToLand.Planet.transform.position, Vector3.up) * Quaternion.Euler(90, 0, 0);
+                Quaternion rotation =
+                    Quaternion.LookRotation(position - currentPlanetToLand.Planet.transform.position, Vector3.up) *
+                    Quaternion.Euler(90, 0, 0);
 
                 if (position.Equals(Vector3.zero))
                 {
@@ -172,6 +175,7 @@ namespace Assets.Scripts.Modes
             {
                 availableToLand = true;
                 currentPlanetToLand = nearestPlanet;
+                LandingHint.Instance.OnEnableLand();
                 Debug.Log("LAND");
             }
         }
@@ -184,6 +188,7 @@ namespace Assets.Scripts.Modes
             {
                 availableToLand = false;
                 currentPlanetToLand = null;
+                LandingHint.Instance.DisableHint();
                 Debug.Log("NOT LAND");
             }
         }
@@ -195,7 +200,7 @@ namespace Assets.Scripts.Modes
                     d.transform.localPosition != r.transform.localPosition))
                 .Where(r =>
                     WorldInfo.Instance.placedBuildings.All(b =>
-                    (b.Value.transform.localPosition - r.transform.localPosition).sqrMagnitude >
+                        (b.Value.transform.localPosition - r.transform.localPosition).sqrMagnitude >
                         WorldInfo.MinDistanceBetweenBuildings * WorldInfo.MinDistanceBetweenBuildings))
                 .OrderBy(r => Vector3.Distance(currentStarship.transform.position, r.transform.position)).First();
             return point;
@@ -206,11 +211,13 @@ namespace Assets.Scripts.Modes
         {
             Vector3 direction = planetObjectsInfo.Planet.transform.position - currentStarship.transform.position;
             RaycastHit hit;
-            if (Physics.Raycast(currentStarship.transform.position, direction, out hit, planetObjectsInfo.Planet.elevationMinMax.Max + 200f, 64))
+            if (Physics.Raycast(currentStarship.transform.position, direction, out hit,
+                    planetObjectsInfo.Planet.elevationMinMax.Max + 200f, 64))
             {
                 Debug.DrawRay(currentStarship.transform.position, direction, Color.yellow, 30f);
                 return hit.point;
             }
+
             Debug.DrawRay(currentStarship.transform.position, direction, Color.red, 30f);
 
             Debug.Log("Raycast cant find closest land point");

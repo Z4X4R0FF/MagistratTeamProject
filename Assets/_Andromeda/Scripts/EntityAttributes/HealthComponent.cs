@@ -61,7 +61,7 @@ public class HealthComponent : MonoBehaviour
     public void Init(HealthAttributes healthAttributes)
     {
         _healthAttributes = healthAttributes;
-        if (!isPlayer)
+        if (!isPlayer && _healthAttributes.entityType != EntityType.Building)
         {
             MaxHealth =
                 Mathf.FloorToInt(_healthAttributes.health * DifficultyManager.Instance.HealthScale);
@@ -95,6 +95,11 @@ public class HealthComponent : MonoBehaviour
         hull.tag = _healthAttributes.entityTag.ToString();
         StartCoroutine(Regen());
         WorldInfo.Instance.RegisterEntity(this);
+    }
+
+    public void OnEntityHitSurface()
+    {
+        
     }
 
     public void OnEntityHit(Vector3 pos, WeaponAttributes weaponAttributes)
@@ -131,7 +136,7 @@ public class HealthComponent : MonoBehaviour
             if (isPlayer)
             {
                 hull.gameObject.SetActive(false);
-                Invoke(nameof(EndGame), 3f);
+                Invoke(nameof(EndGame), 2f);
             }
             else
             {

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,7 +17,8 @@ namespace Assets.Scripts.Vehicles.Rover
 
         private RaycastHit hit;
 
-        public void StartControl(Rover controlledRover, PlayerRoverMovementAttributes movementAttributes, WorldInfo.PlanetObjectsInfo planetInfo)
+        public void StartControl(Rover controlledRover, PlayerRoverMovementAttributes movementAttributes,
+            WorldInfo.PlanetObjectsInfo planetInfo)
         {
             rover = controlledRover;
             roverMovementAttributes = movementAttributes;
@@ -42,27 +44,31 @@ namespace Assets.Scripts.Vehicles.Rover
                 return;
             }
 
-            Move(axisInput.y);
+            var allowedAcceleration = Math.Clamp(axisInput.y, 0f, 1f);
+            Move(allowedAcceleration);
+            PlayerHealthDisplay.Instance.UpdatePlayerStat(PlayerHealthDisplay.PlayerStat.Speed,
+                allowedAcceleration * 10, 10);
             Rotate(new Vector3(0, axisInput.x, 0));
         }
 
         private void Move(float moveValue)
         {
-            if(moveValue == 0f)
+            if (moveValue == 0f)
             {
                 return;
             }
 
             Vector3 planetPosition = currentPlanetInfo.Planet.transform.position;
 
-            Vector3 nextPos = rover.transform.position + rover.transform.forward * moveValue * roverMovementAttributes.maxSpeed * Time.deltaTime;
+            Vector3 nextPos = rover.transform.position +
+                              rover.transform.forward * moveValue * roverMovementAttributes.maxSpeed * Time.deltaTime;
 
             Vector3 direction = planetPosition - nextPos;
 
-            if(Physics.Raycast(nextPos, direction, out hit, currentPlanetInfo.Planet.elevationMinMax.Max + 200f, 64))
+            if (Physics.Raycast(nextPos, direction, out hit, currentPlanetInfo.Planet.elevationMinMax.Max + 200f, 64))
             {
                 Debug.DrawRay(nextPos, direction, Color.yellow, 2f);
-                Vector3 newPosition = hit.point + (hit.point - planetPosition).normalized * 2f;
+                Vector3 newPosition = hit.point + (hit.point - planetPosition).normalized;
 
                 var angle = Vector3.Angle(rover.transform.position - planetPosition, newPosition - planetPosition);
 

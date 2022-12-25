@@ -31,7 +31,7 @@ MonoBehaviour:
     slowDownSpeed: 0
     rotationSpeed: 0
   aiMovementAttributes:
-    movementSpeed: 120
+    movementSpeed: 200
     rotationSpeed: 60
   weaponAttributes:
     damage: 10
