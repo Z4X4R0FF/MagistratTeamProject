@@ -8,15 +8,19 @@ namespace Assets.Scripts.Vehicles.Rover
     {
         private Rover rover;
         private PlayerRoverMovementAttributes roverMovementAttributes;
+        private WorldInfo.PlanetObjectsInfo currentPlanetInfo;
 
         private Vector2 axisInput;
         private Vector2 mouseAxisInput;
         private bool isActive = false;
 
-        public void StartControl(Rover controlledRover, PlayerRoverMovementAttributes movementAttributes)
+        private RaycastHit hit;
+
+        public void StartControl(Rover controlledRover, PlayerRoverMovementAttributes movementAttributes, WorldInfo.PlanetObjectsInfo planetInfo)
         {
             rover = controlledRover;
             roverMovementAttributes = movementAttributes;
+            currentPlanetInfo = planetInfo;
             isActive = true;
         }
 
@@ -38,13 +42,38 @@ namespace Assets.Scripts.Vehicles.Rover
                 return;
             }
 
-            Rotate(new Vector3(0, axisInput.x, 0));
             Move(axisInput.y);
+            Rotate(new Vector3(0, axisInput.x, 0));
         }
 
         private void Move(float moveValue)
         {
-            rover.SetPosition(rover.GetPosition() + rover.GetForward() * moveValue * roverMovementAttributes.maxSpeed * Time.deltaTime);
+            if(moveValue == 0f)
+            {
+                return;
+            }
+
+            Vector3 planetPosition = currentPlanetInfo.Planet.transform.position;
+
+            Vector3 nextPos = rover.transform.position + rover.transform.forward * moveValue * roverMovementAttributes.maxSpeed * Time.deltaTime;
+
+            Vector3 direction = planetPosition - nextPos;
+
+            if(Physics.Raycast(nextPos, direction, out hit, currentPlanetInfo.Planet.elevationMinMax.Max + 200f, 64))
+            {
+                Debug.DrawRay(nextPos, direction, Color.yellow, 2f);
+                Vector3 newPosition = hit.point + (hit.point - planetPosition).normalized * 2f;
+
+                var angle = Vector3.Angle(rover.transform.position - planetPosition, newPosition - planetPosition);
+
+                rover.transform.position = newPosition;
+                rover.transform.Rotate(new Vector3(angle, 0, 0));
+            }
+            else
+            {
+                Debug.DrawRay(nextPos, direction, Color.red, 2f);
+                Debug.Log("No raycast");
+            }
         }
 
         public void Rotate(Vector3 rotation)

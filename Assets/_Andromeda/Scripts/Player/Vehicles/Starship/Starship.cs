@@ -6,16 +6,20 @@ namespace Assets.Scripts.Vehicles.Starship
     public class Starship : Vehicle, IStarship
     {
         public delegate void StaticObjectCollision();
-        public StaticObjectCollision staticObjectCollisionCallBack;
+        public StaticObjectCollision staticObjectCollisionCallback;
+        public StaticObjectCollision planetSurfaceCollisionCallback;
+
+        public ShipAttributes shipAttributes;
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.tag == "StaticObject" || other.tag == "PlanetSurface")
+            if (other.tag == "StaticObject" && staticObjectCollisionCallback != null)
             {
-                if(staticObjectCollisionCallBack != null)
-                {
-                    staticObjectCollisionCallBack.Invoke();
-                }
+                staticObjectCollisionCallback.Invoke();
+            }
+            if(other.tag == "PlanetSurface" && planetSurfaceCollisionCallback != null)
+            {
+                planetSurfaceCollisionCallback.Invoke();
             }
         }
     }

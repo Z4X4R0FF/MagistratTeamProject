@@ -39,7 +39,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.04434458, g: 0.039324645, b: 0.04705926, a: 1}
+  m_IndirectSpecularColor: {r: 0.04434053, g: 0.03931733, b: 0.047051936, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -407,6 +407,12 @@ PrefabInstance:
       propertyPath: takeOffMode
       value: 
       objectReference: {fileID: 569245335}
+    - target: {fileID: 4938700169888467029, guid: 2fb62a0afe154e749a9046a08e81a488,
+        type: 3}
+      propertyPath: playerRover
+      value: 
+      objectReference: {fileID: 11400000, guid: b9bf43d2d752b6149bd16c1013334ec3,
+        type: 2}
     - target: {fileID: 4938700169888467029, guid: 2fb62a0afe154e749a9046a08e81a488,
         type: 3}
       propertyPath: playerStarship

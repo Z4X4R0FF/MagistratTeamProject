@@ -81,7 +81,7 @@ public class AttackComponent : MonoBehaviour
     {
         foreach (var laser in lasers)
         {
-            Debug.Log($"{gameObject.name}: Fire");
+            //Debug.Log($"{gameObject.name}: Fire");
             laser.FireLaser(hitPosition, _attackTarget);
         }
     }

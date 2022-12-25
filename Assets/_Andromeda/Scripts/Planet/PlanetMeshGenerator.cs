@@ -89,6 +89,7 @@ public class PlanetMeshGenerator : MonoBehaviour
             {
                 meshObj.tag = "PlanetSurface";
                 meshObj.AddComponent<MeshCollider>();
+                meshObj.layer = 6;
             }
         }
     }

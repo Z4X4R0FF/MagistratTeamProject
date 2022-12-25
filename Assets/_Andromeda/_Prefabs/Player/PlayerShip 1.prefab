@@ -44,12 +44,12 @@ GameObject:
   - component: {fileID: 1453194502752808268}
   - component: {fileID: 7375986950386377998}
   - component: {fileID: 4536127469183657695}
-  - component: {fileID: 1508386053716467839}
+  - component: {fileID: 4380866946709401375}
   - component: {fileID: 3056456287173069216}
   - component: {fileID: 2692324390701857088}
   - component: {fileID: 7203352543945791394}
   m_Layer: 0
-  m_Name: PlayerShip
+  m_Name: PlayerShip 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -107,7 +107,7 @@ MonoBehaviour:
   onEntityDestroyed:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &1508386053716467839
+--- !u!114 &4380866946709401375
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -116,11 +116,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1453194502752808257}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f54a275bf66e574080cd51b2da7b924, type: 3}
+  m_Script: {fileID: 11500000, guid: f4ded4869affd1148860ecc6d77c7e71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   cameraParent: {fileID: 3173442309612420853}
-  shipAttributes: {fileID: 0}
 --- !u!54 &3056456287173069216
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -273,6 +272,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_RootOrder
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 09254fa4a020b0e4abb49fa4fc679e28,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 09254fa4a020b0e4abb49fa4fc679e28,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 09254fa4a020b0e4abb49fa4fc679e28,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 09254fa4a020b0e4abb49fa4fc679e28,
         type: 3}
